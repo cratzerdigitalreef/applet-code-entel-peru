@@ -1,0 +1,344 @@
+﻿IMOX DigitalReef Carrier Privileges Applet FOR ENTEL PERU
+------------------------------------------
+
+---------------------------------------
+INFORMATION: 
+---------------------------------------
+
+New features 2021-12:
+---------------------
+
+Based on COTA v2.6 from Telefonica.
+
+New features 2022-03-11:
+------------------------
+- Added new command FB for getting COTA Applet version.
+This command sends the IMEI + COTA0206, for example.
+
+-------------------------------------
+Free non volatile memory without applet (IMOX_TESTING_01250102_210802.tst): 126460 bytes
+RAM free: 3116 bytes
+Free non volatile memory with applet 121681 bytes 
+RAM free with applet: 3031 bytes
+
+EEPROM = 4.779 bytes (45 SMSPP for loading applet)
+RAM = 86 bytes
+
+
+FOR LOP FILES:
+--------------
+REM LOADCOMMANDP3VALUE = 74
+REM ACCESSDOMAIN = 00
+REM TOOLKITAPPLETPRIORITYLEVEL = FF
+REM MAXNUMBEROFTIMER = 00
+REM MAXMENUENTRYTEXTLGT = 10
+
+FOR ALL:
+--------
+ACCESS DOMAIN: 00 23
+PIORITY LEVEL: FF
+MAX TEXT LENGTH: 10
+MAX TIMER: 00
+
+---------------------------------------
+AID:
+---------------------------------------
+
+A0 00 00 01 51 = IMOX
+41434C = "ACL" 
+TAR = 435041 ("CPA")
+
+PACKAGE AID: A00000015141434C0206220343504100
+References:
+	- Fixed: A00000015141434C
+	- Package version: 0206
+	- Year and month: 2203
+	- TAR: 435041
+	- Package reference: 00
+APPLET  AID: A00000015141434C00
+CLASS    ID: A00000015141434C00
+			
+FILE: 	CarrierPrivilegesApplet.ijc
+APPLET: com.imox.carrierprivileges;
+
+MENU POSITION: none
+MENU IDENTIFIER: none
+MAX MENU ENTRIES: 00
+
+
+FOR INSTALL FOR INSTALL:
+------------------------
+Package AID: A00000015141434C
+Instance AID: A00000015141434C00
+
+FOR TESTING, WITHOUT ACCESSING FILES:
+UICC System Specific Parameters: 
+FF01000000000343504100
+
+
+Application Specific Parameters:
+Testing Telefonica: 
+05810601F40020000006 373330 303031 313101
+Testing:    
+05810601F40020000006 373330 303031 313101
+
+
+---------------------------------------
+PARAMETERS: 
+---------------------------------------
+1) TPDA
+05810601F4 => 60104
+
+Shortcode reserved by AMX: 
+60104
+Num digits: 05
+TON/NPI: 81
+Address: 60104F
+Nibble Swapped: 06 01 F4
+
+Minimum: 4 bytes, num digits + TON/NPI + 3 digits for address.
+Maximum: 12 bytes totally.
+
+
+2) TIMER
+If the next 3 bytes are defined, those are the hh mm ss for PopUp.
+It must be defined reversed each 2 digits.
+Examples:
+23 59 59 => 0x32 95 95 => 24 hours
+00 02 00 => 0x00 20 00 => 2 minutes
+
+Timer defined for production:
+23 hours 59 minutes 59 seconds
+
+Timer: 235959
+Nibble Swapped: 329595
+
+Timer for testing, suggested value:
+000200 – 2 minutes
+Nibble Swapped: 00 20 00
+
+Defining value 00 00 00, this means no Timer activated.
+The value should be valid hours, minutes and seconds.
+
+
+3) STATUS COMMANDS FOR SMS IMEI COUNTER (RETRIES)
+2 bytes for Status Command
+If it is needed 24 hours, this means 24x60 = 1.440 minutes => x2 => 2.880 Status Commands => 0x0B 40
+
+Each status command is 30 seconds.
+Value defined for production:
+0x0B 40 = 2.880 Status Commands => 1.440 minutes => 24 hours.
+
+Suggested value for testing:
+00 06 => 3 minutes.
+
+Defining value 00 00, this means that there are no retries.
+The maximum value is 0x7F FF => 32.767 decimal => 16.383 minutes => 273 hours => 11 dsays
+
+
+4)
+MCC = Mobile Country Code
+It is defined in 3 bytes the MCC in ASCII.
+Examples:
+334 => 0x333334 => Telcel Mexico
+732 => 0x373332 => Claro Colombia
+722 => 0x373232 => Claro Argentina
+730 => 0x373330 => Claro Chile
+
+5)
+MNC = Mobile Network Code
+It is defined in 3 bytes the MNC in ASCII.
+Examples:
+020 => 0x303230 => Telcel Mexico
+101 => 0x313031 => Claro Colombia
+310 => 0x333130 => Claro Argentina
+003 => 0x303033 => Claro Chile
+
+When the Operator has 2 digits for MNC, it is added a "0" to the left.
+
+
+6)
+31 = Timer activated from the beginning (EVENT_PROFILE_DOWNLOAD).
+Anything different = Timer not activated from the beginning, example 0x30. (EVENT_PROFILE_DOWNLOAD). The Timer is activated by an administrative command.
+
+7)
+31 = When there is no response or error in the Pop Up Display Text, the 2 retries are activated loading the Timer with the defined value.
+Anything different = no retries for Display Text, example 0x30. 
+
+8)
+01 = F2 supported
+Anything different = Not supported F2 for Update URL
+If it is not defined this byte, it is assumed that it is not supported.
+This flag affects to F4 command too.
+
+
+---------------------------------------
+INFORMATION: 
+---------------------------------------
+
+New features 2021-10-07:
+- Timer activated from Terminal Profile, no SMS with IMEI sent. It was requested by Telcel 06/10/2021:
+Testing Timer activated from begginning:     05810601F40020000006 313131 313131 313130
+Testing Timer NOT activated from begginning: 05810601F40020000006 313131 313131 303130
+
+- If "STATUS COMMANDS FOR SMS IMEI COUNTER" is 0x00 00, no retries sent.
+Testing:    05810601F40020000000 313131 313131 313130
+
+---------------------------------------
+SMSPP: 
+---------------------------------------
+TAR: 435041
+
+1) Launch PopUp
+F0
+
+2) Update Message
+2.1)
+SMPP Data:
+F1 04 36436F6E657869C3B36E2061206C61206E7565766120726564207920646573636172676120646520756E206E7565766F206170706C6574
+Tag: F1
+DCS format: 0x04 - 8 Bits
+Length: 36
+"6Conexión a la nueva red y descarga de un nuevo applet"
+2.2)
+SMPP Data: 
+F1 04 81 96 4573746520657320756E20746578746F20616D706C696F2064652031353020636172616374657265732E20456C20746578746F2048656C6C6F20576F726C6420657261206D757920636F72746F20706172612068616365722065737465207469706F20646520707275656261732E20456C2063616D62696F2064656C20746578746F20667565204D555920657869746F736F2E2E2E2E
+Tag: F1
+DCS format: 0x04 - 8 Bits
+Length: 81 A0
+Text: "Este es un texto amplio de 150 caracteres. El texto Hello World era muy corto para hacer este tipo de pruebas. El cambio del texto fue MUY exitoso...."
+2.3) UCS2
+SMPP Data: 
+F1 08 81 90 00 42 00 65 00 6D 00 2D 00 76 00 69 00 6E 00 64 00 6F 00 20 00 E0 00 20 00 72 00 65 00 64 00 65 00 20 00 4F 00 70 00 65 00 72 00 61 00 64 00 6F 00 72 00 2E 00 20 00 56 00 6F 00 63 00 EA 00 20 00 71 00 75 00 65 00 72 00 20 00 6D 00 65 00 6C 00 68 00 6F 00 72 00 61 00 72 00 20 00 6F 00 20 00 73 00 75 00 61 00 20 00 65 00 78 00 70 00 65 00 72 00 69 00 EA 00 6E 00 63 00 69 00 61 00 20 00 63 00 6F 00 6E 00 6F 00 73 00 63 00 6F 00 3F
+Tag: F1
+DCS format: 0x08 - UCS2
+Length: 81 90
+Text: "Bem-vindo à rede Operador. Você quer melhorar o sua experiência conosco?"
+
+
+3) Activate Timer
+F9 31
+F9 32 95 95 => New timer 23:59:59
+F9 00 20 00 => New timer: 00:02:00
+
+4) Update URL - Optional
+F2 51 68 74 74 70 73 3A 2F 2F 63 6F 74 61 2D 73 64 6B 2E 6D 6E 63 30 32 30 2E 6D 63 63 33 33 34 2E 70 75 62 2E 33 67 70 70 6E 65 74 77 6F 72 6B 2E 6F 72 67 3A 38 31 38 31 2F 61 70 70 6C 65 74 2F 37 30 3F 6D 63 63 3D 31 31 31 26 6D 6E 63 3D 31 31 31
+Length: 0x51 (length 81 bytes)
+URL: 
+https://cota-sdk.mnc020.mcc334.pub.3gppnetwork.org:8181/applet/70?mcc=111&mnc=111
+
+Other example:
+0xF2 1F 68 74 74 70 73 3A 2F 2F 77 77 77 2E 77 61 73 68 69 6E 67 74 6F 6E 70 6F 73 74 2E 63 6F 6D 2F
+URL:
+https://www.washingtonpost.com/
+
+5) Message from Server
+0xFA xx
+Where "xx" is the message to inform to APK-ANDROID with "process(APDU apdu)"
+Example:
+0xFA 39
+The value for APK is 0x39
+
+Then the APK sends to the applet:
+ISO7816.OFFSET_INS with 0xFA, the applet will respond 0x39 for the example.
+
+6) Update Message and PopUp
+6.1)
+DCS: 0x04
+// VALUE: This is a test number 1. Welcome Message before Launch Browser
+F1 F0 04 3E 54 68 69 73 20 69 73 20 61 20 74 65 73 74 20 6E 75 6D 62 65 72 20 31 2E 20 57 65 6C 63 6F 6D 65 20 4D 65 73 73 61 67 65 20 62 65 66 6F 72 65 20 4C 61 75 6E 63 68 20 42 72 6F 77 73 65 72
+Without DCS:
+F1 F0 3E 54 68 69 73 20 69 73 20 61 20 74 65 73 74 20 6E 75 6D 62 65 72 20 31 2E 20 57 65 6C 63 6F 6D 65 20 4D 65 73 73 61 67 65 20 62 65 66 6F 72 65 20 4C 61 75 6E 63 68 20 42 72 6F 77 73 65 72
+
+6.2)
+// VALUE: This is a test number 2. Welcome Message before Launch Browser
+F1 F0 04 3E 54 68 69 73 20 69 73 20 61 20 74 65 73 74 20 6E 75 6D 62 65 72 20 32 2E 20 57 65 6C 63 6F 6D 65 20 4D 65 73 73 61 67 65 20 62 65 66 6F 72 65 20 4C 61 75 6E 63 68 20 42 72 6F 77 73 65 72
+
+6.3)
+Text: "Este es un texto amplio de 160 caracteres. El texto Hello World era muy corto para hacer este tipo de pruebas. El cambio del texto fue exitoso."
+Smpp data: 
+F1 F0 04 81 8F 45 73 74 65 20 65 73 20 75 6E 20 74 65 78 74 6F 20 61 6D 70 6C 69 6F 20 64 65 20 31 36 30 20 63 61 72 61 63 74 65 72 65 73 2E 20 45 6C 20 74 65 78 74 6F 20 48 65 6C 6C 6F 20 57 6F 72 6C 64 20 65 72 61 20 6D 75 79 20 63 6F 72 74 6F 20 70 61 72 61 20 68 61 63 65 72 20 65 73 74 65 20 74 69 70 6F 20 64 65 20 70 72 75 65 62 61 73 2E 20 45 6C 20 63 61 6D 62 69 6F 20 64 65 6C 20 74 65 78 74 6F 20 66 75 65 20 65 78 69 74 6F 73 6F 2E
+
+6.4)
+SMPP Data: 
+F1 F0 08 81 90 00 42 00 65 00 6D 00 2D 00 76 00 69 00 6E 00 64 00 6F 00 20 00 E0 00 20 00 72 00 65 00 64 00 65 00 20 00 4F 00 70 00 65 00 72 00 61 00 64 00 6F 00 72 00 2E 00 20 00 56 00 6F 00 63 00 EA 00 20 00 71 00 75 00 65 00 72 00 20 00 6D 00 65 00 6C 00 68 00 6F 00 72 00 61 00 72 00 20 00 6F 00 20 00 73 00 75 00 61 00 20 00 65 00 78 00 70 00 65 00 72 00 69 00 EA 00 6E 00 63 00 69 00 61 00 20 00 63 00 6F 00 6E 00 6F 00 73 00 63 00 6F 00 3F
+Tag: F1F0
+DCS format: 0x08 - UCS2
+Length: 81 90
+Text: "Bem-vindo à rede Operador. Você quer melhorar o sua experiência conosco?"
+
+7) Call URL directly
+7.1)
+F4 1F 68 74 74 70 73 3A 2F 2F 77 77 77 2E 77 61 73 68 69 6E 67 74 6F 6E 70 6F 73 74 2E 63 6F 6D 2F
+URL:
+https://www.washingtonpost.com/
+
+7.2)
+F4 51 68 74 74 70 73 3A 2F 2F 63 6F 74 61 2D 73 64 6B 2E 6D 6E 63 30 32 30 2E 6D 63 63 33 33 34 2E 70 75 62 2E 33 67 70 70 6E 65 74 77 6F 72 6B 2E 6F 72 67 3A 38 31 38 31 2F 61 70 70 6C 65 74 2F 37 30 3F 6D 63 63 3D 31 31 31 26 6D 6E 63 3D 31 31 31
+URL:
+https://cota-sdk.mnc020.mcc334.pub.3gppnetwork.org:8181/applet/70?mcc=111&mnc=111
+
+7.3)
+F4 51 68 74 74 70 73 3A 2F 2F 63 6F 74 61 2D 73 64 6B 2E 6D 6E 63 30 32 30 2E 6D 63 63 33 33 34 2E 70 75 62 2E 33 67 70 70 6E 65 74 77 6F 72 6B 2E 6F 72 67 3A 38 31 38 31 2F 61 70 70 6C 65 74 2F 37 30 3F 6D 63 63 3D 31 31 31 26 6D 6E 63 3D 31 31 31
+URL:
+https://cota-sdk.mnc020.mcc334.pub.3gppnetwork.org:8181/applet/70?mcc=111&mnc=111
+
+
+8) Only show PopUp, not colling URL
+8.1)
+F5 35 43 6F 6E 65 78 69 6F 6E 20 61 20 6C 61 20 6E 75 65 76 61 20 72 65 64 20 79 20 64 65 73 63 61 72 67 61 20 64 65 20 75 6E 20 6E 75 65 76 6F 20 61 70 70 6C 65 74
+"Conexion a la nueva red y descarga de un nuevo applet"
+
+8.2)
+DCS = 0x04
+F5 04 35 43 6F 6E 65 78 69 6F 6E 20 61 20 6C 61 20 6E 75 65 76 61 20 72 65 64 20 79 20 64 65 73 63 61 72 67 61 20 64 65 20 75 6E 20 6E 75 65 76 6F 20 61 70 70 6C 65 74
+Text: "Conexion a la nueva red y descarga de un nuevo applet"
+
+8.3)
+DCS = Not informed
+F5 81 8F 45 73 74 65 20 65 73 20 75 6E 20 74 65 78 74 6F 20 61 6D 70 6C 69 6F 20 64 65 20 31 34 33 20 63 61 72 61 63 74 65 72 65 73 2E 20 45 6C 20 74 65 78 74 6F 20 48 65 6C 6C 6F 20 57 6F 72 6C 64 20 65 72 61 20 6D 75 79 20 63 6F 72 74 6F 20 70 61 72 61 20 68 61 63 65 72 20 65 73 74 65 20 74 69 70 6F 20 64 65 20 70 72 75 65 62 61 73 2E 20 45 6C 20 63 61 6D 62 69 6F 20 64 65 6C 20 74 65 78 74 6F 20 66 75 65 20 65 78 69 74 6F 73 6F 2E
+Text: "Este es un texto amplio de 143 caracteres. El texto Hello World era muy corto para hacer este tipo de pruebas. El cambio del texto fue exitoso."
+
+8.4)
+DCS = 0x04
+F5 04 81 8F 45 73 74 65 20 65 73 20 75 6E 20 74 65 78 74 6F 20 61 6D 70 6C 69 6F 20 64 65 20 31 34 33 20 63 61 72 61 63 74 65 72 65 73 2E 20 45 6C 20 74 65 78 74 6F 20 48 65 6C 6C 6F 20 57 6F 72 6C 64 20 65 72 61 20 6D 75 79 20 63 6F 72 74 6F 20 70 61 72 61 20 68 61 63 65 72 20 65 73 74 65 20 74 69 70 6F 20 64 65 20 70 72 75 65 62 61 73 2E 20 45 6C 20 63 61 6D 62 69 6F 20 64 65 6C 20 74 65 78 74 6F 20 66 75 65 20 65 78 69 74 6F 73 6F 2E
+Text: "Este es un texto amplio de 143 caracteres. El texto Hello World era muy corto para hacer este tipo de pruebas. El cambio del texto fue exitoso."
+
+8.5)
+F5 08 81 90 00 42 00 65 00 6D 00 2D 00 76 00 69 00 6E 00 64 00 6F 00 20 00 E0 00 20 00 72 00 65 00 64 00 65 00 20 00 4F 00 70 00 65 00 72 00 61 00 64 00 6F 00 72 00 2E 00 20 00 56 00 6F 00 63 00 EA 00 20 00 71 00 75 00 65 00 72 00 20 00 6D 00 65 00 6C 00 68 00 6F 00 72 00 61 00 72 00 20 00 6F 00 20 00 73 00 75 00 61 00 20 00 65 00 78 00 70 00 65 00 72 00 69 00 EA 00 6E 00 63 00 69 00 61 00 20 00 63 00 6F 00 6E 00 6F 00 73 00 63 00 6F 00 3F
+Text: "Bem-vindo à rede Operador. Você quer melhorar o sua experiência conosco?"
+
+8.6)
+F5 36 43 6F 6E 65 78 69 6F 6E 20 61 20 6C 61 20 6E 75 65 76 61 20 72 65 64 20 79 20 64 65 73 63 61 72 67 61 20 64 65 20 75 6E 20 6E 75 65 76 6F 20 61 70 70 6C 65 74 31
+Text: "Conexion a la nueva red y descarga de un nuevo applet1"
+
+9) Update URL and Call PopUp - Optional
+9.1)
+F2 F0 51 68 74 74 70 73 3A 2F 2F 63 6F 74 61 2D 73 64 6B 2E 6D 6E 63 30 32 30 2E 6D 63 63 33 33 34 2E 70 75 62 2E 33 67 70 70 6E 65 74 77 6F 72 6B 2E 6F 72 67 3A 38 31 38 31 2F 61 70 70 6C 65 74 2F 37 30 3F 6D 63 63 3D 31 31 31 26 6D 6E 63 3D 31 31 31
+Length: 0x51 (length 81 bytes)
+URL: 
+https://cota-sdk.mnc020.mcc334.pub.3gppnetwork.org:8181/applet/70?mcc=111&mnc=111
+
+9.2)
+Other example:
+F2 F0 1A 68 74 74 70 73 3A 2F 2F 77 77 77 2E 67 6F 6F 67 6C 65 2E 63 6F 6D 2E 61 72 2F
+URL:
+https://www.google.com.ar/
+
+10) Get IMEI
+F8
+SMS Sent example:
+Fetch
+R - D0 1D 81 03 01 13 00 82 02 81 83 0B 12 05 00 05 81 06 01 F4 00 04 08 4A 44 44 44 44 44 44 47
+SMS: 4A 44 44 44 44 44 44 47
+IMEI: 4A 44 44 44 44 44 44 47
+
+11) Get IMEI + COTA version
+FB
+SMS Sent example:
+R - D0 25 81 03 01 13 00 82 02 81 83 0B 1A 05 00 05 81 06 01 F4 00 04 10 4A 44 44 44 44 44 44 47 43 4F 54 41 30 32 30 36
+SMS: 4A 44 44 44 44 44 44 47 43 4F 54 41 30 32 30 36
+IMEI: 4A 44 44 44 44 44 44 47
+COTA VERSION: 43 4F 54 41 30 32 30 36 => COTA0206
+
+

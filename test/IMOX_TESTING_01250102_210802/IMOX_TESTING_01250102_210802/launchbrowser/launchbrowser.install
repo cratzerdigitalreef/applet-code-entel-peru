@@ -1,0 +1,28 @@
+[CONVERT]
+PackageAID = 4341524C4F010702001909004C425200
+PackageVersion = 1.0
+PackageName = com.carlos.javacard.launchbrowser
+AppletClassAID = 4341524C4F010702001909004C425201
+AppletClassName = com.carlos.javacard.launchbrowser.launchbrowser
+
+[LOAD]
+MaxLoadCommandDataLength = 74
+
+[INSTALL(load)]
+PackageAID = 4341524C4F010702001909004C425200
+PackageNonVolatileMemSize = 0000
+
+[INSTALL(install)]
+PackageAID = 4341524C4F010702001909004C425200
+AppletClassAID = 4341524C4F010702001909004C425201
+InstanceAID = 4341524C4F010702001909004C425201
+InstallationNonVolatileMemSize = 0000
+InstallationVolatileMemSize = 0000
+AccessDomain = FF
+PriorityLevel = 80
+MaxNumberOfTimers = 00
+MaxMenuEntryTextLength = 00
+MaxNumberOfMenuEntries = 00
+MaxMenuEntryNumber = 00
+MaxNumberOfChannels = 00
+MSLFieldLength = 00
