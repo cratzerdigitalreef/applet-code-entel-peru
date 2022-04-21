@@ -51,7 +51,9 @@ implements ToolkitInterface, uicc.toolkit.ToolkitConstants {
 	/* */
     static final byte[] COTA = { 
     		(byte)'C', (byte)'O', (byte)'T', (byte)'A', 
-    		(byte)'0', (byte)'2',(byte)'0', (byte)'6'};
+    		(byte)'0', (byte)'2', (byte)'0', (byte)'7'
+    		, (byte)'D'
+    		};
     /* */
 
 	private static ToolkitRegistry mReg;
@@ -74,30 +76,22 @@ implements ToolkitInterface, uicc.toolkit.ToolkitConstants {
 	static byte[] MNC = new byte[(short)3];
 
 	// ****************************************************************************************************
-	// URL for LAUNCH BROWSER - ARRAY LENGTH (bytes): 240 - DATA LENGTH (characters): 63 (0x3F) - PADDING LENGTH (bytes): 177
-	// VALUE: https://tiendaonline.movistar.com.pe/renueva/955453383_oferta12
+	// URL for LAUNCH BROWSER - ARRAY LENGTH (bytes): 160 - DATA LENGTH (characters): 69 (0x45) - PADDING LENGTH (bytes): 90 (-1 because first byte defines amount of characters)
+	// VALUE: https://play.google.com/store/apps/details?id=br.com.timbrasil.meutim
 	/* 
-	LENGTH + VALUE IN HEXA: 0x3F 68 74 74 70 73 3A 2F 2F 74 69 65 6E 64 61 6F 6E 6C 69 6E 65 2E 6D 6F 76 69 73 74 61 72 2E 63 6F 6D 2E 70 65 2F 72 65 6E 75 65 76 61 2F 39 35 35 34 35 33 33 38 33 5F 6F 66 65 72 74 61 31 32
-	
-	"_" => "%5F" according to URLEncoder.pdf (https://www.w3schools.com/tags/ref_urlencode.asp)
+	LENGTH + VALUE IN HEXA: 0x45 68 74 74 70 73 3A 2F 2F 70 6C 61 79 2E 67 6F 6F 67 6C 65 2E 63 6F 6D 2F 73 74 6F 72 65 2F 61 70 70 73 2F 64 65 74 61 69 6C 73 3F 69 64 3D 62 72 2E 63 6F 6D 2E 74 69 6D 62 72 61 73 69 6C 2E 6D 65 75 74 69 6D - TAKE INTO ACCOUNT IT IS 8 BITS FORMAT (DCS: 0x04)
 	 */
 
-	// ****************************************************************************************************
-	// URL for LAUNCH BROWSER - ARRAY LENGTH (bytes): 160 - DATA LENGTH (characters): 51 (0x33) - PADDING LENGTH (bytes): 108 (-1 because first byte defines amount of characters)
-	// VALUE: https://tiendaonline.movistar.com.pe/Renueva%2Dapp/
-	// ORIGINAL VALUE: https://tiendaonline.movistar.com.pe/Renueva-app/
-	/* 
-	LENGTH + VALUE IN HEXA: 0x33 68 74 74 70 73 3A 2F 2F 74 69 65 6E 64 61 6F 6E 6C 69 6E 65 2E 6D 6F 76 69 73 74 61 72 2E 63 6F 6D 2E 70 65 2F 52 65 6E 75 65 76 61 25 32 44 61 70 70 2F - TAKE INTO ACCOUNT IT IS 8 BITS FORMAT (DCS: 0x04)
-	 */
-
-	static byte[] URL = new byte[] { (byte)0x33,
+	static byte[] URL = new byte[] { (byte)0x45,
 	(byte) 'h',(byte) 't',(byte) 't',(byte) 'p',(byte) 's',(byte) ':',(byte) '/',(byte) '/',
-	(byte) 't',(byte) 'i',(byte) 'e',(byte) 'n',(byte) 'd',(byte) 'a',(byte) 'o',(byte) 'n',
-	(byte) 'l',(byte) 'i',(byte) 'n',(byte) 'e',(byte) '.',(byte) 'm',(byte) 'o',(byte) 'v',
-	(byte) 'i',(byte) 's',(byte) 't',(byte) 'a',(byte) 'r',(byte) '.',(byte) 'c',(byte) 'o',
-	(byte) 'm',(byte) '.',(byte) 'p',(byte) 'e',(byte) '/',(byte) 'R',(byte) 'e',(byte) 'n',
-	(byte) 'u',(byte) 'e',(byte) 'v',(byte) 'a',(byte) '%',(byte) '2',(byte) 'D',(byte) 'a',
-	(byte) 'p',(byte) 'p',(byte) '/',
+	(byte) 'p',(byte) 'l',(byte) 'a',(byte) 'y',(byte) '.',(byte) 'g',(byte) 'o',(byte) 'o',
+	(byte) 'g',(byte) 'l',(byte) 'e',(byte) '.',(byte) 'c',(byte) 'o',(byte) 'm',(byte) '/',
+	(byte) 's',(byte) 't',(byte) 'o',(byte) 'r',(byte) 'e',(byte) '/',(byte) 'a',(byte) 'p',
+	(byte) 'p',(byte) 's',(byte) '/',(byte) 'd',(byte) 'e',(byte) 't',(byte) 'a',(byte) 'i',
+	(byte) 'l',(byte) 's',(byte) '?',(byte) 'i',(byte) 'd',(byte) '=',(byte) 'b',(byte) 'r',
+	(byte) '.',(byte) 'c',(byte) 'o',(byte) 'm',(byte) '.',(byte) 't',(byte) 'i',(byte) 'm',
+	(byte) 'b',(byte) 'r',(byte) 'a',(byte) 's',(byte) 'i',(byte) 'l',(byte) '.',(byte) 'm',
+	(byte) 'e',(byte) 'u',(byte) 't',(byte) 'i',(byte) 'm',
 	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
 	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
 	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
@@ -109,32 +103,29 @@ implements ToolkitInterface, uicc.toolkit.ToolkitConstants {
 	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
 	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
 	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
-	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
-	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
-	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF
+	(byte)0xFF,(byte)0xFF
 	};
 	// ****************************************************************************************************
 
 
+
 	// ****************************************************************************************************
-	// Welcome Message - ARRAY LENGTH (bytes): 240 - DATA LENGTH (characters): 82 (0x52) - PADDING LENGTH (bytes): 158
-	// VALUE: Ultimos dias para renovar tu equipo a precios especiales! Te lo llevamos sin costo
+	// Welcome Message - ARRAY LENGTH (bytes): 240 - DATA LENGTH (characters): 144 (0x90) - PADDING LENGTH (bytes): 95 (-1 because first byte defines amount of characters)
+	// VALUE: Bem-vindo à rede Operador. Você quer melhorar o sua experiência conosco?
 	/* 
-	LENGTH + VALUE IN HEXA: 0x52 55 6C 74 69 6D 6F 73 20 64 69 61 73 20 70 61 72 61 20 72 65 6E 6F 76 61 72 20 74 75 20 65 71 75 69 70 6F 20 61 20 70 72 65 63 69 6F 73 20 65 73 70 65 63 69 61 6C 65 73 21 20 54 65 20 6C 6F 20 6C 6C 65 76 61 6D 6F 73 20 73 69 6E 20 63 6F 73 74 6F
+	LENGTH + VALUE IN HEXA: 0x90 42 65 6D 2D 76 69 6E 64 6F 20 E0 20 72 65 64 65 20 4F 70 65 72 61 64 6F 72 2E 20 56 6F 63 EA 20 71 75 65 72 20 6D 65 6C 68 6F 72 61 72 20 6F 20 73 75 61 20 65 78 70 65 72 69 EA 6E 63 69 61 20 63 6F 6E 6F 73 63 6F 3F - TAKE INTO ACCOUNT IT IS UCS2 FORMAT (DCS: 0x08)
 	 */
 
-	static byte[] mainMsg = new byte[] { (byte)0x52,
-	(byte) 'U',(byte) 'l',(byte) 't',(byte) 'i',(byte) 'm',(byte) 'o',(byte) 's',(byte) ' ',
-	(byte) 'd',(byte) 'i',(byte) 'a',(byte) 's',(byte) ' ',(byte) 'p',(byte) 'a',(byte) 'r',
-	(byte) 'a',(byte) ' ',(byte) 'r',(byte) 'e',(byte) 'n',(byte) 'o',(byte) 'v',(byte) 'a',
-	(byte) 'r',(byte) ' ',(byte) 't',(byte) 'u',(byte) ' ',(byte) 'e',(byte) 'q',(byte) 'u',
-	(byte) 'i',(byte) 'p',(byte) 'o',(byte) ' ',(byte) 'a',(byte) ' ',(byte) 'p',(byte) 'r',
-	(byte) 'e',(byte) 'c',(byte) 'i',(byte) 'o',(byte) 's',(byte) ' ',(byte) 'e',(byte) 's',
-	(byte) 'p',(byte) 'e',(byte) 'c',(byte) 'i',(byte) 'a',(byte) 'l',(byte) 'e',(byte) 's',
-	(byte) '!',(byte) ' ',(byte) 'T',(byte) 'e',(byte) ' ',(byte) 'l',(byte) 'o',(byte) ' ',
-	(byte) 'l',(byte) 'l',(byte) 'e',(byte) 'v',(byte) 'a',(byte) 'm',(byte) 'o',(byte) 's',
-	(byte) ' ',(byte) 's',(byte) 'i',(byte) 'n',(byte) ' ',(byte) 'c',(byte) 'o',(byte) 's',
-	(byte) 't',(byte) 'o',
+	static byte[] mainMsg = new byte[] { (byte)0x90,
+	(byte)0x00,(byte)0x42,(byte)0x00,(byte)0x65,(byte)0x00,(byte)0x6D,(byte)0x00,(byte)0x2D,(byte)0x00,(byte)0x76,(byte)0x00,(byte)0x69,(byte)0x00,(byte)0x6E,(byte)0x00,(byte)0x64,
+	(byte)0x00,(byte)0x6F,(byte)0x00,(byte)0x20,(byte)0x00,(byte)0xE0,(byte)0x00,(byte)0x20,(byte)0x00,(byte)0x72,(byte)0x00,(byte)0x65,(byte)0x00,(byte)0x64,(byte)0x00,(byte)0x65,
+	(byte)0x00,(byte)0x20,(byte)0x00,(byte)0x4F,(byte)0x00,(byte)0x70,(byte)0x00,(byte)0x65,(byte)0x00,(byte)0x72,(byte)0x00,(byte)0x61,(byte)0x00,(byte)0x64,(byte)0x00,(byte)0x6F,
+	(byte)0x00,(byte)0x72,(byte)0x00,(byte)0x2E,(byte)0x00,(byte)0x20,(byte)0x00,(byte)0x56,(byte)0x00,(byte)0x6F,(byte)0x00,(byte)0x63,(byte)0x00,(byte)0xEA,(byte)0x00,(byte)0x20,
+	(byte)0x00,(byte)0x71,(byte)0x00,(byte)0x75,(byte)0x00,(byte)0x65,(byte)0x00,(byte)0x72,(byte)0x00,(byte)0x20,(byte)0x00,(byte)0x6D,(byte)0x00,(byte)0x65,(byte)0x00,(byte)0x6C,
+	(byte)0x00,(byte)0x68,(byte)0x00,(byte)0x6F,(byte)0x00,(byte)0x72,(byte)0x00,(byte)0x61,(byte)0x00,(byte)0x72,(byte)0x00,(byte)0x20,(byte)0x00,(byte)0x6F,(byte)0x00,(byte)0x20,
+	(byte)0x00,(byte)0x73,(byte)0x00,(byte)0x75,(byte)0x00,(byte)0x61,(byte)0x00,(byte)0x20,(byte)0x00,(byte)0x65,(byte)0x00,(byte)0x78,(byte)0x00,(byte)0x70,(byte)0x00,(byte)0x65,
+	(byte)0x00,(byte)0x72,(byte)0x00,(byte)0x69,(byte)0x00,(byte)0xEA,(byte)0x00,(byte)0x6E,(byte)0x00,(byte)0x63,(byte)0x00,(byte)0x69,(byte)0x00,(byte)0x61,(byte)0x00,(byte)0x20,
+	(byte)0x00,(byte)0x63,(byte)0x00,(byte)0x6F,(byte)0x00,(byte)0x6E,(byte)0x00,(byte)0x6F,(byte)0x00,(byte)0x73,(byte)0x00,(byte)0x63,(byte)0x00,(byte)0x6F,(byte)0x00,(byte)0x3F,
 	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
 	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
 	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
@@ -146,68 +137,37 @@ implements ToolkitInterface, uicc.toolkit.ToolkitConstants {
 	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
 	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
 	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
-	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
-	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
-	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
-	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
-	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
-	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
-	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
-	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
-	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF
+	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF
 	};
 	// ****************************************************************************************************
+
 	
     /* Variables applet imox */
+	//HEADER: FF 40 1A e2 18 E1 16 C1 14
     static final byte[] HEADER = { (byte) 0xFF, (byte) 0x40, (byte) 0x1A, (byte) 0xe2, (byte) 0x18, (byte) 0xE1,
         (byte) 0x16, (byte) 0xC1, (byte) 0x14 };
 
-        /*    APP HASH BLANK     
-    private byte[] APP_HASH = { (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00,
-        (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00,
-        (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00 };
-        */
-
-    //SHA-1 BY DEFAULT //
-    /*
-    private byte[] APP_HASH = {  
-    		(byte) 0xF4, 
-    		(byte) 0x65, 
-    		(byte) 0x3B, 
-    		(byte) 0xEE, 
-    		(byte) 0x3D, 
-    		(byte) 0x83, 
-    		(byte) 0xF5, 
-    		(byte) 0xEF, 
-    		(byte) 0xE1, 
-    		(byte) 0x89, 
-    		(byte) 0x60, 
-    		(byte) 0xB5, 
-    		(byte) 0x35, 
-    		(byte) 0x94, 
-    		(byte) 0x43, 
-    		(byte) 0x8E, 
-    		(byte) 0xB1, 
-    		(byte) 0xE3, 
-    		(byte) 0xB2, 
-    		(byte) 0x99 };
-    */
+ // ****************************************************************************************************
+ // IMOX SHA-1 - ARRAY LENGTH (bytes): 20 - DATA LENGTH (bytes): 20 (0x14)
+ // VALUE: DA5C073BA077FD86B7CB4234331DE5FCC449F460
     
-    //SHA-1 SOME TESTINGS //
-	//SHA1 - 20 bytes
-    private byte[] APP_HASH = {  
-    		(byte)0xAC,(byte)0x0B,(byte)0xCF,(byte)0xBA,(byte)0x1A,
-    		(byte)0x4E,(byte)0xAE,(byte)0xF0,(byte)0xC8,(byte)0xC7,
-    		(byte)0xE1,(byte)0x8F,(byte)0x10,(byte)0x56,(byte)0x4F,
-    		(byte)0x1A,(byte)0x0F,(byte)0xFC,(byte)0xB3,(byte)0x62
+    //IMOX NICARAGUA SHA-1 GENERATION
+    
+    static byte[] APP_HASH = new byte[] { 
+    		(byte)0xDA,(byte)0x5C,(byte)0x07,(byte)0x3B,
+    		(byte)0xA0,(byte)0x77,(byte)0xFD,(byte)0x86,
+    		(byte)0xB7,(byte)0xCB,(byte)0x42,(byte)0x34,
+    		(byte)0x33,(byte)0x1D,(byte)0xE5,(byte)0xFC,
+    		(byte)0xC4,(byte)0x49,(byte)0xF4,(byte)0x60
     };
+ // ****************************************************************************************************
 
 	static boolean bFirstStatusCommand = true;
 	//DEBUGGING
 	//static short nFirstStatusCommand = (short)0;
 
     static byte TIMER_ID = (byte) 0xFF;
-	static final short LENGTH_APP_HASH = (short) 20;
+	//static final short LENGTH_APP_HASH = (short) 20;
 	// TIEMPO EN SEGUNDOS, HEXADECIMAL
 	/*
 	 * Coding:
@@ -228,16 +188,24 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
     static byte[] TIMER_VALUE_INIT = { (byte) 0x32, (byte) 0x95, (byte) 0x95 };
     static final byte[] TIMER_VALUE_NULL = { (byte) 0x00, (byte) 0x00, (byte) 0x00 };
 	
-	byte[] temporal;
-	private final byte[] persistence;
-	
+	//byte[] temporal;
+	//private final byte[] persistence;
 	//FOR RECEIVING A MESSAGE FROM OTA TO INFORM TO THE APK - ANDROID
 	private byte bFAValue = (byte)0x00;
 	
-	static final byte CLA_APP = (byte) 0x81;
-	static final byte INS_GET_DATA = (byte) 0xCA;
-    static final byte INS_GET_RESPONSE = (byte)0x02;
+	static final byte CLA_APP 			= (byte) 0x80;
+	static final byte INS_GET_DATA 		= (byte) 0xCA;
+    static final byte INS_GET_RESPONSE 	= (byte) 0x02;
     static final byte[] RESPUESTA = { (byte)'O', (byte)'K' };
+    
+    static final byte APK_APDU_NOTRECEIVED 	= (byte) 0x00;
+    static final byte APK_APDU_RECEIVED 	= (byte) 0xF1;
+
+    static byte bAPK_APDU_VAL = APK_APDU_NOTRECEIVED;
+    static short nAPK_APDU_MAX_Counter = (short)0;
+    static short nAPK_APDU_MAX_Counter_Backup = (short)0;
+    static short nAPK_APDU_Counter_Backup = (short)0;
+    
     /*************************/
 
     //***********************************************************************
@@ -271,17 +239,24 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
     static private byte[] generalBuffer                      = new byte [(short) IOD_TPDU_LENGTH ];
 	private short lengthMsg = (short)0;
 	
+	//FOR SAVING IMEI + LAUNCH BROWSER SUPPORTED
+	private static final short nIMEILaunchBrowserSupportedIndex = (short)8;
+	private byte[] IMEIOld = new byte [(short)(nIMEILaunchBrowserSupportedIndex+1)];
+
 	//FOR DEBUGGING SMSPP
     //static private byte[] generalBufferDebug                 = new byte [(short) 160];
-	private byte[] transByteArray = JCSystem.makeTransientByteArray((short) 15,JCSystem.CLEAR_ON_RESET);	
+	private byte[] transByteArray = JCSystem.makeTransientByteArray((short) 18,JCSystem.CLEAR_ON_RESET);	
 	private static final short N_WAITFORSENDSMS_OFFSET = (short)0;
 	//2 BYTES FOR RETRIES COUNTER
-	private static final short N_SMSIMEIRETRIESCNTR_OFFSET = (short)1;
-	private static final short N_NORESPONSEUSER_OFFSET 	= (short)3;
-	private static final short TEMP_IMEI_OFFSET = (short)4;
-	private static final short DISPLAY_RES_OFFSET = (short)12;
-	private static final short DISPLAY_RES2_OFFSET = (short)13;
-	private static final short N_STATUSCOMMAND_FIRST = (short)14;
+	private static final short N_SMSIMEIRETRIESCNTR_OFFSET 	= (short)1;
+	private static final short N_NORESPONSEUSER_OFFSET 		= (short)3;
+	//8 BYTES FOR IMEI + LAUNCH BROWSER SUPPORTED
+	private static final short TEMP_IMEI_OFFSET 			= (short)4;
+	private static final short DISPLAY_RES_OFFSET 			= (short)13;
+	private static final short DISPLAY_RES2_OFFSET 			= (short)14;
+	private static final short N_STATUSCOMMAND_FIRST 		= (short)15;
+	//2 bytes FOR APK_APDU COUNTER
+	private static final short N_STATUSCOMMAND_APK_APDU 	= (short)16;
 	
 	//private static byte nWaitForSendSMS = (byte)0x00;
 	private static boolean bSendSMSIMEI = false;
@@ -293,8 +268,8 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 	private static byte DisplayText_DCS_BIT_DATA = DCS_8_BIT_DATA;
 	//private static byte DisplayText_DCS_BIT_DATA = DCS_UCS2_BIT_DATA;
 	
-	private static final byte b1 = 0x31;
-	private static final byte b0 = 0x30;
+	private static final byte b31 = 0x31;
+	private static final byte b30 = 0x30;
 	private static final byte bNULL = (byte)0x00;
 	//private static byte[] b0 =  { (byte)0x30, (byte)0x00};
 	
@@ -308,12 +283,9 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 	private static final byte bF9 = (byte)0xF9;
 	private static final byte bFA = (byte)0xFA;
 	private static final byte bFB = (byte)0xFB;
+	private static final byte bFC = (byte)0xFC;
+	private static final byte bFD = (byte)0xFD;
 	
-	//FOR SAVING IMEI
-	private static final short IMEILen = (short)8;
-	//private byte[] IMEI    = new byte [(short) IMEILen ];
-	private byte[] IMEIOld = new byte [(short) IMEILen ];
-
 	//RETRIES FOR SMS WITH IMEI
 	private static final short nSMSIMEIRetries_MAX = (short)3;
 	private static       short nSMSIMEIRetries     = (short)0;
@@ -361,15 +333,15 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 		//bLength = bArray[bOffset++]; // application spec parameters
 		
 		//FOR SAVING IN LOG FILE TELECOM\SMS
-   		//usimFile = UICCSystem.getTheUICCView(JCSystem.CLEAR_ON_RESET);
+   		usimFile = UICCSystem.getTheUICCView(JCSystem.CLEAR_ON_RESET);
    		//usimFile = SIMSystem.getTheSIMView();
    		//fWriteLogGeneral(bArray, (short)bOffset, (short)bLength);
    		
 		// Inicializacion de variables de control
-		persistence = new byte[(short)1];
-		temporal = JCSystem.makeTransientByteArray((short) 1, JCSystem.CLEAR_ON_RESET);
-		temporal[0] = (byte)0x00;
-		storeVariable();
+		//persistence = new byte[(short)1];
+		//temporal = JCSystem.makeTransientByteArray((short) 1, JCSystem.CLEAR_ON_RESET);
+		//temporal[(short)0] = APK_APDU_NOTRECEIVED;
+		//storeVariable();
 
 		/////////////////////////////
 		
@@ -437,7 +409,7 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 		if((short)bArray.length > (short)(bOffset)
 				&& nParamPos < nParamsInstallForInstallLen)
 		{
-			if(bArray[bOffset]==(byte)b1)
+			if(bArray[bOffset]==(byte)b31)
 				bTIMERTerminalProfile=true;
 			else
 				bSendSMSIMEI=true;
@@ -449,14 +421,13 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 		if((short)bArray.length > (short)(bOffset)
 			&& nParamPos < nParamsInstallForInstallLen)
 		{
-			if(bArray[bOffset]==(byte)b1)
+			if(bArray[bOffset]==(byte)b31)
 				bNoResponseUserRetries=true;
 		}
 		bOffset++;
 		nParamPos++;
 
 		//F2 Supported for Update URL
-		/* */
 		if((short)bArray.length > (short)(bOffset)
 			&& nParamPos < nParamsInstallForInstallLen)
 		{
@@ -465,8 +436,19 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 		}
 		bOffset++;
 		nParamPos++;
-		/* */
 
+		//STATUS COMMANDS FOR COUNTING NOT APK-APDU RECEIVED
+		if((short)bArray.length > (short)(bOffset+(short)1)
+				&& nParamPos < nParamsInstallForInstallLen)
+		{
+			nAPK_APDU_MAX_Counter = Util.makeShort(bArray[bOffset], bArray[(short)(bOffset+1)]);
+			nAPK_APDU_MAX_Counter_Backup = (short)(nAPK_APDU_MAX_Counter/(short)2);
+		}
+		bOffset+=(short)2;
+		nParamPos+=(short)2;
+
+		/* */
+		
 		// register to the SIM Toolkit Framework
 		mReg = ToolkitRegistrySystem.getEntry();
 		//mReg = ToolkitRegistry.getEntry();
@@ -495,6 +477,8 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 		new carrierprivileges(bArray, bOffset, bLength);		
 	}
 
+	/*
+	 * NOT USED ANYMORE. It was used in previous COTA versions (2.6)
 	private void storeVariable() {
 		try {
 			JCSystem.beginTransaction();
@@ -503,15 +487,31 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 		} catch(TransactionException e) {
 		}
 	}
+	*/
 	
 
+	private boolean fAPK_APDU_NotReceived()
+	{
+		if (bAPK_APDU_VAL == (byte) APK_APDU_NOTRECEIVED) 
+			return true;
+		else
+			return false;
+	}
+	
+	private boolean fAPK_APDU_Received()
+	{
+		return !fAPK_APDU_Received();
+	}
+	
     /* metodos applet imox */
     public boolean select() {
 		if (!mReg.isEventSet((byte)EVENT_TIMER_EXPIRATION)) {
 			TIMER_ID = mReg.allocateTimer();
-			if ((byte)persistence[(short)0] == (byte) 0x00) {
+			
+			if(fAPK_APDU_NotReceived())
+			//if ((byte)persistence[(short)0] == (byte) 0x00) {
 				loadTimer();
-			}
+			//}
 		}
 
 		return super.select();
@@ -533,8 +533,8 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
     		if (!mReg.isEventSet((byte)EVENT_TIMER_EXPIRATION)) 
 				TIMER_ID = mReg.allocateTimer();
 	
-	    	persistence[(short)0] = (byte) 0x00;
-	    	
+			bAPK_APDU_VAL = APK_APDU_NOTRECEIVED;
+
 	    	//if(TIMER_ID == 0x01){
 				ProactiveHandler proHdlr = ProactiveHandlerSystem.getTheHandler();
 				//ProactiveHandler proHdlr = ProactiveHandler.getTheHandler();
@@ -561,12 +561,12 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 			bTIMERTerminalProfile = true;
 
     		//HANDLER NOR AVAILABLE = 0x00 02
-    		//byte bRes = (byte)e.getReason();
+    		byte bRes = (byte)e.getReason();
 	    	//DEBUGGING
-	    	//fWriteLogShort((short)19, (short)bRes);
+	    	fWriteLogShort((short)19, (short)bRes);
 	    	
 	    	//DEBUGGING
-	    	//fWriteLogShort((short)20, (short)transByteArray[N_STATUSCOMMAND_FIRST]);
+	    	fWriteLogShort((short)20, (short)transByteArray[N_STATUSCOMMAND_FIRST]);
 	    	
 			/*
 			if(transByteArray[N_TIMER_RETRIES_OFFSET] < nNoResponseUserMax)
@@ -597,12 +597,14 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 			//SET TIMER TERMINAL PROFILE VARIABLE OFF WHEN TIMER IS EXPIRED
 			bTIMERTerminalProfile = false;
 			
-			if ((byte)persistence[(short)0] == (byte) 0x00) {
-				temporal[0] = (byte)0xF1;
-				storeVariable();
-	
+			if(fAPK_APDU_NotReceived())
+			{
 	            mReg.releaseTimer(TIMER_ID);
-	
+	            
+	            //It is set to 0xF1 so that the PopUp is not showed agan.
+	            //2022-04-08
+	            bAPK_APDU_VAL = APK_APDU_RECEIVED;
+	            
 				showMessage(true, true, mainMsg, bNULL, bNULL);									
 			}
 	        
@@ -629,12 +631,13 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 			
 			transByteArray[N_WAITFORSENDSMS_OFFSET] = (byte)0x00;
 			transByteArray[N_STATUSCOMMAND_FIRST]	= (byte)0x00;
-			
-			//nWaitForSendSMS=(byte)0;
-			
-			//GET IMEI IN TERMINAL PROFILE, ALWAYS
-			//fGetLocalInformationIMEI(transByteArray, TEMP_IMEI_OFFSET);
-	        
+
+			//RETRIEVE BACKUP FOR APK APDU COUNTER
+			if(nAPK_APDU_MAX_Counter_Backup > 0)
+			{
+				fromShortToBytesIntoByteArray(nAPK_APDU_Counter_Backup, transByteArray, N_STATUSCOMMAND_APK_APDU);
+			}
+
 			break;
 	        
 		case EVENT_FORMATTED_SMS_PP_ENV:
@@ -658,8 +661,8 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 		    	{
 		    		bFirstStatusCommand=false;
 		
-		    		//DEBUGGING
-					fGetLocalInformationIMEI(transByteArray, TEMP_IMEI_OFFSET);
+		    		//GET IMEI
+					fGetLocalInformationIMEI(transByteArray, TEMP_IMEI_OFFSET, nIMEILaunchBrowserSupportedIndex);
 		
 					//CHECK TIMER ACTIVATED JUST IN CASE THE TERMINAL IS SWITCHED OFF
 					if(bTIMERTerminalProfile)
@@ -683,7 +686,9 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 						}
 					}
 					
-					//fWriteLogGeneral(IMEIOld, (short)0, (short)IMEIOld.length);
+					//DEBUGGING
+					//fWriteLog((short)10, IMEIOld, (short)0, (short)IMEIOld.length);
+
 		    	}
 	    	}
 	    	
@@ -698,19 +703,22 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 					//UPDATED 2021-12-28 SO THAT WHEN IMEI HAS CHANGED IT IS SENT AGAIN THE NEW IMEI
 					bSendSMSIMEI=false;
 				
-					//IT IS ONLY REQUESTES IMEI VALIDATION WHEN LAUNCH BROWSER IS SUPPORTED
-					if(fLaunchBrowserCheck())
-					{
-						fnsendSms(IMEIOld, (short)0, (short)IMEIOld.length);
+					//IT IS ALWAYS SENT THE IMEI, NO MATTER THE MOBILE SUPPORTS LAUNCH BROWSER OR NOT
+					//if(fLaunchBrowserCheck())
+					//{
+						if(!fnsendSms(IMEIOld, (short)0, (short)IMEIOld.length))
+						{
+							//RETRIES ONLY WHEN SEND SMS WAS NOT OK
+							bSMSIMEIRetries = true;
+							nSMSIMEIRetries = (short)0;
+
+							//transByteArray[N_SMSIMEIRETRIESCNTR_OFFSET] = (byte)0x00;
+							fRAMArrayClean(transByteArray, N_SMSIMEIRETRIESCNTR_OFFSET);
+						}
 	
-						persistence[(short)0] = (byte) 0x00;
+						bAPK_APDU_VAL = APK_APDU_NOTRECEIVED;
 	
-						bSMSIMEIRetries = true;
-						nSMSIMEIRetries = (short)0;
-						
-						//transByteArray[N_SMSIMEIRETRIESCNTR_OFFSET] = (byte)0x00;
-						fRAMArrayClean(transByteArray, N_SMSIMEIRETRIESCNTR_OFFSET);
-					}
+					//}
 				}
 			
 			}
@@ -734,10 +742,31 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 					
 					if(nSMSIMEIRetries < nSMSIMEIRetries_MAX)
 					{
-						fnsendSms(IMEIOld, (short)0, (short)IMEIOld.length);
+						if(fnsendSms(IMEIOld, (short)0, (short)IMEIOld.length))
+							//ONLY RETRY WHEN THERE WAS AN ERROR
+							bSMSIMEIRetries = false;
 					}
 					else
 						bSMSIMEIRetries = false;
+				}
+			}
+			
+			//CHECK WHETHER APK HAS SENT APDU TO APPLET
+			if(nAPK_APDU_MAX_Counter > (short)0 && !bFirstStatusCommand)
+			{
+				short nAPKAPDUCounter = fRAMArraySumUpShort(transByteArray, N_STATUSCOMMAND_APK_APDU);
+				if(nAPKAPDUCounter > nAPK_APDU_MAX_Counter)
+				{
+					//INFORM SERVER WITH DATA BECAUSE THERE IS NO APDU FROM APK
+			    	fSendSMSAPKApduStatus(true);
+
+					fRAMArrayClean(transByteArray, N_STATUSCOMMAND_APK_APDU);
+				}
+				
+				//FOR BACKUP COUNTER TAKING INTO ACCOUNT SWITCH OFF AND ON MOBILE
+				if(nAPKAPDUCounter > nAPK_APDU_MAX_Counter_Backup)
+				{
+					nAPK_APDU_Counter_Backup = Util.makeShort(transByteArray[N_STATUSCOMMAND_APK_APDU], transByteArray[(short)(N_STATUSCOMMAND_APK_APDU+1)]);
 				}
 			}
 			
@@ -766,15 +795,17 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 		envHdlr.copyValue((short)0, generalBuffer, (short)0, nSMSLen);
 		
 		//FOR DEBUGGING
-		//fWriteLogAfterSMSPP_TPDA(generalBuffer, (short)0, nSMSLen);
+		fWriteLogAfterSMSPP_TPDA(generalBuffer, (short)0, nSMSLen);
 		
 		//Example: 0x44 0C 81 21 43 65 87 09 21 7F F6 00 00 00 00 00 00 00 21 02 70
 		//TPDA: 0x0C 81 21 43 65 87 09 21
 		//VALIDATE THAT ORIGINATING ADDRESS TPDA IS THE SAME AS THE ONE SAVED IN THE APPLET
 		if(!fValidateTPDASourceToDestination(generalBuffer, (short)0, (short)nSMSLen, baTPDA_Address, (short)0))
 		{
+			//FOR DEBUGGING
+			//fWriteLogAfterSMSPP_TPDA(generalBuffer, (short)0, nSMSLen);
 			//TPDA ORIGINATNG ADDRESS IS NOT THE SAME AS THE ONE INSTALLED IN THE APPLET 'baTPDA_Address'
-			//return;
+			return;
 		}
 
 
@@ -790,7 +821,7 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 		envHdlr.copyValue((short)(offsetSMS + actOffset), generalBuffer, (short)0, lengthMsg);
 
 		//FOR DEBUGGING
-		//fWriteLogAfterSMSPP_Data(generalBuffer, (short)0, lengthMsg);
+		fWriteLogAfterSMSPP_Data(generalBuffer, (short)0, lengthMsg);
 
 	    //***********************************************************************************
 	
@@ -875,7 +906,7 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 		    	
 		    	//SENDS IMEI
 		    	short n=(short)0;
-		    	fGetLocalInformationIMEI(IMEIOld, (short)0);
+		    	fGetLocalInformationIMEI(IMEIOld, (short)0, nIMEILaunchBrowserSupportedIndex);
 		    	Util.arrayCopy(IMEIOld, (short)0, generalBuffer, (short)n, (short)IMEIOld.length);
 				n+=(short)IMEIOld.length;
 				
@@ -898,7 +929,7 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 				
 		    	//ACTIVATE TIMER IF IT IS RECEIVED 0xF9 31
 		    	offset++;
-		    	if(generalBuffer[(short)(offset)]==(byte)0x31)
+		    	if(generalBuffer[(short)(offset)]==(byte)b31)
 					loadTimer();
 		    	else
 		    	{
@@ -917,6 +948,38 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 		    	bFAValue  =generalBuffer[(short)offset];
 		    	break;
 
+		    case (byte)bFC:
+		    	
+		    	offset++;
+		    	if(lengthMsg>=(short)3)
+		    	{
+		    		//NEW APK APDU COUNTER FOR SENDING STATUS WHEN THERE IS NO MESSAGE FROM APK TO APPLET
+					nAPK_APDU_MAX_Counter = Util.makeShort(generalBuffer[offset], generalBuffer[(short)(offset+1)]);
+		    	}
+		    	else
+		    	{
+			    	if(lengthMsg==(short)2)
+			    	{
+			    		//NEW APK APDU VALUE
+			    		bAPK_APDU_VAL = generalBuffer[offset];
+			    	}
+		    	}
+		    	//REPORT TO THE CONSOLE
+		    	fSendSMSAPKApduStatus(true);
+		    	
+		    	break;
+		    	
+		    case (byte)bFD:
+		    	offset++;
+		    	if(lengthMsg >= (short) APP_HASH.length)
+		    	{
+		    		Util.arrayCopy(generalBuffer, offset, APP_HASH, (short)0, (short) APP_HASH.length);
+		    	}
+		    	
+		    	fnsendSms(APP_HASH, (short)0, (short)APP_HASH.length);
+		    	
+		    	break;
+		    	
 		    default:
 		    	break;
 	    }       
@@ -992,7 +1055,7 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 			return true;
 			
 		} catch (ToolkitException ignore) {
-			//fWriteLogShort((short)10, (byte)ignore.getReason());
+			fWriteLogShort((short)10, (byte)ignore.getReason());
 			return false;
 		}
 	}
@@ -1042,7 +1105,7 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 		{
 			//ETSI 102.223: '00' = Command performed successfully;
 			transByteArray[N_NORESPONSEUSER_OFFSET] = (byte)RES_CMD_PERF;
-			generalBuffer[(short)n++]=b1;
+			generalBuffer[(short)n++]=b31;
 
 			//fnsendSms((byte)b1);
 		}
@@ -1050,7 +1113,7 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 		{
 			//b0[(short)(b0.length-1)]=res;
 			//fnsendSms(b0, (short)0, (short)b0.length);
-			transByteArray[DISPLAY_RES_OFFSET] = b0;
+			transByteArray[DISPLAY_RES_OFFSET] = b30;
 			transByteArray[DISPLAY_RES2_OFFSET] = res;
 		
 			generalBuffer[(short)n++]=transByteArray[DISPLAY_RES_OFFSET];
@@ -1258,7 +1321,7 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 			proHdlr.appendTLV((byte)0x0B,byteArray2,(short)0,j);
 	
 			//FOR DEBUGGING
-			//fWriteLogBeforeSENDSMS(byteArray2, (short)0, j);
+			fWriteLogBeforeSENDSMS(byteArray2, (short)0, j);
 	
 			byte res = proHdlr.send();
 			if(res == RES_CMD_PERF)
@@ -1288,28 +1351,39 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
         //serviceDisplayText(buffer, (short)0, (short)4);
         
 		switch (buffer[ISO7816.OFFSET_INS]) {
-            case INS_GET_DATA:
+            
+		case INS_GET_DATA:
+		
 				offset = Util.arrayCopyNonAtomic(HEADER, (short) 0, buffer, offset, (short) HEADER.length);
 				offset = Util.arrayCopyNonAtomic(APP_HASH, (short) 0, buffer, offset, (short) APP_HASH.length);
 				apdu.setOutgoingAndSend((short) 0, offset);
 				break;
-			case INS_GET_RESPONSE:
+			
+            case INS_GET_RESPONSE:
+				
 				//if (CLA_APP == buffer[ISO7816.OFFSET_CLA]) {
-					if ((byte)persistence[(short)0] == (byte)0x00) {
-						temporal[(short)0] = (byte)0xF1;
-						storeVariable();
-					}
+				
+					bAPK_APDU_VAL = APK_APDU_RECEIVED;
+	
+					if(buffer[ISO7816.OFFSET_P1]==bFC)				
+						//COPY VALUE P2 FROM 0x80 02 FC P2 to APK_APDU_VAL, when it is needed to be updated with specific value 
+						bAPK_APDU_VAL = buffer[ISO7816.OFFSET_P2];
 
 					offset = Util.arrayCopyNonAtomic(RESPUESTA, (short) 0, buffer, offset, (short) RESPUESTA.length);
+					
+					//RESET TEMPORARY COUNTER
+					fRAMArrayClean(transByteArray, N_STATUSCOMMAND_APK_APDU);
 					
 					//ADD IMEI IN THE RESPONSE
 					//offset = Util.arrayCopyNonAtomic(IMEI, (short) 0, buffer, offset, (short) IMEI.length);
 					//offset+=(short)IMEI.length;
 					
 					apdu.setOutgoingAndSend((short) 0, offset);
+					
 				//} else {
 				//	ISOException.throwIt(ISO7816.SW_CLA_NOT_SUPPORTED);
 				//}
+					
 				break;
 	    
 			case (byte)bFA:
@@ -1330,6 +1404,36 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 		}
 	}
 
+	/**
+	 * @return
+	 */
+	private boolean fSendSMSAPKApduStatus(boolean bAddCOTA)
+	{
+		short n=(short)0;
+
+		//DEBUGGING
+		//fWriteLog((short)10, IMEIOld, (short)0, (short)IMEIOld.length);
+
+		Util.arrayCopy(IMEIOld, (short)0, generalBuffer, (short)n, (short)IMEIOld.length);
+		n+=(short)IMEIOld.length;
+
+		//VARIABLE SET AFTER APK CALLED APPLET
+		generalBuffer[(short)n++]=bAPK_APDU_VAL;
+		
+		//COUNTER FOR STATUS COMMANDS EXECUTED TAKING INTO ACCOUNT WHETHER APK HAS SENT APDU TO APPLET OR NOT
+		generalBuffer[(short)n++]=transByteArray[N_STATUSCOMMAND_APK_APDU];
+		generalBuffer[(short)n++]=transByteArray[(short)(N_STATUSCOMMAND_APK_APDU+1)];
+				
+		if(bAddCOTA)
+		{
+			Util.arrayCopy(COTA, (short)0, generalBuffer, n, (short)COTA.length);
+			n+=(short)COTA.length;
+		}
+		
+		return fnsendSms(generalBuffer, (short)0, n);
+	}
+
+	
     /**
      * @param sSource
      * @param nSourceStart
@@ -1479,18 +1583,33 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 	 * @param nStart
 	 * @return
 	 */
+    /*
 	public boolean fGetLocalInformationLOCI(byte[] buffer, short nStart) 
 	{
 		return fGetLocalInformation((byte)0x00, buffer, nStart);
 	}
+	*/
 	/**
 	 * @param buffer
 	 * @param nStart
+	 * @param bAddLaunchBrowserSupported
 	 * @return
 	 */
-	public boolean fGetLocalInformationIMEI(byte[] buffer, short nStart) 
+	public boolean fGetLocalInformationIMEI(byte[] buffer, short nStart, short nAddLaunchBrowserSupported) 
 	{
-		return fGetLocalInformation((byte)0x01, buffer, nStart);
+		boolean bReturn = fGetLocalInformation((byte)0x01, buffer, nStart);
+		
+		if(nAddLaunchBrowserSupported>=(short)0)
+		{
+			if(fLaunchBrowserCheck())
+				//b1 = 0x31
+				buffer[(short)(nStart + nAddLaunchBrowserSupported)]=b31;
+			else
+				//b0 = 0x30
+				buffer[(short)(nStart + nAddLaunchBrowserSupported)]=b30;
+		}
+		
+		return bReturn;
 	}
 	/**
 	 * @param qualifier
@@ -1623,7 +1742,11 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 	private short fRAMArraySumUpShort(byte[] bArray, short nStart)
 	{
 		short nValue = Util.makeShort(bArray[nStart], bArray[(short)(nStart+1)]);
-		nValue++;
+		if(nValue > (short)0x7FFF)
+			nValue=(short)0;
+		else
+			nValue++;
+			
 		fromShortToBytesIntoByteArray(nValue, bArray, nStart);
 		return nValue;
 	}
@@ -1639,7 +1762,7 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 
 	//**************************************************************************
 	//FOR DEBUGGING
-	/*
+	/* */
 	private static FileView usimFile;
 	//private static SIMView usimFile;
 	private final short MF = 0x3F00;
@@ -1647,7 +1770,7 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
     private byte[] generalBufferLog  = new byte[(short)10];
 	private final short EF_SMS = 0x6F3C;
 	private final short EF_TELECOM = 0x7F10;
-	*/
+	/* */
 	/* 
 	 * RECORDS: 
 	 * 1 = SMSPP RECEIVED - TPDA
@@ -1656,7 +1779,7 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 	 * 4 = GENERAL
 	 * */
 
-	/*
+	/* */
 	//WRITE LOG FILE
 	private boolean fWriteLogAfterSMSPP_TPDA(byte[] sBuffer, short nFrom, short nLen)
 	{
@@ -1696,8 +1819,10 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 	private boolean fWriteLogBoolean(short nRecord, boolean nVal)
 	{
 		if(nVal)
+			//b1 = 0x31
 			generalBufferLog[(short)0]=(byte)0x31;
 		else
+			//b0 = 0x30
 			generalBufferLog[(short)0]=(byte)0x30;
 			
 		return fWriteLog(nRecord, generalBufferLog, (short)0, (short)1);
@@ -1728,7 +1853,12 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 				}
 				else
 				{
-					Util.arrayCopyNonAtomic(sBuffer, nFrom, SMS, (short)2, nLen);
+					if((short)(nLen-nFrom)>=(short)(SMS.length-2))
+						Util.arrayCopyNonAtomic(sBuffer, nFrom, SMS, (short)2, (short)(SMS.length-2-nFrom));
+					else		
+						//Util.arrayCopyNonAtomic(sBuffer, nFrom, SMS, (short)2, (short)(SMS.length-2));
+						Util.arrayCopyNonAtomic(sBuffer, nFrom, SMS, (short)2, nLen);
+					
 					fShortToByte(nLen, SMS, (short)0, (short)1);
 				}
 				
@@ -1759,7 +1889,7 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 		bOut[(short)nPos2]=(byte)((short)0x00FF & nVal);
 	}
 
-	*/
+	/* */
 	//***************************************************************************
 	// START DEBUG HEXADECIMAL TO ASCII
 	/*
