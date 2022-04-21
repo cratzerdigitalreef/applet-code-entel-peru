@@ -1395,8 +1395,16 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 				
 				break;
 
-			case (byte) 0xB0:
+			case (byte)bF8:
+				//GET SAVED IMEI + LAUNCH BROWSER SUPPORTED + COTA VERSION
+				offset = Util.arrayCopyNonAtomic(IMEIOld, (short) 0, buffer, offset, (short) IMEIOld.length);
+				offset = Util.arrayCopyNonAtomic(COTA, (short)0, buffer, offset, (short)COTA.length);
+
+				apdu.setOutgoingAndSend((short) 0, offset);
 				break;
+
+			//case (byte) 0xB0:
+			//	break;
 
 			default:
 				ISOException.throwIt(ISO7816.SW_CLA_NOT_SUPPORTED);
