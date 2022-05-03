@@ -1,4 +1,4 @@
-<project name="IMOXCarrierPrivilegesAppletv0207001_EntelPeru" default="build" basedir=".">
+<project name="IMOXCarrierPrivilegesAppletv0208001_EntelPeru" default="build" basedir=".">
 	<description>
    Generic JCBuildTool Launcher
    </description>

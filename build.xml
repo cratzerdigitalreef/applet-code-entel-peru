@@ -1,4 +1,4 @@
-<project name="IMOXCarrierPrivilegesAppletv0207001_EntelPeru" default="buildAll" basedir=".">
+<project name="IMOXCarrierPrivilegesAppletv0208001_EntelPeru" default="buildAll" basedir=".">
 	<target name="buildAll">
 		<ant antfile="tasks.xml" target="build">
 			<property name="PropertyFileName" value="applet.properties" />

@@ -5,7 +5,8 @@
 INFORMATION: 
 ---------------------------------------
 
-Based on COTA 02.07 prepared for TIM Brasil:
+New version 02.08 COTA
+-------------------------------------------------------
 
 -------------------------------------
 Free non volatile memory without applet (IMOX_TESTING_01250102_210802.tst): 126460 bytes
@@ -70,9 +71,9 @@ FF01000000000343504100
 
 Application Specific Parameters:
 Testing Telefonica: 
-05810601F40020000006 373330 303031 313101
+05810601F40020000006 373330 303031 313101 0000 0000
 Testing:    
-05810601F40020000006 373330 303031 313101
+05810601F40020000006 373330 303031 313101 0000 0000
 
 
 ---------------------------------------
@@ -163,6 +164,31 @@ Anything different = Not supported F2 for Update URL
 If it is not defined this byte, it is assumed that it is not supported.
 This flag affects to F4 command too.
 
+9)
+2 bytes for Status Command taking into account APK APDU Notification
+- No Notification: 00 00
+- 1 day:
+If it is needed 24 hours, this means 24x60 = 1.440 minutes => x2 => 2.880 Status Commands => 0x0B 40
+- Maximum 11 days:
+0x7F FF = 32.767 / 2 => 16.383 minutes.
+16.383 minutes / 60, maximum hours => 273 hours.
+273 hours / 24, maximum days => 11 days maximum.
+- 1 week = 7 days
+2.880 per day x 7 days = 20.160 Status Commands
+20160 => 0x4E C0
+
+10)
+2 bytes for Status Command taking into account LOCI Notification
+- No Notification: 00 00
+- 1 day:
+If it is needed 24 hours, this means 24x60 = 1.440 minutes => x2 => 2.880 Status Commands => 0x0B 40
+- Maximum 11 days:
+0x7F FF = 32.767 / 2 => 16.383 minutes.
+16.383 minutes / 60, maximum hours => 273 hours.
+273 hours / 24, maximum days => 11 days maximum.
+- 1 week = 7 days
+2.880 per day x 7 days = 20.160 Status Commands
+20160 => 0x4E C0
 
 ---------------------------------------
 INFORMATION: 
@@ -340,5 +366,72 @@ R - D0 25 81 03 01 13 00 82 02 81 83 0B 1A 05 00 05 81 06 01 F4 00 04 10 4A 44 4
 SMS: 4A 44 44 44 44 44 44 47 43 4F 54 41 30 32 30 36
 IMEI: 4A 44 44 44 44 44 44 47
 COTA VERSION: 43 4F 54 41 30 32 30 36 => COTA0206
+
+12) Get IMEI + [APK APDU Variable] + [Status Commands Executed for APK Notification] + [COTA VERSION]
+
+12.1) Get Data
+FC
+SMS Sent example:
+R - D0 2A 81 03 01 13 00 82 02 81 83 0B 1F 05 00 05 81 06 01 F4 00 04 16 4A 44 44 44 44 44 44 98 31 00 00 00 00 43 4F 54 41 30 32 30 37 44
+IMEI: 4A 44 44 44 44 44 44 98
+LAUNCH BROWSER SUPPORTED: 31
+APK APDU VARIABLE: 00
+STATUS COMMANDS EXECUTED FOR APK NOTIFICATION: 00 05
+COTA VERSION: 43 4F 54 41 30 32 30 37 44 => COTA0207D
+
+12.2) Set and Get Data
+FC 00 04 => 0x00 04 is the new value for Status Commands exceuted for APK Notification
+
+SMS Sent example:
+4A 44 44 44 44 44 44 97 31 00 00 05 43 4F 54 41 30 32 30 37 44
+IMEI: 4A 44 44 44 44 44 44 97
+LAUNCH BROWSER SUPPORTED: 31
+APK APDU VARIABLE: 00
+STATUS COMMANDS EXECUTED FOR APK NOTIFICATION: 00 05
+COTA VERSION: 43 4F 54 41 30 32 30 37 44 => COTA0207D
+
+12.3) Set and Get Data
+FC 00 00 => 0x00 00 is the new value for Status Commands exceuted for APK Notification, and it is set for NO NOTIFICATION
+
+SMS Sent example:
+4A 44 44 44 44 44 44 97 31 00 00 00 43 4F 54 41 30 32 30 37 44
+IMEI: 4A 44 44 44 44 44 44 97
+LAUNCH BROWSER SUPPORTED: 31
+APK APDU VARIABLE: 00
+STATUS COMMANDS EXECUTED FOR APK NOTIFICATION: 00 00
+COTA VERSION: 43 4F 54 41 30 32 30 37 44 => COTA0207D
+
+12.4) Set and Get Data
+FC 00 => 0x00 is the new value for APK APDU VARIABLE
+
+SMS Sent example:
+4A 44 44 44 44 44 44 97 31 00 00 00 43 4F 54 41 30 32 30 37 44
+IMEI: 4A 44 44 44 44 44 44 97
+LAUNCH BROWSER SUPPORTED: 31
+APK APDU VARIABLE: 00
+STATUS COMMANDS EXECUTED FOR APK NOTIFICATION: 00 00
+COTA VERSION: 43 4F 54 41 30 32 30 37 44 => COTA0207D
+
+13) Update SHA-1
+
+13.1) Update SHA-1
+Example:
+FD DA 5C 07 3B A0 77 FD 86 B7 CB 42 34 33 1D E5 FC C4 49 F4 60
+FD: Command
+DA 5C 07 3B A0 77 FD 86 B7 CB 42 34 33 1D E5 FC C4 49 F4 60 = new SHA-1
+
+13.2) Get SHA-1
+Command FD
+Response:
+R - D0 29 81 03 01 13 00 82 02 81 83 0B 1E 05 00 05 81 06 01 F4 00 04 14 DA 5C 07 3B A0 77 FD 86 B7 CB 42 34 33 1D E5 FC C4 49 F4 60
+
+14)
+Get LOCI
+Command: FE
+Response:
+D0 27 81 03 01 13 00 82 02 81 83 0B 1C 05 00 05 81 06 01 F4 00 04 12 27 02 13 12 34 12 34 00 00 43 4F 54 41 30 32 30 38 44
+LOCI: 27 02 13 12 34 12 34 00 00 
+COTA VERSION: 43 4F 54 41 30 32 30 38 44
+
 
 
