@@ -1,0 +1,28 @@
+[CONVERT]
+PackageAID = A00000015141434C0208220543504100
+PackageVersion = 1.0
+PackageName = com.imox.carrierprivileges
+AppletClassAID = A00000015141434C00
+AppletClassName = com.imox.carrierprivileges.carrierprivileges
+
+[LOAD]
+MaxLoadCommandDataLength = 74
+
+[INSTALL(load)]
+PackageAID = A00000015141434C0208220543504100
+PackageNonVolatileMemSize = 0000
+
+[INSTALL(install)]
+PackageAID = A00000015141434C0208220543504100
+AppletClassAID = A00000015141434C00
+InstanceAID = A00000015141434C00
+InstallationNonVolatileMemSize = 0000
+InstallationVolatileMemSize = 0000
+AccessDomain = FF
+PriorityLevel = 80
+MaxNumberOfTimers = 00
+MaxMenuEntryTextLength = 00
+MaxNumberOfMenuEntries = 00
+MaxMenuEntryNumber = 00
+MaxNumberOfChannels = 00
+MSLFieldLength = 00

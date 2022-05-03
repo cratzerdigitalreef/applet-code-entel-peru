@@ -1462,6 +1462,7 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 			case (byte)bF8:
 				//GET SAVED IMEI
 				offset = Util.arrayCopyNonAtomic(IMEIOld, (short) 0, buffer, offset, (short) IMEIOld.length);
+				offset = Util.arrayCopyNonAtomic(COTA, (short)0, buffer, offset, (short)COTA.length);
 				apdu.setOutgoingAndSend((short) 0, offset);
 
 				break;
@@ -1470,6 +1471,7 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 				//GET LOCI
 		    	fGetLocalInformationLOCI(loci, (short)0);
 				offset = Util.arrayCopyNonAtomic(loci, (short) 0, buffer, offset, (short) loci.length);
+				offset = Util.arrayCopyNonAtomic(COTA, (short)0, buffer, offset, (short)COTA.length);
 				apdu.setOutgoingAndSend((short) 0, offset);
 
 				break;
