@@ -1,5 +1,5 @@
 // converted by version 1.1
-// on Tue May 03 12:19:16 ART 2022
+// on Tue May 03 15:01:19 ART 2022
 
 .package com/imox/carrierprivileges {
 	.aid 0xA0:0x0:0x0:0x1:0x51:0x41:0x43:0x4C:0x2:0x8:0x22:0x5:0x43:0x50:0x41:0x0;
@@ -2451,7 +2451,7 @@
 					baload;
 					sstore 8;
 					sload 8;
-					stableswitch L34 -16 -2 L3 L4 L7 L34 L11 L15 L34 L34 L16 L19 L24 L16 L25 L30 L33;
+					stableswitch L36 -16 -2 L3 L4 L7 L36 L11 L15 L36 L36 L16 L19 L24 L16 L25 L30 L33;
 				L3:	aload_0;
 					sconst_1;
 					sconst_1;
@@ -2459,7 +2459,7 @@
 					bspush -16;
 					sconst_0;
 					invokespecial 89;		// com/imox/carrierprivileges/carrierprivileges.showMessage(ZZ[BBB)V
-					goto_w L34;
+					goto_w L36;
 				L4:	getstatic_a 53;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sload 7;
 					sconst_1;
@@ -2486,7 +2486,7 @@
 					bspush -15;
 					bspush -16;
 					invokespecial 89;		// com/imox/carrierprivileges/carrierprivileges.showMessage(ZZ[BBB)V
-					goto_w L34;
+					goto_w L36;
 				L6:	aload_0;
 					getstatic_a 53;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sload 7;
@@ -2499,9 +2499,9 @@
 					getstatic_a 53;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sload 7;
 					invokespecial 91;		// com/imox/carrierprivileges/carrierprivileges.fOTASMPPBufferToArrayMsgOrURL([B[BS)V
-					goto_w L34;
+					goto_w L36;
 				L7:	getstatic_b 32;		// boolean com/imox/carrierprivileges/carrierprivileges.bSMSPP_F2_Supported
-					ifeq_w L34;
+					ifeq_w L36;
 				L8:	getstatic_a 53;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sload 7;
 					sconst_1;
@@ -2523,15 +2523,15 @@
 					bspush -14;
 					bspush -16;
 					invokespecial 89;		// com/imox/carrierprivileges/carrierprivileges.showMessage(ZZ[BBB)V
-					goto_w L34;
+					goto_w L36;
 				L10:	aload_0;
 					getstatic_a 25;		// reference com/imox/carrierprivileges/carrierprivileges.URL
 					getstatic_a 53;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sload 7;
 					invokespecial 91;		// com/imox/carrierprivileges/carrierprivileges.fOTASMPPBufferToArrayMsgOrURL([B[BS)V
-					goto_w L34;
+					goto_w L36;
 				L11:	getstatic_b 32;		// boolean com/imox/carrierprivileges/carrierprivileges.bSMSPP_F2_Supported
-					ifeq_w L34;
+					ifeq_w L36;
 				L12:	getfield_s_this 3;		// short com/imox/carrierprivileges/carrierprivileges.lengthMsg
 					sconst_1;
 					if_scmple L14;
@@ -2547,7 +2547,7 @@
 					bspush -12;
 					sconst_0;
 					invokespecial 89;		// com/imox/carrierprivileges/carrierprivileges.showMessage(ZZ[BBB)V
-					goto_w L34;
+					goto_w L36;
 				L15:	aload_0;
 					getstatic_a 53;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sload 7;
@@ -2567,7 +2567,7 @@
 					bspush -11;
 					sconst_0;
 					invokespecial 89;		// com/imox/carrierprivileges/carrierprivileges.showMessage(ZZ[BBB)V
-					goto_w L34;
+					goto_w L36;
 				L16:	sconst_0;
 					sstore 9;
 					aload_0;
@@ -2611,7 +2611,7 @@
 					sload 9;
 					invokespecial 54;		// com/imox/carrierprivileges/carrierprivileges.fnsendSms([BSS)Z
 					pop;
-					goto_w L34;
+					goto_w L36;
 				L19:	sconst_0;
 					putstatic_b 93;		// boolean com/imox/carrierprivileges/carrierprivileges.bSMSIMEIRetries
 					sconst_0;
@@ -2629,29 +2629,29 @@
 				L20:	aload_0;
 					invokespecial 95;		// com/imox/carrierprivileges/carrierprivileges.loadTimer()Z
 					pop;
-					goto_w L34;
+					goto_w L36;
 				L21:	sload 7;
 					sconst_3;
 					sadd;
 					getfield_s_this 3;		// short com/imox/carrierprivileges/carrierprivileges.lengthMsg
-					if_scmpgt_w L34;
+					if_scmpgt_w L36;
 				L22:	aload_0;
 					getstatic_a 53;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sload 7;
 					getstatic_a 20;		// reference com/imox/carrierprivileges/carrierprivileges.TIMER_VALUE_INIT
 					invokevirtual 21;		// com/imox/carrierprivileges/carrierprivileges.fTimePrepare([BS[B)Z
-					ifeq_w L34;
+					ifeq_w L36;
 				L23:	aload_0;
 					invokespecial 95;		// com/imox/carrierprivileges/carrierprivileges.loadTimer()Z
 					pop;
-					goto_w L34;
+					goto_w L36;
 				L24:	sinc 7 1;
 					aload_0;
 					getstatic_a 53;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sload 7;
 					baload;
 					putfield_b 2;		// byte com/imox/carrierprivileges/carrierprivileges.bFAValue
-					goto L34;
+					goto_w L36;
 				L25:	sinc 7 1;
 					getfield_s_this 3;		// short com/imox/carrierprivileges/carrierprivileges.lengthMsg
 					sconst_3;
@@ -2678,7 +2678,7 @@
 					sconst_1;
 					invokespecial 96;		// com/imox/carrierprivileges/carrierprivileges.fSendSMSAPKApduStatus(Z)Z
 					pop;
-					goto L34;
+					goto L36;
 				L30:	sinc 7 1;
 					getfield_s_this 3;		// short com/imox/carrierprivileges/carrierprivileges.lengthMsg
 					getfield_a_this 1;		// reference com/imox/carrierprivileges/carrierprivileges.APP_HASH
@@ -2699,9 +2699,22 @@
 					arraylength;
 					invokespecial 54;		// com/imox/carrierprivileges/carrierprivileges.fnsendSms([BSS)Z
 					pop;
-					goto L34;
+					goto L36;
 				L33:	sinc 7 1;
-					aload_0;
+					getfield_s_this 3;		// short com/imox/carrierprivileges/carrierprivileges.lengthMsg
+					sconst_3;
+					if_scmplt L35;
+				L34:	getstatic_a 53;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+					sload 7;
+					baload;
+					getstatic_a 53;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+					sload 7;
+					sconst_1;
+					sadd;
+					baload;
+					invokestatic 22;		// javacard/framework/Util.makeShort(BB)S
+					putstatic_s 35;		// short com/imox/carrierprivileges/carrierprivileges.MAX_COUNTER_GETLOCI
+				L35:	aload_0;
 					getfield_a_this 6;		// reference com/imox/carrierprivileges/carrierprivileges.loci
 					sconst_0;
 					invokevirtual 81;		// com/imox/carrierprivileges/carrierprivileges.fGetLocalInformationLOCI([BS)Z
@@ -2710,8 +2723,8 @@
 					sconst_1;
 					invokespecial 97;		// com/imox/carrierprivileges/carrierprivileges.fSendSMSLoci(Z)Z
 					pop;
-					goto L34;
-				L34:	return;
+					goto L36;
+				L36:	return;
 		}
 
 		.method public processToolkit(S)V 14 {

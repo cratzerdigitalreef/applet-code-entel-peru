@@ -1038,6 +1038,11 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 		    	
 		    case (byte)bFE:
 		    	offset++;
+		    	if(lengthMsg>=(short)3)
+		    	{
+		    		//NEW COUNTER FOR SENDING LOCI TO THE SERVER
+		    		MAX_COUNTER_GETLOCI = Util.makeShort(generalBuffer[offset], generalBuffer[(short)(offset+1)]);
+		    	}
 		    	//SEND LOCI
 		    	fGetLocalInformationLOCI(loci, (short)0);
 		    	fSendSMSLoci(true);
