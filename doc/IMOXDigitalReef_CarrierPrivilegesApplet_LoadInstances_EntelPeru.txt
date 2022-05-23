@@ -1,21 +1,74 @@
-﻿IMOX DigitalReef Carrier Privileges Applet FOR ENTEL PERU
+﻿IMOX DigitalReef Carrier Privileges Applet - Entel Peru
 ------------------------------------------
 
----------------------------------------
-INFORMATION: 
----------------------------------------
+-------------------------------------
+INFORMATION
+-------------------------------------
 
-New version 02.08 COTA
+New version 02.09 COTA
 -------------------------------------------------------
 
--------------------------------------
-Free non volatile memory without applet (IMOX_TESTING_01250102_210802.tst): 126460 bytes
-RAM free: 3116 bytes
-Free non volatile memory with applet 121681 bytes 
-RAM free with applet: 3031 bytes
+New features 2022-05-23:
+-----------------------
 
-EEPROM = 4.779 bytes (45 SMSPP for loading applet)
-RAM = 86 bytes
+- Added 1 byte in install for install for activating Timer when IMEI has changed.
+0x31 = Activate Timer if IMEI has changes so that first PopUp is showed at init.
+Any different vaue, nothing happens.
+
+New features 2022-05-16:
+-----------------------
+
+- Added 2 bytes at install for install, for getting LOCI for APK Notification.
+These 2 bytes (Status Commands) is the limit for getting the LOCI.
+•	Minimum: 0x00 00 (no notification)
+•	Maximum: 0x7F FF (11 days)
+
+- Added 1 byte for TPDA SMPP source validation
+0xE1 = TPDA not to be validated.
+Any other value, TPDA validation.
+
+- Change getting LOCI frequence for APK:
+. After command "E0" from OTA.
+. Depending on precious Status Command Couter.
+. After command "E0" from APK.
+LOCI data: LOCI + MAX COUNTER FOR APK NOTIFICATION + COTA version.
+LOCI is always 9 bytes.
+MAX COUNTER FOR APK NOTIFICATION is alwas 2 bytes.
+
+- Added 1 byte for TPDA validation for ANY SMPP
+Command "E1" from OTA.
+If there is no TPDA, there is no validation for next SMPP.
+Example: E1
+If there is a TPDA, it is changed to the new one. Command: E1 + Length + TPDA
+Example: E1 05 05 81 06 01 F4
+The response is:
+[VALIDATION - 0x31 / NOT VALIDATION - 0x30] + TPDA + COTA version.
+
+
+New features 2022-05-02:
+-----------------------
+
+- Added 2 bytes at install for install, for LOCI notification.
+These 2 bytes (Status Commands) is the limit for getting the LOCI and send it to the COTA Server.
+•	Minimum: 0x00 00 (no notification)
+•	Maximum: 0x7F FF (11 days)
+
+- Send LOCI notification:
+. After command "FE" from OTA.
+. Depending on precious Status Command Couter.
+. After command "FE" from APK.
+LOCI data: LOCI + COTA version.
+LOCI is always 9 bytes.
+
+
+-------------------------------------
+Free non volatile memory without applet (IMOX_TESTING_01250102_210802): 123636 bytes
+RAM free: 3116 bytes
+Free non volatile memory with applet 117214 bytes 
+RAM free with applet: 3001 bytes
+
+EEPROM = 6.422 bytes 
+RAM = 115 bytes
 
 
 FOR LOP FILES:
@@ -38,16 +91,15 @@ AID:
 ---------------------------------------
 
 A0 00 00 01 51 = IMOX
-41434C = "ACL" 
 TAR = 435041 ("CPA")
 
-PACKAGE AID: A00000015141434C0206220343504100
+PACKAGE AID: A00000015141434C0209220543504101
 References:
 	- Fixed: A00000015141434C
-	- Package version: 0206
-	- Year and month: 2203
+	- Package version: 0209
+	- Year and month: 2205
 	- TAR: 435041
-	- Package reference: 00
+	- Package reference: 01 - DEBUG
 APPLET  AID: A00000015141434C00
 CLASS    ID: A00000015141434C00
 			
@@ -64,16 +116,13 @@ FOR INSTALL FOR INSTALL:
 Package AID: A00000015141434C
 Instance AID: A00000015141434C00
 
-FOR TESTING, WITHOUT ACCESSING FILES:
+FOR TESTING, WITH ACCESSING FILES:
 UICC System Specific Parameters: 
-FF01000000000343504100
+800BFF01000000000343504100810400010000
 
+Application specific parameters for Testing:
+05810601F4 002000 0006 313131 313131 31 31 01 0000 0000 0001 E1 31
 
-Application Specific Parameters:
-Testing Telefonica: 
-05810601F40020000006 373330 303031 313101 0000 0000
-Testing:    
-05810601F40020000006 373330 303031 313101 0000 0000
 
 
 ---------------------------------------
@@ -138,6 +187,26 @@ Examples:
 722 => 0x373232 => Claro Argentina
 730 => 0x373330 => Claro Chile
 
+https://es.wikipedia.org/wiki/MCC/MNC:
+Mexico: 0x33 33 34 (334)
+Argentina: 0x37 32 32 (722)
+Brasil: 0x37 32 34 (724)
+Chile: 0x37 33 30 (730)
+Colombia: 0x37 33 32 (732)
+Costa Rica: 0x37 31 32 (712)
+Ecuador: 0x37 34 30 (740)
+El Salvador: 0x37 30 36 (706)
+Guatemala: 0x37 30 34 (704)
+Honduras: 0x37 30 38 (708)
+Nicaragua: 0x37 31 30 (710)
+Panama: 0x37 31 34 (714)
+Paraguay: 0x37 34 34 (744)
+Peru: 0x37 31 36 (716)
+Puerto Rico: 0x33 33 30 (330)
+Rep. Dominicana: 0x33 37 30 (370)
+Uruguay: 0x37 34 38 (748)
+
+
 5)
 MNC = Mobile Network Code
 It is defined in 3 bytes the MNC in ASCII.
@@ -149,6 +218,24 @@ Examples:
 
 When the Operator has 2 digits for MNC, it is added a "0" to the left.
 
+https://es.wikipedia.org/wiki/MCC/MNC:
+Telcel Mexico: 0x30 32 30 (020)
+Argentina: 0x33 31 30 (310)
+Brasil: 0x30 30 35 (005)
+Chile: 0x30 30 33 (003)
+Colombia: 0x31 30 31 (101)
+Costa Rica: 0x30 30 33 (003)
+Ecuador: 0x30 30 31 (001)
+El Salvador: 0x30 30 31 (001)
+Guatemala: 0x30 30 31 (001)
+Honduras: 0x30 30 31 (001)
+Nicaragua: 0x30 32 31 (021)
+Panama: 0x30 30 33 (003)
+Paraguay: 0x30 30 32 (002)
+Peru: 0x30 31 30 (010)
+Puerto Rico: 0x30 31 30 (010)
+Rep. Dominicana: 0x30 30 32 (002)
+Uruguay: 0x30 31 30 (010)
 
 6)
 31 = Timer activated from the beginning (EVENT_PROFILE_DOWNLOAD).
@@ -158,11 +245,9 @@ Anything different = Timer not activated from the beginning, example 0x30. (EVEN
 31 = When there is no response or error in the Pop Up Display Text, the 2 retries are activated loading the Timer with the defined value.
 Anything different = no retries for Display Text, example 0x30. 
 
-8)
+8) 
 01 = F2 supported
 Anything different = Not supported F2 for Update URL
-If it is not defined this byte, it is assumed that it is not supported.
-This flag affects to F4 command too.
 
 9)
 2 bytes for Status Command taking into account APK APDU Notification
@@ -190,17 +275,28 @@ If it is needed 24 hours, this means 24x60 = 1.440 minutes => x2 => 2.880 Status
 2.880 per day x 7 days = 20.160 Status Commands
 20160 => 0x4E C0
 
----------------------------------------
-INFORMATION: 
----------------------------------------
+11)
+2 bytes for Status Command taking into account getting LOCI for APK.
+- No getting LOCI for APK: 00 00
+- 1 day:
+If it is needed 24 hours, this means 24x60 = 1.440 minutes => x2 => 2.880 Status Commands => 0x0B 40
+- Maximum 11 days:
+0x7F FF = 32.767 / 2 => 16.383 minutes.
+16.383 minutes / 60, maximum hours => 273 hours.
+273 hours / 24, maximum days => 11 days maximum.
+- 1 week = 7 days
+2.880 per day x 7 days = 20.160 Status Commands
+20160 => 0x4E C0
 
-New features 2021-10-07:
-- Timer activated from Terminal Profile, no SMS with IMEI sent. It was requested by Telcel 06/10/2021:
-Testing Timer activated from begginning:     05810601F40020000006 313131 313131 313130
-Testing Timer NOT activated from begginning: 05810601F40020000006 313131 313131 303130
+12)
+1 byte for TPDA SMPP source validation
+0xE1 = TPDA not to be validated.
+Any other value, TPDA validation. Example: 0x00
 
-- If "STATUS COMMANDS FOR SMS IMEI COUNTER" is 0x00 00, no retries sent.
-Testing:    05810601F40020000000 313131 313131 313130
+13)
+1 byte for activating Timer when IMEI has changed.
+0x31 = Activate Timer if IMEI has changes so that first PopUp is showed at init.
+Any different vaue, nothing happens. Example: 0x00
 
 ---------------------------------------
 SMSPP: 
@@ -211,28 +307,8 @@ TAR: 435041
 F0
 
 2) Update Message
-2.1)
-SMPP Data:
-F1 04 36436F6E657869C3B36E2061206C61206E7565766120726564207920646573636172676120646520756E206E7565766F206170706C6574
-Tag: F1
-DCS format: 0x04 - 8 Bits
-Length: 36
+F136436F6E657869C3B36E2061206C61206E7565766120726564207920646573636172676120646520756E206E7565766F206170706C6574
 "6Conexión a la nueva red y descarga de un nuevo applet"
-2.2)
-SMPP Data: 
-F1 04 81 96 4573746520657320756E20746578746F20616D706C696F2064652031353020636172616374657265732E20456C20746578746F2048656C6C6F20576F726C6420657261206D757920636F72746F20706172612068616365722065737465207469706F20646520707275656261732E20456C2063616D62696F2064656C20746578746F20667565204D555920657869746F736F2E2E2E2E
-Tag: F1
-DCS format: 0x04 - 8 Bits
-Length: 81 A0
-Text: "Este es un texto amplio de 150 caracteres. El texto Hello World era muy corto para hacer este tipo de pruebas. El cambio del texto fue MUY exitoso...."
-2.3) UCS2
-SMPP Data: 
-F1 08 81 90 00 42 00 65 00 6D 00 2D 00 76 00 69 00 6E 00 64 00 6F 00 20 00 E0 00 20 00 72 00 65 00 64 00 65 00 20 00 4F 00 70 00 65 00 72 00 61 00 64 00 6F 00 72 00 2E 00 20 00 56 00 6F 00 63 00 EA 00 20 00 71 00 75 00 65 00 72 00 20 00 6D 00 65 00 6C 00 68 00 6F 00 72 00 61 00 72 00 20 00 6F 00 20 00 73 00 75 00 61 00 20 00 65 00 78 00 70 00 65 00 72 00 69 00 EA 00 6E 00 63 00 69 00 61 00 20 00 63 00 6F 00 6E 00 6F 00 73 00 63 00 6F 00 3F
-Tag: F1
-DCS format: 0x08 - UCS2
-Length: 81 90
-Text: "Bem-vindo à rede Operador. Você quer melhorar o sua experiência conosco?"
-
 
 3) Activate Timer
 F9 31
@@ -240,11 +316,11 @@ F9 32 95 95 => New timer 23:59:59
 F9 00 20 00 => New timer: 00:02:00
 
 4) Update URL - Optional
-F2 51 68 74 74 70 73 3A 2F 2F 63 6F 74 61 2D 73 64 6B 2E 6D 6E 63 30 32 30 2E 6D 63 63 33 33 34 2E 70 75 62 2E 33 67 70 70 6E 65 74 77 6F 72 6B 2E 6F 72 67 3A 38 31 38 31 2F 61 70 70 6C 65 74 2F 37 30 3F 6D 63 63 3D 31 31 31 26 6D 6E 63 3D 31 31 31
+0xF2 51 68 74 74 70 73 3A 2F 2F 63 6F 74 61 2D 73 64 6B 2E 6D 6E 63 30 32 30 2E 6D 63 63 33 33 34 2E 70 75 62 2E 33 67 70 70 6E 65 74 77 6F 72 6B 2E 6F 72 67 3A 38 31 38 31 2F 61 70 70 6C 65 74 2F 37 30 3F 6D 63 63 3D 31 31 31 26 6D 6E 63 3D 31 31 31
 Length: 0x51 (length 81 bytes)
 URL: 
 https://cota-sdk.mnc020.mcc334.pub.3gppnetwork.org:8181/applet/70?mcc=111&mnc=111
-
+	
 Other example:
 0xF2 1F 68 74 74 70 73 3A 2F 2F 77 77 77 2E 77 61 73 68 69 6E 67 74 6F 6E 70 6F 73 74 2E 63 6F 6D 2F
 URL:
@@ -262,36 +338,17 @@ ISO7816.OFFSET_INS with 0xFA, the applet will respond 0x39 for the example.
 
 6) Update Message and PopUp
 6.1)
-DCS: 0x04
 // VALUE: This is a test number 1. Welcome Message before Launch Browser
-F1 F0 04 3E 54 68 69 73 20 69 73 20 61 20 74 65 73 74 20 6E 75 6D 62 65 72 20 31 2E 20 57 65 6C 63 6F 6D 65 20 4D 65 73 73 61 67 65 20 62 65 66 6F 72 65 20 4C 61 75 6E 63 68 20 42 72 6F 77 73 65 72
-Without DCS:
 F1 F0 3E 54 68 69 73 20 69 73 20 61 20 74 65 73 74 20 6E 75 6D 62 65 72 20 31 2E 20 57 65 6C 63 6F 6D 65 20 4D 65 73 73 61 67 65 20 62 65 66 6F 72 65 20 4C 61 75 6E 63 68 20 42 72 6F 77 73 65 72
 
 6.2)
 // VALUE: This is a test number 2. Welcome Message before Launch Browser
-F1 F0 04 3E 54 68 69 73 20 69 73 20 61 20 74 65 73 74 20 6E 75 6D 62 65 72 20 32 2E 20 57 65 6C 63 6F 6D 65 20 4D 65 73 73 61 67 65 20 62 65 66 6F 72 65 20 4C 61 75 6E 63 68 20 42 72 6F 77 73 65 72
+F1 F0 3E 54 68 69 73 20 69 73 20 61 20 74 65 73 74 20 6E 75 6D 62 65 72 20 32 2E 20 57 65 6C 63 6F 6D 65 20 4D 65 73 73 61 67 65 20 62 65 66 6F 72 65 20 4C 61 75 6E 63 68 20 42 72 6F 77 73 65 72
 
 6.3)
-Text: "Este es un texto amplio de 160 caracteres. El texto Hello World era muy corto para hacer este tipo de pruebas. El cambio del texto fue exitoso."
+Text: "Este es un texto amplio de 160 caracteres. El texto Hello World era muy corto para hacer este tipo de pruebas. El cambio del texto fue hecho de forma exitosa..."
 Smpp data: 
-F1 F0 04 81 8F 45 73 74 65 20 65 73 20 75 6E 20 74 65 78 74 6F 20 61 6D 70 6C 69 6F 20 64 65 20 31 36 30 20 63 61 72 61 63 74 65 72 65 73 2E 20 45 6C 20 74 65 78 74 6F 20 48 65 6C 6C 6F 20 57 6F 72 6C 64 20 65 72 61 20 6D 75 79 20 63 6F 72 74 6F 20 70 61 72 61 20 68 61 63 65 72 20 65 73 74 65 20 74 69 70 6F 20 64 65 20 70 72 75 65 62 61 73 2E 20 45 6C 20 63 61 6D 62 69 6F 20 64 65 6C 20 74 65 78 74 6F 20 66 75 65 20 65 78 69 74 6F 73 6F 2E
-
-6.4)
-SMPP Data: 
-F1 F0 08 81 90 00 42 00 65 00 6D 00 2D 00 76 00 69 00 6E 00 64 00 6F 00 20 00 E0 00 20 00 72 00 65 00 64 00 65 00 20 00 4F 00 70 00 65 00 72 00 61 00 64 00 6F 00 72 00 2E 00 20 00 56 00 6F 00 63 00 EA 00 20 00 71 00 75 00 65 00 72 00 20 00 6D 00 65 00 6C 00 68 00 6F 00 72 00 61 00 72 00 20 00 6F 00 20 00 73 00 75 00 61 00 20 00 65 00 78 00 70 00 65 00 72 00 69 00 EA 00 6E 00 63 00 69 00 61 00 20 00 63 00 6F 00 6E 00 6F 00 73 00 63 00 6F 00 3F
-Tag: F1F0
-DCS format: 0x08 - UCS2
-Length: 81 90
-Text: "Bem-vindo à rede Operador. Você quer melhorar o sua experiência conosco?"
-
-6.5) 
-SMPP Data:
-F1 F0 08 81 90 00 54 00 45 00 4C 00 43 00 45 00 4C 00 3A 00 20 2B 50 00 20 00 43 00 6F 00 6D 00 65 00 20 00 63 00 68 00 65 00 63 00 6B 00 20 00 6F 00 75 00 74 00 20 00 74 00 68 00 65 00 20 00 6C 00 61 00 74 00 65 00 73 00 74 00 20 00 61 00 70 00 70 00 20 00 6F 00 66 00 66 00 65 00 72 00 73 00 20 00 70 00 65 00 72 00 73 00 6F 00 6E 00 61 00 6C 00 69 00 7A 00 65 00 64 00 20 00 66 00 6F 00 72 00 20 00 79 00 6F 00 75 00 21 00 20 2B 50 00 0D 00 0A
-Tag: F1 F0
-DCS Format: 0x08 - UCS2
-Length: 81 90
-Texto: "TELCEL: ? Come check out the latest app offers personalized for you! ?" (Los "?" se reemplazan por emojis 0x2B 50)
+F1 F0 81 A0 45 73 74 65 20 65 73 20 75 6E 20 74 65 78 74 6F 20 61 6D 70 6C 69 6F 20 64 65 20 31 36 30 20 63 61 72 61 63 74 65 72 65 73 2E 20 45 6C 20 74 65 78 74 6F 20 48 65 6C 6C 6F 20 57 6F 72 6C 64 20 65 72 61 20 6D 75 79 20 63 6F 72 74 6F 20 70 61 72 61 20 68 61 63 65 72 20 65 73 74 65 20 74 69 70 6F 20 64 65 20 70 72 75 65 62 61 73 2E 20 45 6C 20 63 61 6D 62 69 6F 20 64 65 6C 20 74 65 78 74 6F 20 66 75 65 20 68 65 63 68 6F 20 64 65 20 66 6F 72 6D 61 20 65 78 69 74 6F 73 61 2E 2E 2E
 
 7) Call URL directly
 7.1)
@@ -362,10 +419,10 @@ IMEI: 4A 44 44 44 44 44 44 47
 11) Get IMEI + COTA version
 FB
 SMS Sent example:
-R - D0 25 81 03 01 13 00 82 02 81 83 0B 1A 05 00 05 81 06 01 F4 00 04 10 4A 44 44 44 44 44 44 47 43 4F 54 41 30 32 30 36
-SMS: 4A 44 44 44 44 44 44 47 43 4F 54 41 30 32 30 36
+R - D0 25 81 03 01 13 00 82 02 81 83 0B 1A 05 00 05 81 06 01 F4 00 04 10 4A 44 44 44 44 44 44 47 43 4F 54 41 30 32 30 36 44
+SMS: 4A 44 44 44 44 44 44 47 43 4F 54 41 30 32 30 36 44
 IMEI: 4A 44 44 44 44 44 44 47
-COTA VERSION: 43 4F 54 41 30 32 30 36 => COTA0206
+COTA VERSION: 43 4F 54 41 30 32 30 36 44 => COTA0206D
 
 12) Get IMEI + [APK APDU Variable] + [Status Commands Executed for APK Notification] + [COTA VERSION]
 
@@ -433,5 +490,128 @@ D0 27 81 03 01 13 00 82 02 81 83 0B 1C 05 00 05 81 06 01 F4 00 04 12 27 02 13 12
 LOCI: 27 02 13 12 34 12 34 00 00 
 COTA VERSION: 43 4F 54 41 30 32 30 38 44
 
+15)
+Disable TPDA validation: E1
+C - 80 C2 00 00 32 D1 30 02 02 83 81 06 04 81 06 01 F4 0B 24 40 05 81 06 01 F4 7F F6 00 00 00 00 00 00 00 14 02 70 00 00 0F 0D 00 00 00 00 43 50 41 00 00 00 00 01 00 E1
+R - D0 25 81 03 01 13 00 82 02 81 83 0B 1A 05 00 05 81 06 01 F4 00 04 10 30 05 05 81 06 01 F4 43 4F 54 41 30 32 30 39 44
+Where:
+30 => TPDA not being validated.
+05 05 81 06 01 F4: TPDA
+43 4F 54 41 30 32 30 39 44 = COTA0209D
+
+16)
+Change TPDA value and activate validation:
+E1 05 05 81 06 01 F4
+Envelope
+C - 80 C2 00 00 38 D1 36 02 02 83 81 06 04 81 06 01 F5 0B 2A 40 05 81 06 01 F5 7F F6 00 00 00 00 00 00 00 1A 02 70 00 00 15 0D 00 00 00 00 43 50 41 00 00 00 00 01 00 E1 05 05 81 06 01 F4
+R - D0 25 81 03 01 13 00 82 02 81 83 0B 1A 05 00 05 81 06 01 F4 00 04 10 31 05 05 81 06 01 F4 43 4F 54 41 30 32 30 39 44
+Where:
+31 => TPDA being validated.
+05 05 81 06 01 F4: TPDA
+43 4F 54 41 30 32 30 39 44 = COTA0209D
+
+17)
+Disable get LOCI for APK:
+E0 00 00
+Envelope
+C - 80 C2 00 00 34 D1 32 02 02 83 81 06 04 81 06 01 F4 0B 26 40 05 81 06 01 F4 7F F6 00 00 00 00 00 00 00 16 02 70 00 00 11 0D 00 00 00 00 43 50 41 00 00 00 00 01 00 E0 00 00
+R - D0 2B 81 03 01 13 00 82 02 81 83 0B 20 05 00 05 81 06 01 F4 00 04 16 27 02 13 12 34 12 34 00 00 00 02 00 00 43 4F 54 41 30 32 30 39 44
+Where:
+27 02 13 12 34 12 34 00 00 = LOCI
+00 02 = MAX COUNTER for Sending SMS
+00 00 = MAX COUTER for APK
+43 4F 54 41 30 32 30 39 44 = COTA0209D
+
+18)
+Disable get LOCI for Sending SMS:
+FE 00 00
+Envelope
+C - 80 C2 00 00 34 D1 32 02 02 83 81 06 04 81 06 01 F4 0B 26 40 05 81 06 01 F4 7F F6 00 00 00 00 00 00 00 16 02 70 00 00 11 0D 00 00 00 00 43 50 41 00 00 00 00 01 00 E0 00 00
+R - D0 2B 81 03 01 13 00 82 02 81 83 0B 20 05 00 05 81 06 01 F4 00 04 16 27 02 13 12 34 12 34 00 00 00 00 00 00 43 4F 54 41 30 32 30 39 44
+Where:
+27 02 13 12 34 12 34 00 00 = LOCI
+00 00 = MAX COUNTER for Sending SMS
+00 00 = MAX COUTER for APK
+43 4F 54 41 30 32 30 39 44 = COTA0209D
 
 
+
+
+---------------------------------------
+VALUES FOR AMX STRINGS: 
+---------------------------------------
+
+// ****************************************************************************************************
+// Welcome Message - ARRAY LENGTH (bytes): 240 - DATA LENGTH (characters): 111 (0x6F) - PADDING LENGTH (bytes): 129
+// VALUE: Bienvenido a Claro. Vive la mejor experiencia en nuestra red y conoce todos los beneficios que tenemos para ti.
+
+static byte[] mainMsg = new byte[] { (byte)0x6F,
+	(byte) 'B',(byte) 'i',(byte) 'e',(byte) 'n',(byte) 'v',(byte) 'e',(byte) 'n',(byte) 'i',
+	(byte) 'd',(byte) 'o',(byte) ' ',(byte) 'a',(byte) ' ',(byte) 'C',(byte) 'l',(byte) 'a',
+	(byte) 'r',(byte) 'o',(byte) '.',(byte) ' ',(byte) 'V',(byte) 'i',(byte) 'v',(byte) 'e',
+	(byte) ' ',(byte) 'l',(byte) 'a',(byte) ' ',(byte) 'm',(byte) 'e',(byte) 'j',(byte) 'o',
+	(byte) 'r',(byte) ' ',(byte) 'e',(byte) 'x',(byte) 'p',(byte) 'e',(byte) 'r',(byte) 'i',
+	(byte) 'e',(byte) 'n',(byte) 'c',(byte) 'i',(byte) 'a',(byte) ' ',(byte) 'e',(byte) 'n',
+	(byte) ' ',(byte) 'n',(byte) 'u',(byte) 'e',(byte) 's',(byte) 't',(byte) 'r',(byte) 'a',
+	(byte) ' ',(byte) 'r',(byte) 'e',(byte) 'd',(byte) ' ',(byte) 'y',(byte) ' ',(byte) 'c',
+	(byte) 'o',(byte) 'n',(byte) 'o',(byte) 'c',(byte) 'e',(byte) ' ',(byte) 't',(byte) 'o',
+	(byte) 'd',(byte) 'o',(byte) 's',(byte) ' ',(byte) 'l',(byte) 'o',(byte) 's',(byte) ' ',
+	(byte) 'b',(byte) 'e',(byte) 'n',(byte) 'e',(byte) 'f',(byte) 'i',(byte) 'c',(byte) 'i',
+	(byte) 'o',(byte) 's',(byte) ' ',(byte) 'q',(byte) 'u',(byte) 'e',(byte) ' ',(byte) 't',
+	(byte) 'e',(byte) 'n',(byte) 'e',(byte) 'm',(byte) 'o',(byte) 's',(byte) ' ',(byte) 'p',
+	(byte) 'a',(byte) 'r',(byte) 'a',(byte) ' ',(byte) 't',(byte) 'i',(byte) '.',
+	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
+	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
+	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
+	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
+	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
+	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
+	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
+	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
+	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
+	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
+	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
+	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
+	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
+	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
+	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
+	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
+	(byte)0xFF
+	};
+	// ****************************************************************************************************
+	
+	
+	// ****************************************************************************************************
+	// URL for LAUNCH BROWSER - ARRAY LENGTH (bytes): 100 - DATA LENGTH (characters): 82 (0x52) - PADDING LENGTH (bytes): 18
+	// VALUE: https://cota-sdk.mnc020.mcc334.pub.3gppnetwork.org:8181/applet/119?mcc=111&mnc=111
+	
+	static byte[] URL = new byte[] { (byte)0x52,
+	(byte) 'h',(byte) 't',(byte) 't',(byte) 'p',(byte) 's',(byte) ':',(byte) '/',(byte) '/',
+	(byte) 'c',(byte) 'o',(byte) 't',(byte) 'a',(byte) '-',(byte) 's',(byte) 'd',(byte) 'k',
+	(byte) '.',(byte) 'm',(byte) 'n',(byte) 'c',(byte) '0',(byte) '2',(byte) '0',(byte) '.',
+	(byte) 'm',(byte) 'c',(byte) 'c',(byte) '3',(byte) '3',(byte) '4',(byte) '.',(byte) 'p',
+	(byte) 'u',(byte) 'b',(byte) '.',(byte) '3',(byte) 'g',(byte) 'p',(byte) 'p',(byte) 'n',
+	(byte) 'e',(byte) 't',(byte) 'w',(byte) 'o',(byte) 'r',(byte) 'k',(byte) '.',(byte) 'o',
+	(byte) 'r',(byte) 'g',(byte) ':',(byte) '8',(byte) '1',(byte) '8',(byte) '1',(byte) '/',
+	(byte) 'a',(byte) 'p',(byte) 'p',(byte) 'l',(byte) 'e',(byte) 't',(byte) '/',(byte) '1',
+	(byte) '1',(byte) '9',(byte) '?',(byte) 'm',(byte) 'c',(byte) 'c',(byte) '=',(byte) '1',
+	(byte) '1',(byte) '1',(byte) '&',(byte) 'm',(byte) 'n',(byte) 'c',(byte) '=',(byte) '1',
+	(byte) '1',(byte) '1',
+	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
+	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
+	(byte)0xFF,(byte)0xFF
+	};
+
+	// ****************************************************************************************************
+	// SHA-1 - ARRAY LENGTH (bytes): 20 - DATA LENGTH (bytes): 20 (0x14)
+	// VALUE: F4653BEE3D83F5EFE18960B53594438EB1E3B299
+	
+	static byte[] APP_HASH = new byte[] { 
+	(byte)0xF4,(byte)0x65,(byte)0x3B,(byte)0xEE,
+	(byte)0x3D,(byte)0x83,(byte)0xF5,(byte)0xEF,
+	(byte)0xE1,(byte)0x89,(byte)0x60,(byte)0xB5,
+	(byte)0x35,(byte)0x94,(byte)0x43,(byte)0x8E,
+	(byte)0xB1,(byte)0xE3,(byte)0xB2,(byte)0x99
+	};
+	// ****************************************************************************************************
+	

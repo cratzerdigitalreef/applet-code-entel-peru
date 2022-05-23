@@ -51,7 +51,7 @@ implements ToolkitInterface, uicc.toolkit.ToolkitConstants {
 	/* */
     static final byte[] COTA = { 
     		(byte)'C', (byte)'O', (byte)'T', (byte)'A', 
-    		(byte)'0', (byte)'2', (byte)'0', (byte)'8'
+    		(byte)'0', (byte)'2', (byte)'0', (byte)'9'
     		, (byte)'D'
     		};
     /* */
@@ -76,101 +76,84 @@ implements ToolkitInterface, uicc.toolkit.ToolkitConstants {
 	static byte[] MNC = new byte[(short)3];
 
 	// ****************************************************************************************************
-	// URL for LAUNCH BROWSER - ARRAY LENGTH (bytes): 240 - DATA LENGTH (characters): 63 (0x3F) - PADDING LENGTH (bytes): 177
-	// VALUE: https://tiendaonline.movistar.com.pe/renueva/955453383_oferta12
-	/* 
-	LENGTH + VALUE IN HEXA: 0x3F 68 74 74 70 73 3A 2F 2F 74 69 65 6E 64 61 6F 6E 6C 69 6E 65 2E 6D 6F 76 69 73 74 61 72 2E 63 6F 6D 2E 70 65 2F 72 65 6E 75 65 76 61 2F 39 35 35 34 35 33 33 38 33 5F 6F 66 65 72 74 61 31 32
-	
-	"_" => "%5F" according to URLEncoder.pdf (https://www.w3schools.com/tags/ref_urlencode.asp)
-	 */
+	// Welcome Message - ARRAY LENGTH (bytes): 240 - DATA LENGTH (characters): 111 (0x6F) - PADDING LENGTH (bytes): 129
+	// VALUE: Bienvenido a Claro. Vive la mejor experiencia en nuestra red y conoce todos los beneficios que tenemos para ti.
 
-	// ****************************************************************************************************
-	// URL for LAUNCH BROWSER - ARRAY LENGTH (bytes): 160 - DATA LENGTH (characters): 51 (0x33) - PADDING LENGTH (bytes): 108 (-1 because first byte defines amount of characters)
-	// VALUE: https://tiendaonline.movistar.com.pe/Renueva%2Dapp/
-	// ORIGINAL VALUE: https://tiendaonline.movistar.com.pe/Renueva-app/
-	/* 
-	LENGTH + VALUE IN HEXA: 0x33 68 74 74 70 73 3A 2F 2F 74 69 65 6E 64 61 6F 6E 6C 69 6E 65 2E 6D 6F 76 69 73 74 61 72 2E 63 6F 6D 2E 70 65 2F 52 65 6E 75 65 76 61 25 32 44 61 70 70 2F - TAKE INTO ACCOUNT IT IS 8 BITS FORMAT (DCS: 0x04)
-	 */
-
-	static byte[] URL = new byte[] { (byte)0x33,
-	(byte) 'h',(byte) 't',(byte) 't',(byte) 'p',(byte) 's',(byte) ':',(byte) '/',(byte) '/',
-	(byte) 't',(byte) 'i',(byte) 'e',(byte) 'n',(byte) 'd',(byte) 'a',(byte) 'o',(byte) 'n',
-	(byte) 'l',(byte) 'i',(byte) 'n',(byte) 'e',(byte) '.',(byte) 'm',(byte) 'o',(byte) 'v',
-	(byte) 'i',(byte) 's',(byte) 't',(byte) 'a',(byte) 'r',(byte) '.',(byte) 'c',(byte) 'o',
-	(byte) 'm',(byte) '.',(byte) 'p',(byte) 'e',(byte) '/',(byte) 'R',(byte) 'e',(byte) 'n',
-	(byte) 'u',(byte) 'e',(byte) 'v',(byte) 'a',(byte) '%',(byte) '2',(byte) 'D',(byte) 'a',
-	(byte) 'p',(byte) 'p',(byte) '/',
-	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
-	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
-	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
-	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
-	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
-	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
-	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
-	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
-	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
-	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
-	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
-	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
-	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
-	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF
-	};
-	// ****************************************************************************************************
-
-
-	// ****************************************************************************************************
-	// Welcome Message - ARRAY LENGTH (bytes): 240 - DATA LENGTH (characters): 82 (0x52) - PADDING LENGTH (bytes): 158
-	// VALUE: Ultimos dias para renovar tu equipo a precios especiales! Te lo llevamos sin costo
-	/* 
-	LENGTH + VALUE IN HEXA: 0x52 55 6C 74 69 6D 6F 73 20 64 69 61 73 20 70 61 72 61 20 72 65 6E 6F 76 61 72 20 74 75 20 65 71 75 69 70 6F 20 61 20 70 72 65 63 69 6F 73 20 65 73 70 65 63 69 61 6C 65 73 21 20 54 65 20 6C 6F 20 6C 6C 65 76 61 6D 6F 73 20 73 69 6E 20 63 6F 73 74 6F
-	 */
-
-	static byte[] mainMsg = new byte[] { (byte)0x52,
-	(byte) 'U',(byte) 'l',(byte) 't',(byte) 'i',(byte) 'm',(byte) 'o',(byte) 's',(byte) ' ',
-	(byte) 'd',(byte) 'i',(byte) 'a',(byte) 's',(byte) ' ',(byte) 'p',(byte) 'a',(byte) 'r',
-	(byte) 'a',(byte) ' ',(byte) 'r',(byte) 'e',(byte) 'n',(byte) 'o',(byte) 'v',(byte) 'a',
-	(byte) 'r',(byte) ' ',(byte) 't',(byte) 'u',(byte) ' ',(byte) 'e',(byte) 'q',(byte) 'u',
-	(byte) 'i',(byte) 'p',(byte) 'o',(byte) ' ',(byte) 'a',(byte) ' ',(byte) 'p',(byte) 'r',
-	(byte) 'e',(byte) 'c',(byte) 'i',(byte) 'o',(byte) 's',(byte) ' ',(byte) 'e',(byte) 's',
-	(byte) 'p',(byte) 'e',(byte) 'c',(byte) 'i',(byte) 'a',(byte) 'l',(byte) 'e',(byte) 's',
-	(byte) '!',(byte) ' ',(byte) 'T',(byte) 'e',(byte) ' ',(byte) 'l',(byte) 'o',(byte) ' ',
-	(byte) 'l',(byte) 'l',(byte) 'e',(byte) 'v',(byte) 'a',(byte) 'm',(byte) 'o',(byte) 's',
-	(byte) ' ',(byte) 's',(byte) 'i',(byte) 'n',(byte) ' ',(byte) 'c',(byte) 'o',(byte) 's',
-	(byte) 't',(byte) 'o',
-	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
-	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
-	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
-	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
-	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
-	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
-	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
-	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
-	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
-	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
-	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
-	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
-	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
-	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
-	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
-	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
-	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
-	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
-	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
-	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF
-	};
+	static byte[] mainMsg = new byte[] { (byte)0x6F,
+		(byte) 'B',(byte) 'i',(byte) 'e',(byte) 'n',(byte) 'v',(byte) 'e',(byte) 'n',(byte) 'i',
+		(byte) 'd',(byte) 'o',(byte) ' ',(byte) 'a',(byte) ' ',(byte) 'C',(byte) 'l',(byte) 'a',
+		(byte) 'r',(byte) 'o',(byte) '.',(byte) ' ',(byte) 'V',(byte) 'i',(byte) 'v',(byte) 'e',
+		(byte) ' ',(byte) 'l',(byte) 'a',(byte) ' ',(byte) 'm',(byte) 'e',(byte) 'j',(byte) 'o',
+		(byte) 'r',(byte) ' ',(byte) 'e',(byte) 'x',(byte) 'p',(byte) 'e',(byte) 'r',(byte) 'i',
+		(byte) 'e',(byte) 'n',(byte) 'c',(byte) 'i',(byte) 'a',(byte) ' ',(byte) 'e',(byte) 'n',
+		(byte) ' ',(byte) 'n',(byte) 'u',(byte) 'e',(byte) 's',(byte) 't',(byte) 'r',(byte) 'a',
+		(byte) ' ',(byte) 'r',(byte) 'e',(byte) 'd',(byte) ' ',(byte) 'y',(byte) ' ',(byte) 'c',
+		(byte) 'o',(byte) 'n',(byte) 'o',(byte) 'c',(byte) 'e',(byte) ' ',(byte) 't',(byte) 'o',
+		(byte) 'd',(byte) 'o',(byte) 's',(byte) ' ',(byte) 'l',(byte) 'o',(byte) 's',(byte) ' ',
+		(byte) 'b',(byte) 'e',(byte) 'n',(byte) 'e',(byte) 'f',(byte) 'i',(byte) 'c',(byte) 'i',
+		(byte) 'o',(byte) 's',(byte) ' ',(byte) 'q',(byte) 'u',(byte) 'e',(byte) ' ',(byte) 't',
+		(byte) 'e',(byte) 'n',(byte) 'e',(byte) 'm',(byte) 'o',(byte) 's',(byte) ' ',(byte) 'p',
+		(byte) 'a',(byte) 'r',(byte) 'a',(byte) ' ',(byte) 't',(byte) 'i',(byte) '.',
+		(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
+		(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
+		(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
+		(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
+		(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
+		(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
+		(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
+		(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
+		(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
+		(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
+		(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
+		(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
+		(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
+		(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
+		(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
+		(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
+		(byte)0xFF
+		};
+		// ****************************************************************************************************
+		
+		
+		// ****************************************************************************************************
+		// SHA-1 - ARRAY LENGTH (bytes): 20 - DATA LENGTH (bytes): 20 (0x14)
+		// VALUE: F4653BEE3D83F5EFE18960B53594438EB1E3B299
+		
+		static byte[] APP_HASH = new byte[] { 
+		(byte)0xF4,(byte)0x65,(byte)0x3B,(byte)0xEE,
+		(byte)0x3D,(byte)0x83,(byte)0xF5,(byte)0xEF,
+		(byte)0xE1,(byte)0x89,(byte)0x60,(byte)0xB5,
+		(byte)0x35,(byte)0x94,(byte)0x43,(byte)0x8E,
+		(byte)0xB1,(byte)0xE3,(byte)0xB2,(byte)0x99
+		};
+		// ****************************************************************************************************
+		
+		
+		// ****************************************************************************************************
+		// URL for LAUNCH BROWSER - ARRAY LENGTH (bytes): 100 - DATA LENGTH (characters): 82 (0x52) - PADDING LENGTH (bytes): 18
+		// VALUE: https://cota-sdk.mnc020.mcc334.pub.3gppnetwork.org:8181/applet/119?mcc=111&mnc=111
+		
+		static byte[] URL = new byte[] { (byte)0x52,
+		(byte) 'h',(byte) 't',(byte) 't',(byte) 'p',(byte) 's',(byte) ':',(byte) '/',(byte) '/',
+		(byte) 'c',(byte) 'o',(byte) 't',(byte) 'a',(byte) '-',(byte) 's',(byte) 'd',(byte) 'k',
+		(byte) '.',(byte) 'm',(byte) 'n',(byte) 'c',(byte) '0',(byte) '2',(byte) '0',(byte) '.',
+		(byte) 'm',(byte) 'c',(byte) 'c',(byte) '3',(byte) '3',(byte) '4',(byte) '.',(byte) 'p',
+		(byte) 'u',(byte) 'b',(byte) '.',(byte) '3',(byte) 'g',(byte) 'p',(byte) 'p',(byte) 'n',
+		(byte) 'e',(byte) 't',(byte) 'w',(byte) 'o',(byte) 'r',(byte) 'k',(byte) '.',(byte) 'o',
+		(byte) 'r',(byte) 'g',(byte) ':',(byte) '8',(byte) '1',(byte) '8',(byte) '1',(byte) '/',
+		(byte) 'a',(byte) 'p',(byte) 'p',(byte) 'l',(byte) 'e',(byte) 't',(byte) '/',(byte) '1',
+		(byte) '1',(byte) '9',(byte) '?',(byte) 'm',(byte) 'c',(byte) 'c',(byte) '=',(byte) '1',
+		(byte) '1',(byte) '1',(byte) '&',(byte) 'm',(byte) 'n',(byte) 'c',(byte) '=',(byte) '1',
+		(byte) '1',(byte) '1',
+		(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
+		(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
+		(byte)0xFF,(byte)0xFF
+		};
 	// ****************************************************************************************************
 	
     /* Variables applet imox */
     static final byte[] HEADER = { (byte) 0xFF, (byte) 0x40, (byte) 0x1A, (byte) 0xe2, (byte) 0x18, (byte) 0xE1,
         (byte) 0x16, (byte) 0xC1, (byte) 0x14 };
-
-	//SHA1 - 20 bytes
-    private byte[] APP_HASH = {  
-    		(byte)0xAC,(byte)0x0B,(byte)0xCF,(byte)0xBA,(byte)0x1A,
-    		(byte)0x4E,(byte)0xAE,(byte)0xF0,(byte)0xC8,(byte)0xC7,
-    		(byte)0xE1,(byte)0x8F,(byte)0x10,(byte)0x56,(byte)0x4F,
-    		(byte)0x1A,(byte)0x0F,(byte)0xFC,(byte)0xB3,(byte)0x62
-    };
 
     
  // ****************************************************************************************************
@@ -255,6 +238,7 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 	//FOR SAVING IMEI + LAUNCH BROWSER SUPPORTED
 	private static final short nIMEILaunchBrowserSupportedIndex = (short)8;
 	private byte[] IMEIOld = new byte [(short)(nIMEILaunchBrowserSupportedIndex+1)];
+	private static boolean bTimerActivateIMEIChange = false;
 	
 	//FOR DEBUGGING SMSPP
     //static private byte[] generalBufferDebug                 = new byte [(short) 160];
@@ -269,9 +253,10 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 	 * BYTE  1: N_STATUSCOMMAND_FIRST
 	 * BYTES 2: N_STATUSCOMMAND_APK_APDU
 	 * BYTES 2: N_STATUSCOMMAND_PLOCI
+	 * BYTES 2: N_STATUSCOMMAND_PLOCI_APK
 	 */
 	//private byte[] transByteArray = JCSystem.makeTransientByteArray((short) 18,JCSystem.CLEAR_ON_RESET);	
-	private byte[] transByteArray = JCSystem.makeTransientByteArray((short) 20,JCSystem.CLEAR_ON_RESET);	
+	private byte[] transByteArray = JCSystem.makeTransientByteArray((short) 22,JCSystem.CLEAR_ON_RESET);	
 	private static final short N_WAITFORSENDSMS_OFFSET = (short)0;
 	//2 BYTES FOR RETRIES COUNTER
 	private static final short N_SMSIMEIRETRIESCNTR_OFFSET 	= (short)1;
@@ -285,10 +270,13 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 	private static final short N_STATUSCOMMAND_APK_APDU 	= (short)16;
 	//2 bytes FOR LOCALIZATION COUNTER
 	private static final short N_STATUSCOMMAND_PLOCI 		= (short)18;
+	//2 bytes FOR LOCALIZATION COUNTER
+	private static final short N_STATUSCOMMAND_PLOCI_APK    = (short)20;
 
 	//9 bytes FOR LOCALIZATION 
 	private byte[] loci = JCSystem.makeTransientByteArray((short) 9,JCSystem.CLEAR_ON_RESET);	
-	private static short MAX_COUNTER_GETLOCI = (byte)0;
+	private static short MAX_COUNTER_GETLOCI 		= (byte)0;
+	private static short MAX_COUNTER_GETLOCI_APK 	= (byte)0;
 	
 	//private static byte nWaitForSendSMS = (byte)0x00;
 	private static boolean bSendSMSIMEI = false;
@@ -318,6 +306,8 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 	private static final byte bFC = (byte)0xFC;
 	private static final byte bFD = (byte)0xFD;
 	private static final byte bFE = (byte)0xFE;
+	private static final byte bE0 = (byte)0xE0;
+	private static final byte bE1 = (byte)0xE1;
 	
 	//RETRIES FOR SMS WITH IMEI
 	private static final short nSMSIMEIRetries_MAX = (short)3;
@@ -341,16 +331,10 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 	
 	//SUPPORT F2 FOR SMSPP - UPDATE URL
 	private static boolean bSMSPP_F2_Supported = false;
-	
-	
-	//**************************************************************************
-	//FOR DEBUGGING
-	/*
-	private static FileView usimFile;
-	private final short MF = 0x3F00;
-    private byte[] IMSI  = new byte[(short)9];
-	private final short EF_LOG = 0x4F31;
-	*/
+
+	//VALIDATE SMPP TPDA SOURCE
+	private static boolean bSMSPP_TPDA_Validate = true;
+
 	
     //***********************************************************************
     //***********************************************************************
@@ -488,6 +472,35 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 		}
 		bOffset+=(short)2;
 		nParamPos+=(short)2;
+		
+		//MAX_COUNTER_GETLOCI_APK
+		if((short)bArray.length > (short)(bOffset+(short)1)
+				&& nParamPos < nParamsInstallForInstallLen)
+		{
+			MAX_COUNTER_GETLOCI_APK = Util.makeShort(bArray[bOffset], bArray[(short)(bOffset+1)]);
+		}
+		bOffset+=(short)2;
+		nParamPos+=(short)2;
+
+		//Validate SMPP TPDA SOURCE OR NOT
+		if((short)bArray.length > (short)(bOffset)
+			&& nParamPos < nParamsInstallForInstallLen)
+		{
+			if(bArray[bOffset]==bE1)
+				bSMSPP_TPDA_Validate=false;
+		}
+		bOffset++;
+		nParamPos++;
+		
+		//Activate TIMER when IMEI has changed, new mobile
+		if((short)bArray.length > (short)(bOffset)
+			&& nParamPos < nParamsInstallForInstallLen)
+		{
+			if(bArray[bOffset]==b31)
+				bTimerActivateIMEIChange=true;
+		}
+		bOffset++;
+		nParamPos++;
 		
 		/* */
 		
@@ -632,6 +645,10 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 	public void processToolkit(short event) throws ToolkitException 
 	//public void processToolkit(byte event) throws ToolkitException 
 	{
+		short nLociCounter=(short)0;
+		boolean bLociGet=false;
+		boolean bLociGetAndSend=false;
+		
 		switch (event) 
 		{
 		case EVENT_TIMER_EXPIRATION:
@@ -725,6 +742,10 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 						{
 							Util.arrayCopy(transByteArray, TEMP_IMEI_OFFSET, IMEIOld, (short)0, (short)IMEIOld.length);
 							bSendSMSIMEI=true;
+							
+							//ADDED FOR ENTEL CHLE - 2022-05-23
+							if(bTimerActivateIMEIChange)
+								loadTimer();
 						}
 					}
 					
@@ -812,29 +833,53 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 				}
 			}
 			
-			//CHECK WHETHER GET LOCI AND SEND IT TO SERVER
-			if(MAX_COUNTER_GETLOCI > (short)0 && !bFirstStatusCommand)
+			//CHECK WHETHER GET LOCI
+			if(!bFirstStatusCommand && (MAX_COUNTER_GETLOCI > (short)0 || MAX_COUNTER_GETLOCI_APK > (short)0))
 			{
-				short nLociCounter = fRAMArraySumUpShort(transByteArray, N_STATUSCOMMAND_PLOCI);
-				fWriteLogShort((short)6, nLociCounter);
-				if(nLociCounter > MAX_COUNTER_GETLOCI)
-				{
-					fGetLocalInformationLOCI(loci, (short)0);
-					
-					//INFORM SERVER LOCI
-					fSendSMSLoci(true);
+				bLociGet=false;
+				bLociGetAndSend=false;
 
-					fRAMArrayClean(transByteArray, N_STATUSCOMMAND_PLOCI);
+				if(MAX_COUNTER_GETLOCI > (short)0)
+				{
+					//GET LOCI AND SEND TO SERVER
+					nLociCounter = fRAMArraySumUpShort(transByteArray, N_STATUSCOMMAND_PLOCI);
+					if(nLociCounter > MAX_COUNTER_GETLOCI)
+					{
+						fRAMArrayClean(transByteArray, N_STATUSCOMMAND_PLOCI);
+						bLociGet=true;
+						bLociGetAndSend=true;
+					}
+				}
+				if(MAX_COUNTER_GETLOCI_APK > (short)0)
+				{
+					//GET LOCI FOR APK
+					nLociCounter = fRAMArraySumUpShort(transByteArray, N_STATUSCOMMAND_PLOCI_APK);
+					if(nLociCounter > MAX_COUNTER_GETLOCI_APK)
+					{
+						fRAMArrayClean(transByteArray, N_STATUSCOMMAND_PLOCI_APK);
+						bLociGet=true;
+					}
+				}
+				
+				if(bLociGet)
+				{
+					//GET LOCI
+					fGetLocalInformationLOCI(loci, (short)0);
+
+					if(bLociGetAndSend)
+						//INFORM SERVER LOCI
+						fSendSMSLoci(true, true);
 				}
 			}
-			
+
 			break;
 		}
 	}
 	
 	private void processIncomingMessage()
 	{		
-		short len =(short)0;
+		//short len =(short)0;
+		boolean bAddCOTAVer = true;
 		
 		//EnvelopeHandler  envHdlr;
     	USATEnvelopeHandler  envHdlr;
@@ -861,7 +906,11 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 		if(!fValidateTPDASourceToDestination(generalBuffer, (short)0, (short)nSMSLen, baTPDA_Address, (short)0))
 		{
 			//TPDA ORIGINATNG ADDRESS IS NOT THE SAME AS THE ONE INSTALLED IN THE APPLET 'baTPDA_Address'
-			//return;
+			if(bSMSPP_TPDA_Validate)
+			{
+				fWriteLog((short)4, baTPDA_Address, (short)0, sTPDALength);
+				return;
+			}
 		}
 
 
@@ -966,14 +1015,13 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 		    	Util.arrayCopy(IMEIOld, (short)0, generalBuffer, (short)n, (short)IMEIOld.length);
 				n+=(short)IMEIOld.length;
 				
+				bAddCOTAVer=false;
 				if(bTagValue == (byte)bFB)
 				{
-					//ADDING COTA VERSION	
-					Util.arrayCopy(COTA, (short)0, generalBuffer, n, (short)COTA.length);
-					n+=(short)COTA.length;
+					bAddCOTAVer=true;
 				}
 
-				fnsendSms(generalBuffer, (short)0, (short)n);
+				fSendSMSWithCOTAVer(bAddCOTAVer, generalBuffer, (short)0, (short)n);
 		    	break;
 		    
 		    case (byte)bF9:
@@ -1032,20 +1080,51 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 		    		Util.arrayCopy(generalBuffer, offset, APP_HASH, (short)0, (short) APP_HASH.length);
 		    	}
 		    	
-		    	fnsendSms(APP_HASH, (short)0, (short)APP_HASH.length);
+				fSendSMSWithCOTAVer(false, APP_HASH, (short)0, (short)APP_HASH.length);
 		    	
 		    	break;
 		    	
 		    case (byte)bFE:
+		    case (byte)bE0:
 		    	offset++;
 		    	if(lengthMsg>=(short)3)
 		    	{
-		    		//NEW COUNTER FOR SENDING LOCI TO THE SERVER
-		    		MAX_COUNTER_GETLOCI = Util.makeShort(generalBuffer[offset], generalBuffer[(short)(offset+1)]);
+		    		if(bTagValue==bFE)
+		    			//NEW COUNTER FOR SENDING LOCI TO THE SERVER
+		    			MAX_COUNTER_GETLOCI = Util.makeShort(generalBuffer[offset], generalBuffer[(short)(offset+1)]);
+		    		if(bTagValue==bE0)
+			    		//NEW COUNTER FOR GETTING LOCI FOR APK
+			    		MAX_COUNTER_GETLOCI_APK = Util.makeShort(generalBuffer[offset], generalBuffer[(short)(offset+1)]);
 		    	}
+		    	
 		    	//SEND LOCI
 		    	fGetLocalInformationLOCI(loci, (short)0);
-		    	fSendSMSLoci(true);
+		    	fSendSMSLoci(true, true);
+		    	break;
+		    	
+		    case (byte)bE1:
+		    	//TPDA SMPP VALIDATION
+		    	offset++;
+		    	if(lengthMsg>(short)1)
+		    	{
+		    		//ON FOR SMPP TPDA VALIDATION
+		    		bSMSPP_TPDA_Validate=true;
+		    		//COPY NEW TPDA FOR SMPP VALIDATION
+		    		sTPDALength = (short)generalBuffer[offset];
+		    		Util.arrayCopyNonAtomic(generalBuffer, (short)(offset+1),baTPDA_Address,(short)0,sTPDALength);
+		    		generalBuffer[(short)0]=b31;
+				}
+		    	else
+		    	{
+		    		//OFF FOR SMPP TPDA VALIDATION
+		    		bSMSPP_TPDA_Validate=false;
+		    		generalBuffer[(short)0]=b30;
+		    	}
+		    	
+	    		generalBuffer[(short)1]=(byte)sTPDALength;
+		    	//SEND [VALIDATION 0x31 / NOT VALIDATION 0x30] + TPDA NUMBER + COTA VERSION
+		    	Util.arrayCopyNonAtomic(baTPDA_Address, (short)0, generalBuffer,(short)2, sTPDALength);
+		    	fSendSMSWithCOTAVer(true, generalBuffer, (short)0, (short)(sTPDALength+2));
 		    	
 		    	break;
 		    	
@@ -1474,7 +1553,9 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 
 			case (byte)bFE:
 				//GET LOCI
-		    	fGetLocalInformationLOCI(loci, (short)0);
+				//NOT POSSIBLE TO RETRIEVE LOCI BECAUSE HANDLER IS NOT AVAILABLE
+		    	//fGetLocalInformationLOCI(loci, (short)0);
+				
 				offset = Util.arrayCopyNonAtomic(loci, (short) 0, buffer, offset, (short) loci.length);
 				offset = Util.arrayCopyNonAtomic(COTA, (short)0, buffer, offset, (short)COTA.length);
 				apdu.setOutgoingAndSend((short) 0, offset);
@@ -1517,14 +1598,64 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 	}
 
 	/**
+	 * @param bAddCOTA
 	 * @return
 	 */
+	/*
 	private boolean fSendSMSLoci(boolean bAddCOTA)
+	{
+		return fSendSMSWithCOTAVer(bAddCOTA, loci, (short)0, (short)loci.length);
+	}
+	*/
+	/**
+	 * @param bAddCOTA
+	 * @param bAddMaxCounter
+	 * @param MaxCounter
+	 * @return
+	 */
+	private boolean fSendSMSLoci(boolean bAddCOTA, boolean bAddMaxCounters)
+	{
+		short n=(short)0;
+		
+		Util.arrayCopy(loci, (short)0, generalBuffer, (short)n, (short)loci.length);
+		n+=(short)loci.length;
+		
+		if(bAddMaxCounters)
+		{
+			fShortToByte(MAX_COUNTER_GETLOCI, generalBuffer, n);
+			n+=(short)2;
+			fShortToByte(MAX_COUNTER_GETLOCI_APK, generalBuffer, n);
+			n+=(short)2;
+		}
+
+		return fSendSMSWithCOTAVer(bAddCOTA, generalBuffer, (short)0, (short)n);
+	}
+	
+	/**
+	 * @param nVal
+	 * @param bOut
+	 * @param nOutStart
+	 */
+	void fShortToByte(short nVal, byte[] bOut, short nOutStart)
+	{
+		bOut[(short)nOutStart]=(byte)((short)0x00FF & (nVal >> (short)8));
+		bOut[(short)(nOutStart+1)]=(byte)((short)0x00FF & nVal);
+	}
+
+
+	/**
+	 * @param bAddCOTA
+	 * @param buffer
+	 * @param nStart
+	 * @param nLen
+	 * @return
+	 */
+	private boolean fSendSMSWithCOTAVer(boolean bAddCOTA, byte buffer[], short nStart, short nLen)
 	{
 		short n=(short)0;
 
-		Util.arrayCopy(loci, (short)0, generalBuffer, (short)n, (short)loci.length);
-		n+=(short)loci.length;
+		Util.arrayCopy(buffer, (short)nStart, generalBuffer, (short)n, (short)nLen);
+		n+=(short)nLen;
 
 		if(bAddCOTA)
 		{
@@ -1900,7 +2031,7 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 	}
 	private boolean fWriteLogShort(short nRecord, short nVal)
 	{
-		fShortToByte(nVal, generalBufferLog, (short)0, (short)1);
+		fShortToByte(nVal, generalBufferLog, (short)0);
 		
 		return fWriteLog(nRecord, generalBufferLog, (short)0, (short)2);
 	}
@@ -1960,7 +2091,7 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 						//Util.arrayCopyNonAtomic(sBuffer, nFrom, SMS, (short)2, (short)(SMS.length-2));
 						Util.arrayCopyNonAtomic(sBuffer, nFrom, SMS, (short)2, nLen);
 					
-					fShortToByte(nLen, SMS, (short)0, (short)1);
+					fShortToByte(nLen, SMS, (short)0);
 				}
 				
 			}
@@ -1984,173 +2115,7 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 		
 	}
 
-	void fShortToByte(short nVal, byte[] bOut, short nPos1, short nPos2)
-	{
-		bOut[(short)nPos1]=(byte)((short)0x00FF & (nVal >> (short)8));
-		bOut[(short)nPos2]=(byte)((short)0x00FF & nVal);
-	}
-
-	/* */
 	//***************************************************************************
-	// START DEBUG HEXADECIMAL TO ASCII
-	/*
-    void fProcessDataToASCII(byte[] sIn, byte[] sOut )
-    {
-    	short n,m;
-
-        if(sIn[(short)0]>(byte)0x00)
-        {
-        for(n=m=(short)1;n<=(short)sIn[(short)0] && n<(short)sIn.length && m<(short)sOut.length ;n++,m+=(short)2)
-          subByteToAscii((byte)sIn[n],sOut,(short)m);
-
-        sOut[(short)0]=(byte)((byte)sIn[(short)0]*(byte)2);
-        }
-
-    }
-    public void subByteToAscii(byte sByte, byte[] sAscii, short nStartPos)
-    {
-      if(nStartPos >= (short)0 && (short)sAscii.length>(short)(nStartPos+(short)1))
-      {
-        sAscii[(short)nStartPos] = (byte) ((byte)0x0F & (byte)(sByte >> (byte)4));
-        sAscii[(short)nStartPos] = subHexaRight4BitsToAscii(sAscii[(short)nStartPos]);
-        sAscii[(short)(nStartPos+(short)1)] = (byte) (0x0F & sByte);
-        sAscii[(short)(nStartPos+(short)1)] = subHexaRight4BitsToAscii(sAscii[(short)(nStartPos+(short)1)]);
-      }
-      return;
-    }
-    public byte subHexaRight4BitsToAscii(byte sByte)
-    {
-      byte sReturn;
-
-      sReturn=(byte)sByte;
-      switch(sByte)
-      {
-        case 0x00:
-          sReturn=(byte)'0';
-          break;
-        case 0x01:
-          sReturn=(byte)'1';
-          break;
-        case 0x02:
-          sReturn=(byte)'2';
-          break;
-        case 0x03:
-          sReturn=(byte)'3';
-          break;
-        case 0x04:
-          sReturn=(byte)'4';
-          break;
-        case 0x05:
-          sReturn=(byte)'5';
-          break;
-        case 0x06:
-          sReturn=(byte)'6';
-          break;
-        case 0x07:
-          sReturn=(byte)'7';
-          break;
-        case 0x08:
-          sReturn=(byte)'8';
-          break;
-        case 0x09:
-          sReturn=(byte)'9';
-          break;
-        case 0x0A:
-          sReturn=(byte)'A';
-          break;
-        case 0x0B:
-          sReturn=(byte)'B';
-          break;
-        case 0x0C:
-          sReturn=(byte)'C';
-          break;
-        case 0x0D:
-          sReturn=(byte)'D';
-          break;
-        case 0x0E:
-          sReturn=(byte)'E';
-          break;
-        case 0x0F:
-          sReturn=(byte)'F';
-          break;
-      }
-
-      return sReturn;
-    }
-    */
-	// END DEBUG HEXADECIMAL TO ASCII
-	//***************************************************************************
-        
-
-	/* */
-	
-	/* 
-
-	//WRITE msg_debug LOG WITH SHORT
-	void fWriteDebugShort(short nVal)
-	{
-	      short n;
-
-	      n=nVal;
-	      msg_debug[(short)(msg_debug.length-2)]=(byte)((short)0x00FF & (n >> (short)8));
-	      msg_debug[(short)(msg_debug.length-1)]=(byte)((short)0x00FF & nVal);
-	      fWriteLog(msg_debug, (short)0, (short)msg_debug.length);
-	}
-	
-	//WRITE LOG WITH SHORT
-	void fWriteLogShort(short nVal)
-	{
-		fromShortToBytesIntoGeneralBuffer(nVal, (short)0);
-		fWriteLog(generalBuffer, (short)0, (short)2);
-	}
-	
-	//CLEAR DEBUG FILE
-	void fWriteDebugClear()
-	{
-		fWriteLog(msg_debug_clr, (short)0, (short)msg_debug_clr.length);
-	}
-	
-	void fDebuggingShort(short nVal)
-	{
-		fromShortToBytesIntoGeneralBuffer(nVal, (short)0);
-		fDebuggingText(generalBuffer, (short)0, (short)2);
-	}
-	//SHORT TO BYTES
-	void fromShortToBytesIntoGeneralBuffer(short nValue, short nGeneralBufferStart)
-	{
-	      short n;
-
-	      n=nValue;
-	      generalBuffer[(short)nGeneralBufferStart++]=(byte)((short)0x00FF & (n >> (short)8));
-	      generalBuffer[(short)nGeneralBufferStart]=(byte)((short)0x00FF & nValue);
-	}
-	
-	//FOR DEBUGGING TEXT
-	private void fDebuggingText(byte[] sVal, short nFrom, short nLen)
-	{
-		//FOR DEBUGGING
-		if(fWriteLog(sVal, (short)nFrom, (short)nLen))
-			serviceDisplayText(msg_true, (short)0, (short)msg_true.length );
-		else
-			serviceDisplayText(msg_false, (short)0, (short)msg_false.length );
-	}
-	
-	/* */
-	/* 	
-	private byte serviceDisplayText(byte[] message, short nStart, short nLen)
-	{
-		//ProactiveHandler proHdlr = ProactiveHandlerSystem.getTheHandler();
-    	ProactiveHandler proHdlr;
-    	//proHdlr = ProactiveHandlerSystem.getTheHandler();
-    	proHdlr = ProactiveHandler.getTheHandler();
-
-    	//proHdlr.initDisplayText((byte) 0x81, DCS_8_BIT_DATA, message, (short)1, (short)nLen);
-		proHdlr.initDisplayText((byte) 0x81, DisplayText_DCS_BIT_DATA, message, (short)nStart, (short)nLen);
-		
-		return proHdlr.send();
-	}
-
-	*/
 	//***************************************************************************************************************
 
 }
