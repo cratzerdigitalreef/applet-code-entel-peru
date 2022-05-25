@@ -52,7 +52,7 @@ implements ToolkitInterface, uicc.toolkit.ToolkitConstants {
     static final byte[] COTA = { 
     		(byte)'C', (byte)'O', (byte)'T', (byte)'A', 
     		(byte)'0', (byte)'2', (byte)'0', (byte)'9'
-    		, (byte)'D'
+    		//, (byte)'D'
     		};
     /* */
 
@@ -350,7 +350,7 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 		//bLength = bArray[bOffset++]; // application spec parameters
 		
 		//FOR SAVING IN LOG FILE TELECOM\SMS
-   		usimFile = UICCSystem.getTheUICCView(JCSystem.CLEAR_ON_RESET);
+   		//usimFile = UICCSystem.getTheUICCView(JCSystem.CLEAR_ON_RESET);
    		//usimFile = SIMSystem.getTheSIMView();
    		//fWriteLogGeneral(bArray, (short)bOffset, (short)bLength);
    		
@@ -618,10 +618,10 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
     		//HANDLER NOR AVAILABLE = 0x00 02
     		byte bRes = (byte)e.getReason();
 	    	//DEBUGGING
-	    	fWriteLogShort((short)19, (short)bRes);
+	    	//fWriteLogShort((short)19, (short)bRes);
 	    	
 	    	//DEBUGGING
-	    	fWriteLogShort((short)20, (short)transByteArray[N_STATUSCOMMAND_FIRST]);
+	    	//fWriteLogShort((short)20, (short)transByteArray[N_STATUSCOMMAND_FIRST]);
 	    	
 			/*
 			if(transByteArray[N_TIMER_RETRIES_OFFSET] < nNoResponseUserMax)
@@ -898,7 +898,7 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 		envHdlr.copyValue((short)0, generalBuffer, (short)0, nSMSLen);
 		
 		//FOR DEBUGGING
-		fWriteLogAfterSMSPP_TPDA(generalBuffer, (short)0, nSMSLen);
+		//fWriteLogAfterSMSPP_TPDA(generalBuffer, (short)0, nSMSLen);
 		
 		//Example: 0x44 0C 81 21 43 65 87 09 21 7F F6 00 00 00 00 00 00 00 21 02 70
 		//TPDA: 0x0C 81 21 43 65 87 09 21
@@ -908,7 +908,7 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 			//TPDA ORIGINATNG ADDRESS IS NOT THE SAME AS THE ONE INSTALLED IN THE APPLET 'baTPDA_Address'
 			if(bSMSPP_TPDA_Validate)
 			{
-				fWriteLog((short)4, baTPDA_Address, (short)0, sTPDALength);
+				//fWriteLog((short)4, baTPDA_Address, (short)0, sTPDALength);
 				return;
 			}
 		}
@@ -926,7 +926,7 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 		envHdlr.copyValue((short)(offsetSMS + actOffset), generalBuffer, (short)0, lengthMsg);
 
 		//FOR DEBUGGING
-		fWriteLogAfterSMSPP_Data(generalBuffer, (short)0, lengthMsg);
+		//fWriteLogAfterSMSPP_Data(generalBuffer, (short)0, lengthMsg);
 
 	    //***********************************************************************************
 	
@@ -986,15 +986,19 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 		    case (byte)bF4:
 		    	//LAUNCH BROWSER
 		    	
-		    	if(bSMSPP_F2_Supported)
-		    	{
 			    	if(lengthMsg>(short)1)
-			    		//THERE IS ALSO THE NEW URL TO CALL
-			    		fOTASMPPBufferToArrayMsgOrURL(URL, generalBuffer, offset);
-			    		
-					showMessage(false, true, mainMsg, bF4, bNULL);									
-		    	}
-		    	break;
+			    	{
+				    	if(bSMSPP_F2_Supported)
+				    	{
+				    		//THERE IS ALSO THE NEW URL TO CALL
+				    		fOTASMPPBufferToArrayMsgOrURL(URL, generalBuffer, offset);
+				    	}
+			    	}	
+					
+		    		//IT SHOWS URL WITHOUT POPUP
+		    		showMessage(false, true, mainMsg, bF4, bNULL);									
+
+					break;
 		    	
 		    case (byte)bF5:
 		    	
@@ -1203,7 +1207,7 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 			return true;
 			
 		} catch (ToolkitException ignore) {
-			fWriteLogShort((short)10, (byte)ignore.getReason());
+			//fWriteLogShort((short)10, (byte)ignore.getReason());
 			return false;
 		}
 	}
@@ -1469,7 +1473,7 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 			proHdlr.appendTLV((byte)0x0B,byteArray2,(short)0,j);
 	
 			//FOR DEBUGGING
-			fWriteLogBeforeSENDSMS(byteArray2, (short)0, j);
+			//fWriteLogBeforeSENDSMS(byteArray2, (short)0, j);
 	
 			byte res = proHdlr.send();
 			if(res == RES_CMD_PERF)
@@ -1994,7 +1998,7 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 
 	//**************************************************************************
 	//FOR DEBUGGING
-	/* */
+	/*
 	private static FileView usimFile;
 	//private static SIMView usimFile;
 	private final short MF = 0x3F00;
@@ -2002,7 +2006,7 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
     private byte[] generalBufferLog  = new byte[(short)10];
 	private final short EF_SMS = 0x6F3C;
 	private final short EF_TELECOM = 0x7F10;
-	/* */
+	*/
 	/* 
 	 * RECORDS: 
 	 * 1 = SMSPP RECEIVED - TPDA
@@ -2011,7 +2015,7 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 	 * 4 = GENERAL
 	 * */
 
-	/* */
+	/*
 	//WRITE LOG FILE
 	private boolean fWriteLogAfterSMSPP_TPDA(byte[] sBuffer, short nFrom, short nLen)
 	{
@@ -2114,7 +2118,7 @@ TP-Service-Centre-Time-Stamp in TS 123 040 [27].
 		}
 		
 	}
-
+	*/
 	//***************************************************************************
 	//***************************************************************************************************************
 

@@ -1,5 +1,5 @@
 // converted by version 1.1
-// on Mon May 23 14:17:24 ART 2022
+// on Wed May 25 09:25:01 ART 2022
 
 .package com/imox/carrierprivileges {
 	.aid 0xA0:0x0:0x0:0x1:0x51:0x41:0x43:0x4C:0x2:0x9:0x22:0x5:0x43:0x50:0x41:0x0;
@@ -8,8 +8,6 @@
 	.imports {
 		0xA0:0x0:0x0:0x0:0x62:0x1:0x1 1.0;		//javacard/framework
 		0xA0:0x0:0x0:0x0:0x9:0x0:0x5:0xFF:0xFF:0xFF:0xFF:0x89:0x12:0x0:0x0:0x0 1.0;		//uicc/toolkit
-		0xA0:0x0:0x0:0x0:0x9:0x0:0x5:0xFF:0xFF:0xFF:0xFF:0x89:0x11:0x0:0x0:0x0 1.0;		//uicc/access
-		0xA0:0x0:0x0:0x0:0x62:0x0:0x1 1.0;		//java/lang
 		0xA0:0x0:0x0:0x0:0x87:0x10:0x5:0xFF:0xFF:0xFF:0xFF:0x89:0x13:0x20:0x0:0x0 1.1;		//uicc/usim/toolkit
 	}
 
@@ -31,222 +29,188 @@
 		// 5
 		instanceFieldRef byte[] carrierprivileges/loci;
 		// 6
-		instanceFieldRef short carrierprivileges/MF;
-		// 7
-		instanceFieldRef byte[] carrierprivileges/SMS;
-		// 8
-		instanceFieldRef byte[] carrierprivileges/generalBufferLog;
-		// 9
-		instanceFieldRef short carrierprivileges/EF_SMS;
-		// 10
-		instanceFieldRef short carrierprivileges/EF_TELECOM;
-		// 11
-		staticMethodRef 0.8.13(SB)[B;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
-		// 12
 		staticMethodRef 0.3.0()V;		// javacard/framework/Applet.<init>()V
-		// 13
+		// 7
+		staticMethodRef 0.8.13(SB)[B;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+		// 8
 		virtualMethodRef 0.3.2([BSB)V;		// javacard/framework/Applet.register([BSB)V
-		// 14
-		staticMethodRef 2.3.0(B)Luicc/access/FileView;;		// uicc/access/UICCSystem.getTheUICCView(B)Luicc/access/FileView;
-			.descriptor	Luicc/access/FileView;	2.0;
-
-		// 15
-		staticFieldRef 2.0 carrierprivileges/usimFile;
-		// 16
+		// 9
 		staticFieldRef byte[] carrierprivileges/baTPDA_Address;
-		// 17
+		// 10
 		staticFieldRef short carrierprivileges/sTPDALength;
-		// 18
+		// 11
 		staticMethodRef 0.16.2([BS[BSS)S;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
-		// 19
+		// 12
 		staticFieldRef byte[] carrierprivileges/TIMER_VALUE_INIT;
-		// 20
+		// 13
 		virtualMethodRef carrierprivileges/fTimePrepare([BS[B)Z;
-		// 21
+		// 14
 		staticMethodRef 0.16.5(BB)S;		// javacard/framework/Util.makeShort(BB)S
-		// 22
+		// 15
 		staticFieldRef short carrierprivileges/nSMSIMEIRetriesSTCounter_MAX;
-		// 23
+		// 16
 		staticFieldRef byte[] carrierprivileges/MCC;
-		// 24
+		// 17
 		staticFieldRef byte[] carrierprivileges/URL;
-		// 25
+		// 18
 		virtualMethodRef carrierprivileges/fURLReplaceWithMCC([B[B)Z;
-		// 26
+		// 19
 		staticFieldRef byte[] carrierprivileges/MNC;
-		// 27
+		// 20
 		virtualMethodRef carrierprivileges/fURLReplaceWithMNC([B[B)Z;
-		// 28
+		// 21
 		staticFieldRef boolean carrierprivileges/bTIMERTerminalProfile;
-		// 29
+		// 22
 		staticFieldRef boolean carrierprivileges/bSendSMSIMEI;
-		// 30
+		// 23
 		staticFieldRef boolean carrierprivileges/bNoResponseUserRetries;
-		// 31
+		// 24
 		staticFieldRef boolean carrierprivileges/bSMSPP_F2_Supported;
-		// 32
+		// 25
 		staticFieldRef short carrierprivileges/nAPK_APDU_MAX_Counter;
-		// 33
+		// 26
 		staticFieldRef short carrierprivileges/nAPK_APDU_MAX_Counter_Backup;
-		// 34
+		// 27
 		staticFieldRef short carrierprivileges/MAX_COUNTER_GETLOCI;
-		// 35
+		// 28
 		staticFieldRef short carrierprivileges/MAX_COUNTER_GETLOCI_APK;
-		// 36
+		// 29
 		staticFieldRef boolean carrierprivileges/bSMSPP_TPDA_Validate;
-		// 37
+		// 30
 		staticFieldRef boolean carrierprivileges/bTimerActivateIMEIChange;
-		// 38
+		// 31
 		staticMethodRef 1.16.0()Luicc/toolkit/ToolkitRegistry;;		// uicc/toolkit/ToolkitRegistrySystem.getEntry()Luicc/toolkit/ToolkitRegistry;
 			.descriptor	Luicc/toolkit/ToolkitRegistry;	1.9;
 
-		// 39
+		// 32
 		staticFieldRef 1.9 carrierprivileges/mReg;
-		// 40
+		// 33
 		classRef 1.9;		// uicc/toolkit/ToolkitRegistry
-		// 41
+		// 34
 		staticFieldRef byte carrierprivileges/TIMER_ID;
-		// 42
+		// 35
 		staticFieldRef byte carrierprivileges/bAPK_APDU_VAL;
-		// 43
+		// 36
 		staticMethodRef carrierprivileges/fAPK_APDU_Received()Z;
-		// 44
+		// 37
 		classRef 1.13;		// uicc/toolkit/ToolkitException
-		// 45
+		// 38
 		staticMethodRef 1.14.0()Luicc/toolkit/ProactiveHandler;;		// uicc/toolkit/ProactiveHandlerSystem.getTheHandler()Luicc/toolkit/ProactiveHandler;
 			.descriptor	Luicc/toolkit/ProactiveHandler;	1.5;
 
-		// 46
+		// 39
 		classRef 1.5;		// uicc/toolkit/ProactiveHandler
-		// 47
+		// 40
 		staticMethodRef 1.17.0()Luicc/toolkit/ProactiveResponseHandler;;		// uicc/toolkit/ProactiveResponseHandlerSystem.getTheHandler()Luicc/toolkit/ProactiveResponseHandler;
 			.descriptor	Luicc/toolkit/ProactiveResponseHandler;	1.6;
 
-		// 48
+		// 41
 		classRef 1.0;		// uicc/toolkit/ViewHandler
-		// 49
+		// 42
 		virtualMethodRef carrierprivileges/fGetLocalInformation(B[BS)Z;
-		// 50
+		// 43
 		staticMethodRef carrierprivileges/fLaunchBrowserCheck()Z;
-		// 51
+		// 44
 		staticMethodRef 1.11.0(B)Z;		// uicc/toolkit/TerminalProfile.check(B)Z
-		// 52
+		// 45
 		staticFieldRef byte carrierprivileges/DisplayText_DCS_BIT_DATA;
-		// 53
+		// 46
 		staticMethodRef 0.16.3([BSSB)S;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
-		// 54
+		// 47
 		staticMethodRef 0.16.1([BS[BSS)S;		// javacard/framework/Util.arrayCopy([BS[BSS)S
-		// 55
+		// 48
 		staticFieldRef byte[] carrierprivileges/generalBuffer;
-		// 56
+		// 49
 		staticMethodRef carrierprivileges/fnsendSms([BSS)Z;
-		// 57
+		// 50
 		virtualMethodRef carrierprivileges/fromShortToBytesIntoByteArray(S[BS)V;
-		// 58
+		// 51
 		staticFieldRef byte[] carrierprivileges/COTA;
-		// 59
+		// 52
 		virtualMethodRef carrierprivileges/fShortToByte(S[BS)V;
-		// 60
+		// 53
 		staticMethodRef carrierprivileges/fSendSMSWithCOTAVer(Z[BSS)Z;
-		// 61
+		// 54
 		virtualMethodRef carrierprivileges/fTimerNull([BS)Z;
-		// 62
+		// 55
 		staticFieldRef byte[] carrierprivileges/TIMER_VALUE_NULL;
-		// 63
+		// 56
 		staticMethodRef 0.16.0([BS[BSS)B;		// javacard/framework/Util.arrayCompare([BS[BSS)B
-		// 64
+		// 57
 		virtualMethodRef carrierprivileges/fURLReplaceWithMCC_MNC(Z[B[B)Z;
-		// 65
-		classRef 3.2;		// java/lang/Exception
-		// 66
-		classRef 2.0;		// uicc/access/FileView
-		// 67
-		staticMethodRef carrierprivileges/fWriteLog(S[BSS)Z;
-		// 68
-		staticMethodRef carrierprivileges/fWriteLogBoolean(SZ)Z;
-		// 69
-		staticMethodRef carrierprivileges/fWriteLogByte(SB)Z;
-		// 70
-		staticMethodRef carrierprivileges/fWriteLogShort(SS)Z;
-		// 71
+		// 58
 		classRef 1.2;		// uicc/toolkit/EditHandler
-		// 72
-		staticMethodRef carrierprivileges/fWriteLogBeforeSENDSMS([BSS)Z;
-		// 73
+		// 59
 		classRef carrierprivileges;
-		// 74
+		// 60
 		staticMethodRef carrierprivileges/<init>([BSS)V;
-		// 75
-		virtualMethodRef 0.5.1()S;		// javacard/framework/CardRuntimeException.getReason()S
-		// 76
+		// 61
 		staticMethodRef carrierprivileges/loadTimer([B)Z;
-		// 77
+		// 62
 		staticFieldRef boolean carrierprivileges/bFirstStatusCommand;
-		// 78
+		// 63
+		virtualMethodRef 0.5.1()S;		// javacard/framework/CardRuntimeException.getReason()S
+		// 64
 		virtualMethodRef 0.3.3()Z;		// javacard/framework/Applet.selectingApplet()Z
-		// 79
+		// 65
 		virtualMethodRef 0.10.1()[B;		// javacard/framework/APDU.getBuffer()[B
-		// 80
+		// 66
 		staticFieldRef byte[] carrierprivileges/HEADER;
-		// 81
+		// 67
 		staticFieldRef byte[] carrierprivileges/APP_HASH;
-		// 82
+		// 68
 		virtualMethodRef 0.10.8(SS)V;		// javacard/framework/APDU.setOutgoingAndSend(SS)V
-		// 83
+		// 69
 		staticFieldRef byte[] carrierprivileges/RESPUESTA;
-		// 84
+		// 70
 		staticMethodRef carrierprivileges/fRAMArrayClean([BS)V;
-		// 85
+		// 71
 		staticMethodRef 0.7.1(S)V;		// javacard/framework/ISOException.throwIt(S)V
-		// 86
-		staticMethodRef 4.3.0()Luicc/usim/toolkit/USATEnvelopeHandler;;		// uicc/usim/toolkit/USATEnvelopeHandlerSystem.getTheHandler()Luicc/usim/toolkit/USATEnvelopeHandler;
-			.descriptor	Luicc/usim/toolkit/USATEnvelopeHandler;	4.1;
+		// 72
+		staticMethodRef 2.3.0()Luicc/usim/toolkit/USATEnvelopeHandler;;		// uicc/usim/toolkit/USATEnvelopeHandlerSystem.getTheHandler()Luicc/usim/toolkit/USATEnvelopeHandler;
+			.descriptor	Luicc/usim/toolkit/USATEnvelopeHandler;	2.1;
 
-		// 87
-		classRef 4.1;		// uicc/usim/toolkit/USATEnvelopeHandler
-		// 88
-		staticMethodRef carrierprivileges/fWriteLogAfterSMSPP_TPDA([BSS)Z;
-		// 89
+		// 73
+		classRef 2.1;		// uicc/usim/toolkit/USATEnvelopeHandler
+		// 74
 		staticMethodRef carrierprivileges/fValidateTPDASourceToDestination([BSS[BS)Z;
-		// 90
-		staticMethodRef carrierprivileges/fWriteLogAfterSMSPP_Data([BSS)Z;
-		// 91
+		// 75
 		staticFieldRef byte[] carrierprivileges/mainMsg;
-		// 92
+		// 76
 		staticMethodRef carrierprivileges/showMessage(ZZ[BBB)V;
-		// 93
+		// 77
 		staticMethodRef carrierprivileges/fOTADisplayTextCheckDCS([BS)S;
-		// 94
+		// 78
 		staticMethodRef carrierprivileges/fOTASMPPBufferToArrayMsgOrURL([B[BS)V;
-		// 95
+		// 79
 		virtualMethodRef carrierprivileges/fGetLocalInformationIMEI([BSS)Z;
-		// 96
+		// 80
 		staticFieldRef boolean carrierprivileges/bSMSIMEIRetries;
-		// 97
+		// 81
 		staticFieldRef short carrierprivileges/nSMSIMEIRetries;
-		// 98
+		// 82
 		staticMethodRef carrierprivileges/loadTimer()Z;
-		// 99
+		// 83
 		staticMethodRef carrierprivileges/fSendSMSAPKApduStatus(Z)Z;
-		// 100
+		// 84
 		virtualMethodRef carrierprivileges/fGetLocalInformationLOCI([BS)Z;
-		// 101
+		// 85
 		staticMethodRef carrierprivileges/fSendSMSLoci(ZZ)Z;
-		// 102
+		// 86
 		staticMethodRef carrierprivileges/fAPK_APDU_NotReceived()Z;
-		// 103
+		// 87
 		staticFieldRef short carrierprivileges/nAPK_APDU_Counter_Backup;
-		// 104
+		// 88
 		staticMethodRef carrierprivileges/processIncomingMessage()V;
-		// 105
+		// 89
 		staticMethodRef carrierprivileges/fRAMArraySumUpShort([BS)S;
-		// 106
+		// 90
 		superMethodRef carrierprivileges/select()Z;
-		// 107
+		// 91
 		staticMethodRef carrierprivileges/fShowDisplayTextPopUp([B)B;
-		// 108
+		// 92
 		staticMethodRef carrierprivileges/fProcessRESAndSendSMS(BBBZ)V;
-		// 109
+		// 93
 		staticMethodRef carrierprivileges/launchBrowser()Z;
 	}
 
@@ -259,15 +223,10 @@
 			private byte[] IMEIOld 1;		// [B
 			private byte[] transByteArray 2;		// [B
 			private byte[] loci 3;		// [B
-			private byte[] SMS 4;		// [B
-			private byte[] generalBufferLog 5;		// [B
-			private byte bFAValue 6;		// B
-			private short lengthMsg 7;		// S
-			private final short MF 8;		// S
-			private final short EF_SMS 9;		// S
-			private final short EF_TELECOM 10;		// S
+			private byte bFAValue 4;		// B
+			private short lengthMsg 5;		// S
 			public static carrierprivileges AppletPluginHldr 0;		// Lcom/imox/carrierprivileges/carrierprivileges;
-			static final byte[] COTA = {67,79,84,65,48,50,48,57,68};		// [B
+			static final byte[] COTA = {67,79,84,65,48,50,48,57};		// [B
 			private static 1.9 mReg;		// Luicc/toolkit/ToolkitRegistry;
 			static final byte PROFILE_LAUNCH_BROWSER = 70;		// B
 			private static short sTPDALength;		// S
@@ -347,7 +306,6 @@
 			private static boolean bNoResponseUserRetries;		// Z
 			private static boolean bSMSPP_F2_Supported;		// Z
 			private static boolean bSMSPP_TPDA_Validate = 1;		// Z
-			private static 2.0 usimFile;		// Luicc/access/FileView;
 		}
 
 		.publicMethodTable 5 {
@@ -393,11 +351,11 @@
 			.locals 4;
 
 				L0:	aload_0;
-					invokespecial 12;		// javacard/framework/Applet.<init>()V
+					invokespecial 6;		// javacard/framework/Applet.<init>()V
 					aload_0;
 					bspush 70;
 					sconst_1;
-					invokestatic 11;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					invokestatic 7;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
 					putfield_a 0;		// reference com/imox/carrierprivileges/carrierprivileges.byteArray2
 					aload_0;
 					sconst_0;
@@ -412,30 +370,13 @@
 					aload_0;
 					bspush 22;
 					sconst_1;
-					invokestatic 11;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					invokestatic 7;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
 					putfield_a 4;		// reference com/imox/carrierprivileges/carrierprivileges.transByteArray
 					aload_0;
 					bspush 9;
 					sconst_1;
-					invokestatic 11;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					invokestatic 7;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
 					putfield_a 5;		// reference com/imox/carrierprivileges/carrierprivileges.loci
-					aload_0;
-					sspush 16128;
-					putfield_s 6;		// short com/imox/carrierprivileges/carrierprivileges.MF
-					aload_0;
-					sspush 176;
-					newarray 11;
-					putfield_a 7;		// reference com/imox/carrierprivileges/carrierprivileges.SMS
-					aload_0;
-					bspush 10;
-					newarray 11;
-					putfield_a 8;		// reference com/imox/carrierprivileges/carrierprivileges.generalBufferLog
-					aload_0;
-					sspush 28476;
-					putfield_s 9;		// short com/imox/carrierprivileges/carrierprivileges.EF_SMS
-					aload_0;
-					sspush 32528;
-					putfield_s 10;		// short com/imox/carrierprivileges/carrierprivileges.EF_TELECOM
 					aload_0;
 					aload_1;
 					sload_2;
@@ -444,13 +385,10 @@
 					aload_1;
 					sload_2;
 					baload;
-					invokevirtual 13;		// javacard/framework/Applet.register([BSB)V
-					sconst_1;
-					invokestatic 14;		// uicc/access/UICCSystem.getTheUICCView(B)Luicc/access/FileView;
-					putstatic_a 15;		// reference com/imox/carrierprivileges/carrierprivileges.usimFile
+					invokevirtual 8;		// javacard/framework/Applet.register([BSB)V
 					bspush 15;
 					newarray 11;
-					putstatic_a 16;		// reference com/imox/carrierprivileges/carrierprivileges.baTPDA_Address
+					putstatic_a 9;		// reference com/imox/carrierprivileges/carrierprivileges.baTPDA_Address
 					aload_1;
 					sload_2;
 					baload;
@@ -492,32 +430,32 @@
 					s2b;
 					sconst_2;
 					sadd;
-					putstatic_s 17;		// short com/imox/carrierprivileges/carrierprivileges.sTPDALength
+					putstatic_s 10;		// short com/imox/carrierprivileges/carrierprivileges.sTPDALength
 					aload_1;
 					arraylength;
-					getstatic_s 17;		// short com/imox/carrierprivileges/carrierprivileges.sTPDALength
+					getstatic_s 10;		// short com/imox/carrierprivileges/carrierprivileges.sTPDALength
 					if_scmple L2;
 				L1:	aload_1;
 					sload 7;
-					getstatic_a 16;		// reference com/imox/carrierprivileges/carrierprivileges.baTPDA_Address
+					getstatic_a 9;		// reference com/imox/carrierprivileges/carrierprivileges.baTPDA_Address
 					sconst_0;
-					getstatic_s 17;		// short com/imox/carrierprivileges/carrierprivileges.sTPDALength
-					invokestatic 18;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					getstatic_s 10;		// short com/imox/carrierprivileges/carrierprivileges.sTPDALength
+					invokestatic 11;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
 					pop;
 				L2:	sload 7;
-					getstatic_s 17;		// short com/imox/carrierprivileges/carrierprivileges.sTPDALength
+					getstatic_s 10;		// short com/imox/carrierprivileges/carrierprivileges.sTPDALength
 					sadd;
 					sstore 7;
 					sload 7;
 					sstore_2;
 					sload 6;
-					getstatic_s 17;		// short com/imox/carrierprivileges/carrierprivileges.sTPDALength
+					getstatic_s 10;		// short com/imox/carrierprivileges/carrierprivileges.sTPDALength
 					sadd;
 					sstore 6;
 					aload_1;
 					arraylength;
 					sload_2;
-					getstatic_a 19;		// reference com/imox/carrierprivileges/carrierprivileges.TIMER_VALUE_INIT
+					getstatic_a 12;		// reference com/imox/carrierprivileges/carrierprivileges.TIMER_VALUE_INIT
 					arraylength;
 					sadd;
 					if_scmple L5;
@@ -527,16 +465,16 @@
 				L4:	aload_0;
 					aload_1;
 					sload_2;
-					getstatic_a 19;		// reference com/imox/carrierprivileges/carrierprivileges.TIMER_VALUE_INIT
-					invokevirtual 20;		// com/imox/carrierprivileges/carrierprivileges.fTimePrepare([BS[B)Z
+					getstatic_a 12;		// reference com/imox/carrierprivileges/carrierprivileges.TIMER_VALUE_INIT
+					invokevirtual 13;		// com/imox/carrierprivileges/carrierprivileges.fTimePrepare([BS[B)Z
 					pop;
 				L5:	sload_2;
-					getstatic_a 19;		// reference com/imox/carrierprivileges/carrierprivileges.TIMER_VALUE_INIT
+					getstatic_a 12;		// reference com/imox/carrierprivileges/carrierprivileges.TIMER_VALUE_INIT
 					arraylength;
 					sadd;
 					sstore_2;
 					sload 6;
-					getstatic_a 19;		// reference com/imox/carrierprivileges/carrierprivileges.TIMER_VALUE_INIT
+					getstatic_a 12;		// reference com/imox/carrierprivileges/carrierprivileges.TIMER_VALUE_INIT
 					arraylength;
 					sadd;
 					sstore 6;
@@ -557,14 +495,14 @@
 					sconst_1;
 					sadd;
 					baload;
-					invokestatic 21;		// javacard/framework/Util.makeShort(BB)S
-					putstatic_s 22;		// short com/imox/carrierprivileges/carrierprivileges.nSMSIMEIRetriesSTCounter_MAX
+					invokestatic 14;		// javacard/framework/Util.makeShort(BB)S
+					putstatic_s 15;		// short com/imox/carrierprivileges/carrierprivileges.nSMSIMEIRetriesSTCounter_MAX
 				L8:	sinc 2 2;
 					sinc 6 2;
 					aload_1;
 					arraylength;
 					sload_2;
-					getstatic_a 23;		// reference com/imox/carrierprivileges/carrierprivileges.MCC
+					getstatic_a 16;		// reference com/imox/carrierprivileges/carrierprivileges.MCC
 					arraylength;
 					sadd;
 					if_scmple L11;
@@ -573,31 +511,31 @@
 					if_scmpge L11;
 				L10:	aload_1;
 					sload_2;
-					getstatic_a 23;		// reference com/imox/carrierprivileges/carrierprivileges.MCC
+					getstatic_a 16;		// reference com/imox/carrierprivileges/carrierprivileges.MCC
 					sconst_0;
-					getstatic_a 23;		// reference com/imox/carrierprivileges/carrierprivileges.MCC
+					getstatic_a 16;		// reference com/imox/carrierprivileges/carrierprivileges.MCC
 					arraylength;
-					invokestatic 18;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					invokestatic 11;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
 					pop;
 					aload_0;
-					getstatic_a 24;		// reference com/imox/carrierprivileges/carrierprivileges.URL
-					getstatic_a 23;		// reference com/imox/carrierprivileges/carrierprivileges.MCC
-					invokevirtual 25;		// com/imox/carrierprivileges/carrierprivileges.fURLReplaceWithMCC([B[B)Z
+					getstatic_a 17;		// reference com/imox/carrierprivileges/carrierprivileges.URL
+					getstatic_a 16;		// reference com/imox/carrierprivileges/carrierprivileges.MCC
+					invokevirtual 18;		// com/imox/carrierprivileges/carrierprivileges.fURLReplaceWithMCC([B[B)Z
 					pop;
 				L11:	sload_2;
-					getstatic_a 23;		// reference com/imox/carrierprivileges/carrierprivileges.MCC
+					getstatic_a 16;		// reference com/imox/carrierprivileges/carrierprivileges.MCC
 					arraylength;
 					sadd;
 					sstore_2;
 					sload 6;
-					getstatic_a 23;		// reference com/imox/carrierprivileges/carrierprivileges.MCC
+					getstatic_a 16;		// reference com/imox/carrierprivileges/carrierprivileges.MCC
 					arraylength;
 					sadd;
 					sstore 6;
 					aload_1;
 					arraylength;
 					sload_2;
-					getstatic_a 26;		// reference com/imox/carrierprivileges/carrierprivileges.MNC
+					getstatic_a 19;		// reference com/imox/carrierprivileges/carrierprivileges.MNC
 					arraylength;
 					sadd;
 					if_scmple L14;
@@ -606,24 +544,24 @@
 					if_scmpge L14;
 				L13:	aload_1;
 					sload_2;
-					getstatic_a 26;		// reference com/imox/carrierprivileges/carrierprivileges.MNC
+					getstatic_a 19;		// reference com/imox/carrierprivileges/carrierprivileges.MNC
 					sconst_0;
-					getstatic_a 26;		// reference com/imox/carrierprivileges/carrierprivileges.MNC
+					getstatic_a 19;		// reference com/imox/carrierprivileges/carrierprivileges.MNC
 					arraylength;
-					invokestatic 18;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					invokestatic 11;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
 					pop;
 					aload_0;
-					getstatic_a 24;		// reference com/imox/carrierprivileges/carrierprivileges.URL
-					getstatic_a 26;		// reference com/imox/carrierprivileges/carrierprivileges.MNC
-					invokevirtual 27;		// com/imox/carrierprivileges/carrierprivileges.fURLReplaceWithMNC([B[B)Z
+					getstatic_a 17;		// reference com/imox/carrierprivileges/carrierprivileges.URL
+					getstatic_a 19;		// reference com/imox/carrierprivileges/carrierprivileges.MNC
+					invokevirtual 20;		// com/imox/carrierprivileges/carrierprivileges.fURLReplaceWithMNC([B[B)Z
 					pop;
 				L14:	sload_2;
-					getstatic_a 26;		// reference com/imox/carrierprivileges/carrierprivileges.MNC
+					getstatic_a 19;		// reference com/imox/carrierprivileges/carrierprivileges.MNC
 					arraylength;
 					sadd;
 					sstore_2;
 					sload 6;
-					getstatic_a 26;		// reference com/imox/carrierprivileges/carrierprivileges.MNC
+					getstatic_a 19;		// reference com/imox/carrierprivileges/carrierprivileges.MNC
 					arraylength;
 					sadd;
 					sstore 6;
@@ -640,10 +578,10 @@
 					bspush 49;
 					if_scmpne L18;
 				L17:	sconst_1;
-					putstatic_b 28;		// boolean com/imox/carrierprivileges/carrierprivileges.bTIMERTerminalProfile
+					putstatic_b 21;		// boolean com/imox/carrierprivileges/carrierprivileges.bTIMERTerminalProfile
 					goto L19;
 				L18:	sconst_1;
-					putstatic_b 29;		// boolean com/imox/carrierprivileges/carrierprivileges.bSendSMSIMEI
+					putstatic_b 22;		// boolean com/imox/carrierprivileges/carrierprivileges.bSendSMSIMEI
 				L19:	sinc 2 1;
 					sinc 6 1;
 					aload_1;
@@ -659,7 +597,7 @@
 					bspush 49;
 					if_scmpne L23;
 				L22:	sconst_1;
-					putstatic_b 30;		// boolean com/imox/carrierprivileges/carrierprivileges.bNoResponseUserRetries
+					putstatic_b 23;		// boolean com/imox/carrierprivileges/carrierprivileges.bNoResponseUserRetries
 				L23:	sinc 2 1;
 					sinc 6 1;
 					aload_1;
@@ -675,7 +613,7 @@
 					sconst_1;
 					if_scmpne L27;
 				L26:	sconst_1;
-					putstatic_b 31;		// boolean com/imox/carrierprivileges/carrierprivileges.bSMSPP_F2_Supported
+					putstatic_b 24;		// boolean com/imox/carrierprivileges/carrierprivileges.bSMSPP_F2_Supported
 				L27:	sinc 2 1;
 					sinc 6 1;
 					aload_1;
@@ -695,12 +633,12 @@
 					sconst_1;
 					sadd;
 					baload;
-					invokestatic 21;		// javacard/framework/Util.makeShort(BB)S
-					putstatic_s 32;		// short com/imox/carrierprivileges/carrierprivileges.nAPK_APDU_MAX_Counter
-					getstatic_s 32;		// short com/imox/carrierprivileges/carrierprivileges.nAPK_APDU_MAX_Counter
+					invokestatic 14;		// javacard/framework/Util.makeShort(BB)S
+					putstatic_s 25;		// short com/imox/carrierprivileges/carrierprivileges.nAPK_APDU_MAX_Counter
+					getstatic_s 25;		// short com/imox/carrierprivileges/carrierprivileges.nAPK_APDU_MAX_Counter
 					sconst_2;
 					sdiv;
-					putstatic_s 33;		// short com/imox/carrierprivileges/carrierprivileges.nAPK_APDU_MAX_Counter_Backup
+					putstatic_s 26;		// short com/imox/carrierprivileges/carrierprivileges.nAPK_APDU_MAX_Counter_Backup
 				L30:	sinc 2 2;
 					sinc 6 2;
 					aload_1;
@@ -720,8 +658,8 @@
 					sconst_1;
 					sadd;
 					baload;
-					invokestatic 21;		// javacard/framework/Util.makeShort(BB)S
-					putstatic_s 34;		// short com/imox/carrierprivileges/carrierprivileges.MAX_COUNTER_GETLOCI
+					invokestatic 14;		// javacard/framework/Util.makeShort(BB)S
+					putstatic_s 27;		// short com/imox/carrierprivileges/carrierprivileges.MAX_COUNTER_GETLOCI
 				L33:	sinc 2 2;
 					sinc 6 2;
 					aload_1;
@@ -741,8 +679,8 @@
 					sconst_1;
 					sadd;
 					baload;
-					invokestatic 21;		// javacard/framework/Util.makeShort(BB)S
-					putstatic_s 35;		// short com/imox/carrierprivileges/carrierprivileges.MAX_COUNTER_GETLOCI_APK
+					invokestatic 14;		// javacard/framework/Util.makeShort(BB)S
+					putstatic_s 28;		// short com/imox/carrierprivileges/carrierprivileges.MAX_COUNTER_GETLOCI_APK
 				L36:	sinc 2 2;
 					sinc 6 2;
 					aload_1;
@@ -758,7 +696,7 @@
 					bspush -31;
 					if_scmpne L40;
 				L39:	sconst_0;
-					putstatic_b 36;		// boolean com/imox/carrierprivileges/carrierprivileges.bSMSPP_TPDA_Validate
+					putstatic_b 29;		// boolean com/imox/carrierprivileges/carrierprivileges.bSMSPP_TPDA_Validate
 				L40:	sinc 2 1;
 					sinc 6 1;
 					aload_1;
@@ -774,32 +712,32 @@
 					bspush 49;
 					if_scmpne L44;
 				L43:	sconst_1;
-					putstatic_b 37;		// boolean com/imox/carrierprivileges/carrierprivileges.bTimerActivateIMEIChange
+					putstatic_b 30;		// boolean com/imox/carrierprivileges/carrierprivileges.bTimerActivateIMEIChange
 				L44:	sinc 2 1;
 					sinc 6 1;
-					invokestatic 38;		// uicc/toolkit/ToolkitRegistrySystem.getEntry()Luicc/toolkit/ToolkitRegistry;
-					putstatic_a 39;		// reference com/imox/carrierprivileges/carrierprivileges.mReg
-					getstatic_a 39;		// reference com/imox/carrierprivileges/carrierprivileges.mReg
+					invokestatic 31;		// uicc/toolkit/ToolkitRegistrySystem.getEntry()Luicc/toolkit/ToolkitRegistry;
+					putstatic_a 32;		// reference com/imox/carrierprivileges/carrierprivileges.mReg
+					getstatic_a 32;		// reference com/imox/carrierprivileges/carrierprivileges.mReg
 					sconst_1;
-					invokeinterface 2 40 0;		// uicc/toolkit/ToolkitRegistry
-					getstatic_a 39;		// reference com/imox/carrierprivileges/carrierprivileges.mReg
-					invokeinterface 1 40 8;		// uicc/toolkit/ToolkitRegistry
-					putstatic_b 41;		// byte com/imox/carrierprivileges/carrierprivileges.TIMER_ID
-					getstatic_a 39;		// reference com/imox/carrierprivileges/carrierprivileges.mReg
+					invokeinterface 2 33 0;		// uicc/toolkit/ToolkitRegistry
+					getstatic_a 32;		// reference com/imox/carrierprivileges/carrierprivileges.mReg
+					invokeinterface 1 33 8;		// uicc/toolkit/ToolkitRegistry
+					putstatic_b 34;		// byte com/imox/carrierprivileges/carrierprivileges.TIMER_ID
+					getstatic_a 32;		// reference com/imox/carrierprivileges/carrierprivileges.mReg
 					sconst_2;
-					invokeinterface 2 40 0;		// uicc/toolkit/ToolkitRegistry
-					getstatic_a 39;		// reference com/imox/carrierprivileges/carrierprivileges.mReg
+					invokeinterface 2 33 0;		// uicc/toolkit/ToolkitRegistry
+					getstatic_a 32;		// reference com/imox/carrierprivileges/carrierprivileges.mReg
 					sconst_3;
-					invokeinterface 2 40 0;		// uicc/toolkit/ToolkitRegistry
-					getstatic_a 39;		// reference com/imox/carrierprivileges/carrierprivileges.mReg
+					invokeinterface 2 33 0;		// uicc/toolkit/ToolkitRegistry
+					getstatic_a 32;		// reference com/imox/carrierprivileges/carrierprivileges.mReg
 					sconst_4;
-					invokeinterface 2 40 0;		// uicc/toolkit/ToolkitRegistry
-					getstatic_a 39;		// reference com/imox/carrierprivileges/carrierprivileges.mReg
+					invokeinterface 2 33 0;		// uicc/toolkit/ToolkitRegistry
+					getstatic_a 32;		// reference com/imox/carrierprivileges/carrierprivileges.mReg
 					sconst_5;
-					invokeinterface 2 40 0;		// uicc/toolkit/ToolkitRegistry
-					getstatic_a 39;		// reference com/imox/carrierprivileges/carrierprivileges.mReg
+					invokeinterface 2 33 0;		// uicc/toolkit/ToolkitRegistry
+					getstatic_a 32;		// reference com/imox/carrierprivileges/carrierprivileges.mReg
 					bspush 30;
-					invokeinterface 2 40 10;		// uicc/toolkit/ToolkitRegistry
+					invokeinterface 2 33 10;		// uicc/toolkit/ToolkitRegistry
 					return;
 		}
 
@@ -807,7 +745,7 @@
 			.stack 1;
 			.locals 0;
 
-				L0:	getstatic_b 42;		// byte com/imox/carrierprivileges/carrierprivileges.bAPK_APDU_VAL
+				L0:	getstatic_b 35;		// byte com/imox/carrierprivileges/carrierprivileges.bAPK_APDU_VAL
 					ifne L2;
 				L1:	sconst_1;
 					sreturn;
@@ -820,7 +758,7 @@
 			.locals 0;
 
 				L0:	aload_0;
-					invokespecial 43;		// com/imox/carrierprivileges/carrierprivileges.fAPK_APDU_Received()Z
+					invokespecial 36;		// com/imox/carrierprivileges/carrierprivileges.fAPK_APDU_Received()Z
 					sconst_1;
 					sxor;
 					sreturn;
@@ -832,29 +770,29 @@
 
 				L0:	sconst_0;
 					sstore 5;
-				L1:	invokestatic 45;		// uicc/toolkit/ProactiveHandlerSystem.getTheHandler()Luicc/toolkit/ProactiveHandler;
+				L1:	invokestatic 38;		// uicc/toolkit/ProactiveHandlerSystem.getTheHandler()Luicc/toolkit/ProactiveHandler;
 					astore 6;
 					aload 6;
 					bspush 38;
 					sload_1;
 					bspush -127;
-					invokeinterface 4 46 23;		// uicc/toolkit/ProactiveHandler
+					invokeinterface 4 39 23;		// uicc/toolkit/ProactiveHandler
 					aload 6;
-					invokeinterface 1 46 24;		// uicc/toolkit/ProactiveHandler
+					invokeinterface 1 39 24;		// uicc/toolkit/ProactiveHandler
 					sstore 4;
-					invokestatic 47;		// uicc/toolkit/ProactiveResponseHandlerSystem.getTheHandler()Luicc/toolkit/ProactiveResponseHandler;
+					invokestatic 40;		// uicc/toolkit/ProactiveResponseHandlerSystem.getTheHandler()Luicc/toolkit/ProactiveResponseHandler;
 					astore 7;
 					aload 7;
 					sconst_2;
 					sconst_1;
-					invokeinterface 3 48 2;		// uicc/toolkit/ViewHandler
+					invokeinterface 3 41 2;		// uicc/toolkit/ViewHandler
 					sstore 4;
 					sload_1;
 					ifne L3;
 				L2:	aload 7;
 					bspush 19;
 					sconst_1;
-					invokeinterface 3 48 2;		// uicc/toolkit/ViewHandler
+					invokeinterface 3 41 2;		// uicc/toolkit/ViewHandler
 					sstore 4;
 				L3:	sload_1;
 					sconst_1;
@@ -862,7 +800,7 @@
 				L4:	aload 7;
 					bspush 20;
 					sconst_1;
-					invokeinterface 3 48 2;		// uicc/toolkit/ViewHandler
+					invokeinterface 3 41 2;		// uicc/toolkit/ViewHandler
 					sstore 4;
 				L5:	sload 4;
 					sconst_1;
@@ -871,7 +809,7 @@
 					sconst_2;
 					if_scmpne L12;
 				L7:	aload 7;
-					invokeinterface 1 48 3;		// uicc/toolkit/ViewHandler
+					invokeinterface 1 41 3;		// uicc/toolkit/ViewHandler
 					sstore 5;
 					sload 5;
 					ifle L12;
@@ -884,7 +822,7 @@
 					aload_2;
 					sload_3;
 					sload 5;
-					invokeinterface 5 48 6;		// uicc/toolkit/ViewHandler
+					invokeinterface 5 41 6;		// uicc/toolkit/ViewHandler
 					pop;
 				L10:	goto L12;
 				L11:	pop;
@@ -894,7 +832,7 @@
 					sreturn;
 			.exceptionTable {
 				// start_block end_block handler_block catch_type_index
-				L1 L10 L11 44;
+				L1 L10 L11 37;
 			}
 		}
 
@@ -906,12 +844,12 @@
 					sconst_1;
 					aload_1;
 					sload_2;
-					invokevirtual 49;		// com/imox/carrierprivileges/carrierprivileges.fGetLocalInformation(B[BS)Z
+					invokevirtual 42;		// com/imox/carrierprivileges/carrierprivileges.fGetLocalInformation(B[BS)Z
 					sstore 4;
 					sload_3;
 					iflt L4;
 				L1:	aload_0;
-					invokespecial 50;		// com/imox/carrierprivileges/carrierprivileges.fLaunchBrowserCheck()Z
+					invokespecial 43;		// com/imox/carrierprivileges/carrierprivileges.fLaunchBrowserCheck()Z
 					ifeq L3;
 				L2:	aload_1;
 					sload_2;
@@ -938,7 +876,7 @@
 					sconst_0;
 					aload_1;
 					sload_2;
-					invokevirtual 49;		// com/imox/carrierprivileges/carrierprivileges.fGetLocalInformation(B[BS)Z
+					invokevirtual 42;		// com/imox/carrierprivileges/carrierprivileges.fGetLocalInformation(B[BS)Z
 					sreturn;
 		}
 
@@ -947,7 +885,7 @@
 			.locals 0;
 
 				L0:	bspush 70;
-					invokestatic 51;		// uicc/toolkit/TerminalProfile.check(B)Z
+					invokestatic 44;		// uicc/toolkit/TerminalProfile.check(B)Z
 					ifeq L2;
 				L1:	sconst_1;
 					sreturn;
@@ -972,7 +910,7 @@
 				L2:	aload_1;
 					sload_2;
 					baload;
-					putstatic_b 52;		// byte com/imox/carrierprivileges/carrierprivileges.DisplayText_DCS_BIT_DATA
+					putstatic_b 45;		// byte com/imox/carrierprivileges/carrierprivileges.DisplayText_DCS_BIT_DATA
 					sload_2;
 					sreturn;
 				L3:	sload_2;
@@ -991,7 +929,7 @@
 					sconst_1;
 					sadd;
 					baload;
-					invokestatic 21;		// javacard/framework/Util.makeShort(BB)S
+					invokestatic 14;		// javacard/framework/Util.makeShort(BB)S
 					sstore 4;
 					sload 4;
 					ifle L7;
@@ -1006,7 +944,7 @@
 					aload_1;
 					arraylength;
 					sconst_m1;
-					invokestatic 53;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					invokestatic 46;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
 					pop;
 					sload 4;
 					bspush 127;
@@ -1017,7 +955,7 @@
 					sconst_2;
 					sadd;
 					baload;
-					invokestatic 21;		// javacard/framework/Util.makeShort(BB)S
+					invokestatic 14;		// javacard/framework/Util.makeShort(BB)S
 					sstore 4;
 					sload 4;
 					sconst_1;
@@ -1035,7 +973,7 @@
 					arraylength;
 					sconst_1;
 					ssub;
-					invokestatic 54;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					invokestatic 47;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 					pop;
 					goto L7;
 				L5:	aload_2;
@@ -1047,7 +985,7 @@
 					sload 4;
 					sconst_1;
 					sadd;
-					invokestatic 54;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					invokestatic 47;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 					pop;
 					goto L7;
 				L6:	aload_2;
@@ -1059,7 +997,7 @@
 					sload 4;
 					sconst_1;
 					sadd;
-					invokestatic 54;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					invokestatic 47;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 					pop;
 				L7:	return;
 		}
@@ -1076,7 +1014,7 @@
 					sconst_3;
 					sconst_0;
 					bastore;
-					getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+					getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sload 5;
 					dup;
 					sconst_1;
@@ -1093,7 +1031,7 @@
 					bspush 14;
 					sload_1;
 					bastore;
-					getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+					getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sload 5;
 					dup;
 					sconst_1;
@@ -1103,7 +1041,7 @@
 					bspush 13;
 					baload;
 					bastore;
-					getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+					getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sload 5;
 					dup;
 					sconst_1;
@@ -1117,11 +1055,11 @@
 					ifeq L5;
 				L4:	getfield_a_this 3;		// reference com/imox/carrierprivileges/carrierprivileges.IMEIOld
 					sconst_0;
-					getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+					getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sload 5;
 					getfield_a_this 3;		// reference com/imox/carrierprivileges/carrierprivileges.IMEIOld
 					arraylength;
-					invokestatic 54;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					invokestatic 47;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 					pop;
 					sload 5;
 					getfield_a_this 3;		// reference com/imox/carrierprivileges/carrierprivileges.IMEIOld
@@ -1129,10 +1067,10 @@
 					sadd;
 					sstore 5;
 				L5:	aload_0;
-					getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+					getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sconst_0;
 					sload 5;
-					invokespecial 56;		// com/imox/carrierprivileges/carrierprivileges.fnsendSms([BSS)Z
+					invokespecial 49;		// com/imox/carrierprivileges/carrierprivileges.fnsendSms([BSS)Z
 					pop;
 					return;
 		}
@@ -1166,7 +1104,7 @@
 					sconst_1;
 					sadd;
 					baload;
-					invokestatic 21;		// javacard/framework/Util.makeShort(BB)S
+					invokestatic 14;		// javacard/framework/Util.makeShort(BB)S
 					sstore_3;
 					sload_3;
 					sspush 32767;
@@ -1179,7 +1117,7 @@
 					sload_3;
 					aload_1;
 					sload_2;
-					invokevirtual 57;		// com/imox/carrierprivileges/carrierprivileges.fromShortToBytesIntoByteArray(S[BS)V
+					invokevirtual 50;		// com/imox/carrierprivileges/carrierprivileges.fromShortToBytesIntoByteArray(S[BS)V
 					sload_3;
 					sreturn;
 		}
@@ -1192,26 +1130,26 @@
 					sstore_2;
 					getfield_a_this 3;		// reference com/imox/carrierprivileges/carrierprivileges.IMEIOld
 					sconst_0;
-					getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+					getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sload_2;
 					getfield_a_this 3;		// reference com/imox/carrierprivileges/carrierprivileges.IMEIOld
 					arraylength;
-					invokestatic 54;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					invokestatic 47;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 					pop;
 					sload_2;
 					getfield_a_this 3;		// reference com/imox/carrierprivileges/carrierprivileges.IMEIOld
 					arraylength;
 					sadd;
 					sstore_2;
-					getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+					getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sload_2;
 					dup;
 					sconst_1;
 					sadd;
 					sstore_2;
-					getstatic_b 42;		// byte com/imox/carrierprivileges/carrierprivileges.bAPK_APDU_VAL
+					getstatic_b 35;		// byte com/imox/carrierprivileges/carrierprivileges.bAPK_APDU_VAL
 					bastore;
-					getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+					getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sload_2;
 					dup;
 					sconst_1;
@@ -1221,7 +1159,7 @@
 					bspush 16;
 					baload;
 					bastore;
-					getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+					getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sload_2;
 					dup;
 					sconst_1;
@@ -1233,24 +1171,24 @@
 					bastore;
 					sload_1;
 					ifeq L2;
-				L1:	getstatic_a 58;		// reference com/imox/carrierprivileges/carrierprivileges.COTA
+				L1:	getstatic_a 51;		// reference com/imox/carrierprivileges/carrierprivileges.COTA
 					sconst_0;
-					getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+					getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sload_2;
-					getstatic_a 58;		// reference com/imox/carrierprivileges/carrierprivileges.COTA
+					getstatic_a 51;		// reference com/imox/carrierprivileges/carrierprivileges.COTA
 					arraylength;
-					invokestatic 54;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					invokestatic 47;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 					pop;
 					sload_2;
-					getstatic_a 58;		// reference com/imox/carrierprivileges/carrierprivileges.COTA
+					getstatic_a 51;		// reference com/imox/carrierprivileges/carrierprivileges.COTA
 					arraylength;
 					sadd;
 					sstore_2;
 				L2:	aload_0;
-					getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+					getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sconst_0;
 					sload_2;
-					invokespecial 56;		// com/imox/carrierprivileges/carrierprivileges.fnsendSms([BSS)Z
+					invokespecial 49;		// com/imox/carrierprivileges/carrierprivileges.fnsendSms([BSS)Z
 					sreturn;
 		}
 
@@ -1262,11 +1200,11 @@
 					sstore_3;
 					getfield_a_this 5;		// reference com/imox/carrierprivileges/carrierprivileges.loci
 					sconst_0;
-					getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+					getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sload_3;
 					getfield_a_this 5;		// reference com/imox/carrierprivileges/carrierprivileges.loci
 					arraylength;
-					invokestatic 54;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					invokestatic 47;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 					pop;
 					sload_3;
 					getfield_a_this 5;		// reference com/imox/carrierprivileges/carrierprivileges.loci
@@ -1276,23 +1214,23 @@
 					sload_2;
 					ifeq L2;
 				L1:	aload_0;
-					getstatic_s 34;		// short com/imox/carrierprivileges/carrierprivileges.MAX_COUNTER_GETLOCI
-					getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+					getstatic_s 27;		// short com/imox/carrierprivileges/carrierprivileges.MAX_COUNTER_GETLOCI
+					getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sload_3;
-					invokevirtual 59;		// com/imox/carrierprivileges/carrierprivileges.fShortToByte(S[BS)V
+					invokevirtual 52;		// com/imox/carrierprivileges/carrierprivileges.fShortToByte(S[BS)V
 					sinc 3 2;
 					aload_0;
-					getstatic_s 35;		// short com/imox/carrierprivileges/carrierprivileges.MAX_COUNTER_GETLOCI_APK
-					getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+					getstatic_s 28;		// short com/imox/carrierprivileges/carrierprivileges.MAX_COUNTER_GETLOCI_APK
+					getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sload_3;
-					invokevirtual 59;		// com/imox/carrierprivileges/carrierprivileges.fShortToByte(S[BS)V
+					invokevirtual 52;		// com/imox/carrierprivileges/carrierprivileges.fShortToByte(S[BS)V
 					sinc 3 2;
 				L2:	aload_0;
 					sload_1;
-					getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+					getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sconst_0;
 					sload_3;
-					invokespecial 60;		// com/imox/carrierprivileges/carrierprivileges.fSendSMSWithCOTAVer(Z[BSS)Z
+					invokespecial 53;		// com/imox/carrierprivileges/carrierprivileges.fSendSMSWithCOTAVer(Z[BSS)Z
 					sreturn;
 		}
 
@@ -1304,10 +1242,10 @@
 					sstore 5;
 					aload_2;
 					sload_3;
-					getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+					getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sload 5;
 					sload 4;
-					invokestatic 54;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					invokestatic 47;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 					pop;
 					sload 5;
 					sload 4;
@@ -1315,24 +1253,24 @@
 					sstore 5;
 					sload_1;
 					ifeq L2;
-				L1:	getstatic_a 58;		// reference com/imox/carrierprivileges/carrierprivileges.COTA
+				L1:	getstatic_a 51;		// reference com/imox/carrierprivileges/carrierprivileges.COTA
 					sconst_0;
-					getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+					getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sload 5;
-					getstatic_a 58;		// reference com/imox/carrierprivileges/carrierprivileges.COTA
+					getstatic_a 51;		// reference com/imox/carrierprivileges/carrierprivileges.COTA
 					arraylength;
-					invokestatic 54;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					invokestatic 47;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 					pop;
 					sload 5;
-					getstatic_a 58;		// reference com/imox/carrierprivileges/carrierprivileges.COTA
+					getstatic_a 51;		// reference com/imox/carrierprivileges/carrierprivileges.COTA
 					arraylength;
 					sadd;
 					sstore 5;
 				L2:	aload_0;
-					getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+					getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sconst_0;
 					sload 5;
-					invokespecial 56;		// com/imox/carrierprivileges/carrierprivileges.fnsendSms([BSS)Z
+					invokespecial 49;		// com/imox/carrierprivileges/carrierprivileges.fnsendSms([BSS)Z
 					sreturn;
 		}
 
@@ -1365,25 +1303,25 @@
 			.stack 6;
 			.locals 2;
 
-				L0:	invokestatic 45;		// uicc/toolkit/ProactiveHandlerSystem.getTheHandler()Luicc/toolkit/ProactiveHandler;
+				L0:	invokestatic 38;		// uicc/toolkit/ProactiveHandlerSystem.getTheHandler()Luicc/toolkit/ProactiveHandler;
 					astore_2;
-					invokestatic 45;		// uicc/toolkit/ProactiveHandlerSystem.getTheHandler()Luicc/toolkit/ProactiveHandler;
+					invokestatic 38;		// uicc/toolkit/ProactiveHandlerSystem.getTheHandler()Luicc/toolkit/ProactiveHandler;
 					astore_2;
 					sconst_0;
 					aload_1;
 					sconst_0;
 					baload;
-					invokestatic 21;		// javacard/framework/Util.makeShort(BB)S
+					invokestatic 14;		// javacard/framework/Util.makeShort(BB)S
 					sstore_3;
 					aload_2;
 					bspush -127;
-					getstatic_b 52;		// byte com/imox/carrierprivileges/carrierprivileges.DisplayText_DCS_BIT_DATA
+					getstatic_b 45;		// byte com/imox/carrierprivileges/carrierprivileges.DisplayText_DCS_BIT_DATA
 					aload_1;
 					sconst_1;
 					sload_3;
-					invokeinterface 6 46 25;		// uicc/toolkit/ProactiveHandler
+					invokeinterface 6 39 25;		// uicc/toolkit/ProactiveHandler
 					aload_2;
-					invokeinterface 1 46 24;		// uicc/toolkit/ProactiveHandler
+					invokeinterface 1 39 24;		// uicc/toolkit/ProactiveHandler
 					sreturn;
 		}
 
@@ -1398,7 +1336,7 @@
 					aload_0;
 					aload_1;
 					sload_2;
-					invokevirtual 61;		// com/imox/carrierprivileges/carrierprivileges.fTimerNull([BS)Z
+					invokevirtual 54;		// com/imox/carrierprivileges/carrierprivileges.fTimerNull([BS)Z
 					ifeq L2;
 				L1:	sconst_0;
 					sreturn;
@@ -1432,11 +1370,11 @@
 
 				L0:	aload_1;
 					sload_2;
-					getstatic_a 62;		// reference com/imox/carrierprivileges/carrierprivileges.TIMER_VALUE_NULL
+					getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.TIMER_VALUE_NULL
 					sconst_0;
-					getstatic_a 62;		// reference com/imox/carrierprivileges/carrierprivileges.TIMER_VALUE_NULL
+					getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.TIMER_VALUE_NULL
 					arraylength;
-					invokestatic 63;		// javacard/framework/Util.arrayCompare([BS[BSS)B
+					invokestatic 56;		// javacard/framework/Util.arrayCompare([BS[BSS)B
 					ifne L2;
 				L1:	sconst_1;
 					sreturn;
@@ -1452,7 +1390,7 @@
 					sconst_1;
 					aload_1;
 					aload_2;
-					invokevirtual 64;		// com/imox/carrierprivileges/carrierprivileges.fURLReplaceWithMCC_MNC(Z[B[B)Z
+					invokevirtual 57;		// com/imox/carrierprivileges/carrierprivileges.fURLReplaceWithMCC_MNC(Z[B[B)Z
 					sreturn;
 		}
 
@@ -1601,7 +1539,7 @@
 					sconst_0;
 					aload_1;
 					aload_2;
-					invokevirtual 64;		// com/imox/carrierprivileges/carrierprivileges.fURLReplaceWithMCC_MNC(Z[B[B)Z
+					invokevirtual 57;		// com/imox/carrierprivileges/carrierprivileges.fURLReplaceWithMCC_MNC(Z[B[B)Z
 					sreturn;
 		}
 
@@ -1684,266 +1622,6 @@
 					sreturn;
 		}
 
-		.method private fWriteLog(S[BSS)Z {
-			.stack 7;
-			.locals 0;
-
-				L0:	getstatic_a 15;		// reference com/imox/carrierprivileges/carrierprivileges.usimFile
-					sspush 16128;
-					invokeinterface 2 66 1;		// uicc/access/FileView
-					getstatic_a 15;		// reference com/imox/carrierprivileges/carrierprivileges.usimFile
-					sspush 32528;
-					invokeinterface 2 66 1;		// uicc/access/FileView
-					getstatic_a 15;		// reference com/imox/carrierprivileges/carrierprivileges.usimFile
-					sspush 28476;
-					invokeinterface 2 66 1;		// uicc/access/FileView
-					getfield_a_this 7;		// reference com/imox/carrierprivileges/carrierprivileges.SMS
-					sconst_0;
-					getfield_a_this 7;		// reference com/imox/carrierprivileges/carrierprivileges.SMS
-					arraylength;
-					sconst_0;
-					invokestatic 53;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
-					pop;
-					getstatic_a 15;		// reference com/imox/carrierprivileges/carrierprivileges.usimFile
-					sload_1;
-					sconst_4;
-					sconst_0;
-					getfield_a_this 7;		// reference com/imox/carrierprivileges/carrierprivileges.SMS
-					sconst_0;
-					getfield_a_this 7;		// reference com/imox/carrierprivileges/carrierprivileges.SMS
-					arraylength;
-					invokeinterface 7 66 7;		// uicc/access/FileView
-					sload 4;
-					ifle L8;
-				L1:	sload_3;
-					iflt L8;
-				L2:	getfield_a_this 7;		// reference com/imox/carrierprivileges/carrierprivileges.SMS
-					sconst_0;
-					getfield_a_this 7;		// reference com/imox/carrierprivileges/carrierprivileges.SMS
-					arraylength;
-					sconst_0;
-					invokestatic 53;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
-					pop;
-					sload 4;
-					bspush 127;
-					if_scmpgt L4;
-				L3:	aload_2;
-					sload_3;
-					getfield_a_this 7;		// reference com/imox/carrierprivileges/carrierprivileges.SMS
-					sconst_1;
-					sload 4;
-					invokestatic 18;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
-					pop;
-					getfield_a_this 7;		// reference com/imox/carrierprivileges/carrierprivileges.SMS
-					sconst_0;
-					sload 4;
-					s2b;
-					bastore;
-					goto L8;
-				L4:	sload 4;
-					sload_3;
-					ssub;
-					getfield_a_this 7;		// reference com/imox/carrierprivileges/carrierprivileges.SMS
-					arraylength;
-					sconst_2;
-					ssub;
-					if_scmplt L6;
-				L5:	aload_2;
-					sload_3;
-					getfield_a_this 7;		// reference com/imox/carrierprivileges/carrierprivileges.SMS
-					sconst_2;
-					getfield_a_this 7;		// reference com/imox/carrierprivileges/carrierprivileges.SMS
-					arraylength;
-					sconst_2;
-					ssub;
-					sload_3;
-					ssub;
-					invokestatic 18;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
-					pop;
-					goto L7;
-				L6:	aload_2;
-					sload_3;
-					getfield_a_this 7;		// reference com/imox/carrierprivileges/carrierprivileges.SMS
-					sconst_2;
-					sload 4;
-					invokestatic 18;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
-					pop;
-				L7:	aload_0;
-					sload 4;
-					getfield_a_this 7;		// reference com/imox/carrierprivileges/carrierprivileges.SMS
-					sconst_0;
-					invokevirtual 59;		// com/imox/carrierprivileges/carrierprivileges.fShortToByte(S[BS)V
-				L8:	getstatic_a 15;		// reference com/imox/carrierprivileges/carrierprivileges.usimFile
-					sload_1;
-					sconst_4;
-					sconst_0;
-					getfield_a_this 7;		// reference com/imox/carrierprivileges/carrierprivileges.SMS
-					sconst_0;
-					getfield_a_this 7;		// reference com/imox/carrierprivileges/carrierprivileges.SMS
-					arraylength;
-					invokeinterface 7 66 7;		// uicc/access/FileView
-					getfield_a_this 7;		// reference com/imox/carrierprivileges/carrierprivileges.SMS
-					sconst_0;
-					getfield_a_this 7;		// reference com/imox/carrierprivileges/carrierprivileges.SMS
-					arraylength;
-					sconst_0;
-					invokestatic 53;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
-					pop;
-					sconst_1;
-					sreturn;
-				L9:	pop;
-					sconst_0;
-					sreturn;
-			.exceptionTable {
-				// start_block end_block handler_block catch_type_index
-				L0 L9 L9 65;
-			}
-		}
-
-		.method private fWriteLogAfterSMSPP_Data([BSS)Z {
-			.stack 5;
-			.locals 0;
-
-				L0:	aload_0;
-					sconst_2;
-					aload_1;
-					sload_2;
-					sload_3;
-					invokespecial 67;		// com/imox/carrierprivileges/carrierprivileges.fWriteLog(S[BSS)Z
-					sreturn;
-		}
-
-		.method private fWriteLogAfterSMSPP_TPDA([BSS)Z {
-			.stack 5;
-			.locals 0;
-
-				L0:	aload_0;
-					sconst_1;
-					aload_1;
-					sload_2;
-					sload_3;
-					invokespecial 67;		// com/imox/carrierprivileges/carrierprivileges.fWriteLog(S[BSS)Z
-					sreturn;
-		}
-
-		.method private fWriteLogBeforeSENDSMS([BSS)Z {
-			.stack 5;
-			.locals 0;
-
-				L0:	aload_0;
-					sconst_3;
-					aload_1;
-					sload_2;
-					sload_3;
-					invokespecial 67;		// com/imox/carrierprivileges/carrierprivileges.fWriteLog(S[BSS)Z
-					sreturn;
-		}
-
-		.method private fWriteLogBoolean(SZ)Z {
-			.stack 5;
-			.locals 0;
-
-				L0:	sload_2;
-					ifeq L2;
-				L1:	getfield_a_this 8;		// reference com/imox/carrierprivileges/carrierprivileges.generalBufferLog
-					sconst_0;
-					bspush 49;
-					bastore;
-					goto L3;
-				L2:	getfield_a_this 8;		// reference com/imox/carrierprivileges/carrierprivileges.generalBufferLog
-					sconst_0;
-					bspush 48;
-					bastore;
-				L3:	aload_0;
-					sload_1;
-					getfield_a_this 8;		// reference com/imox/carrierprivileges/carrierprivileges.generalBufferLog
-					sconst_0;
-					sconst_1;
-					invokespecial 67;		// com/imox/carrierprivileges/carrierprivileges.fWriteLog(S[BSS)Z
-					sreturn;
-		}
-
-		.method private fWriteLogBoolean(Z)Z {
-			.stack 3;
-			.locals 0;
-
-				L0:	aload_0;
-					sconst_4;
-					sload_1;
-					invokespecial 68;		// com/imox/carrierprivileges/carrierprivileges.fWriteLogBoolean(SZ)Z
-					sreturn;
-		}
-
-		.method private fWriteLogByte(B)Z {
-			.stack 3;
-			.locals 0;
-
-				L0:	aload_0;
-					sconst_4;
-					sload_1;
-					invokespecial 69;		// com/imox/carrierprivileges/carrierprivileges.fWriteLogByte(SB)Z
-					sreturn;
-		}
-
-		.method private fWriteLogByte(SB)Z {
-			.stack 5;
-			.locals 0;
-
-				L0:	getfield_a_this 8;		// reference com/imox/carrierprivileges/carrierprivileges.generalBufferLog
-					sconst_0;
-					sload_2;
-					bastore;
-					aload_0;
-					sload_1;
-					getfield_a_this 8;		// reference com/imox/carrierprivileges/carrierprivileges.generalBufferLog
-					sconst_0;
-					sconst_1;
-					invokespecial 67;		// com/imox/carrierprivileges/carrierprivileges.fWriteLog(S[BSS)Z
-					sreturn;
-		}
-
-		.method private fWriteLogGeneral([BSS)Z {
-			.stack 5;
-			.locals 0;
-
-				L0:	aload_0;
-					sconst_4;
-					aload_1;
-					sload_2;
-					sload_3;
-					invokespecial 67;		// com/imox/carrierprivileges/carrierprivileges.fWriteLog(S[BSS)Z
-					sreturn;
-		}
-
-		.method private fWriteLogShort(S)Z {
-			.stack 3;
-			.locals 0;
-
-				L0:	aload_0;
-					sconst_4;
-					sload_1;
-					invokespecial 70;		// com/imox/carrierprivileges/carrierprivileges.fWriteLogShort(SS)Z
-					sreturn;
-		}
-
-		.method private fWriteLogShort(SS)Z {
-			.stack 5;
-			.locals 0;
-
-				L0:	aload_0;
-					sload_2;
-					getfield_a_this 8;		// reference com/imox/carrierprivileges/carrierprivileges.generalBufferLog
-					sconst_0;
-					invokevirtual 59;		// com/imox/carrierprivileges/carrierprivileges.fShortToByte(S[BS)V
-					aload_0;
-					sload_1;
-					getfield_a_this 8;		// reference com/imox/carrierprivileges/carrierprivileges.generalBufferLog
-					sconst_0;
-					sconst_2;
-					invokespecial 67;		// com/imox/carrierprivileges/carrierprivileges.fWriteLog(S[BSS)Z
-					sreturn;
-		}
-
 		.method private fnsendSms(B)Z {
 			.stack 4;
 			.locals 0;
@@ -1956,7 +1634,7 @@
 					getfield_a_this 4;		// reference com/imox/carrierprivileges/carrierprivileges.transByteArray
 					bspush 13;
 					sconst_1;
-					invokespecial 56;		// com/imox/carrierprivileges/carrierprivileges.fnsendSms([BSS)Z
+					invokespecial 49;		// com/imox/carrierprivileges/carrierprivileges.fnsendSms([BSS)Z
 					sreturn;
 		}
 
@@ -1964,7 +1642,7 @@
 			.stack 5;
 			.locals 3;
 
-				L0:	invokestatic 45;		// uicc/toolkit/ProactiveHandlerSystem.getTheHandler()Luicc/toolkit/ProactiveHandler;
+				L0:	invokestatic 38;		// uicc/toolkit/ProactiveHandlerSystem.getTheHandler()Luicc/toolkit/ProactiveHandler;
 					astore 4;
 					sconst_0;
 					sstore 5;
@@ -1986,15 +1664,15 @@
 					sstore 5;
 					sconst_0;
 					bastore;
-					getstatic_a 16;		// reference com/imox/carrierprivileges/carrierprivileges.baTPDA_Address
+					getstatic_a 9;		// reference com/imox/carrierprivileges/carrierprivileges.baTPDA_Address
 					sconst_0;
 					getfield_a_this 0;		// reference com/imox/carrierprivileges/carrierprivileges.byteArray2
 					sload 5;
-					getstatic_s 17;		// short com/imox/carrierprivileges/carrierprivileges.sTPDALength
-					invokestatic 18;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					getstatic_s 10;		// short com/imox/carrierprivileges/carrierprivileges.sTPDALength
+					invokestatic 11;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
 					pop;
 					sload 5;
-					getstatic_s 17;		// short com/imox/carrierprivileges/carrierprivileges.sTPDALength
+					getstatic_s 10;		// short com/imox/carrierprivileges/carrierprivileges.sTPDALength
 					sadd;
 					sstore 5;
 					getfield_a_this 0;		// reference com/imox/carrierprivileges/carrierprivileges.byteArray2
@@ -2027,7 +1705,7 @@
 					getfield_a_this 0;		// reference com/imox/carrierprivileges/carrierprivileges.byteArray2
 					sload 5;
 					sload_3;
-					invokestatic 18;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					invokestatic 11;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
 					pop;
 					sload 5;
 					sload_3;
@@ -2037,21 +1715,15 @@
 					bspush 19;
 					sconst_0;
 					bspush -125;
-					invokeinterface 4 46 23;		// uicc/toolkit/ProactiveHandler
+					invokeinterface 4 39 23;		// uicc/toolkit/ProactiveHandler
 					aload 4;
 					bspush 11;
 					getfield_a_this 0;		// reference com/imox/carrierprivileges/carrierprivileges.byteArray2
 					sconst_0;
 					sload 5;
-					invokeinterface 5 71 15;		// uicc/toolkit/EditHandler
-					aload_0;
-					getfield_a_this 0;		// reference com/imox/carrierprivileges/carrierprivileges.byteArray2
-					sconst_0;
-					sload 5;
-					invokespecial 72;		// com/imox/carrierprivileges/carrierprivileges.fWriteLogBeforeSENDSMS([BSS)Z
-					pop;
+					invokeinterface 5 58 15;		// uicc/toolkit/EditHandler
 					aload 4;
-					invokeinterface 1 46 24;		// uicc/toolkit/ProactiveHandler
+					invokeinterface 1 39 24;		// uicc/toolkit/ProactiveHandler
 					sstore 6;
 					sload 6;
 					ifne L2;
@@ -2105,11 +1777,11 @@
 			.stack 4;
 			.locals 0;
 
-				L0:	new 73;		// com/imox/carrierprivileges/carrierprivileges
+				L0:	new 59;		// com/imox/carrierprivileges/carrierprivileges
 					aload_0;
 					sload_1;
 					sload_2;
-					invokespecial 74;		// com/imox/carrierprivileges/carrierprivileges.<init>([BSS)V
+					invokespecial 60;		// com/imox/carrierprivileges/carrierprivileges.<init>([BSS)V
 					return;
 		}
 
@@ -2117,43 +1789,36 @@
 			.stack 5;
 			.locals 2;
 
-				L0:	invokestatic 45;		// uicc/toolkit/ProactiveHandlerSystem.getTheHandler()Luicc/toolkit/ProactiveHandler;
+				L0:	invokestatic 38;		// uicc/toolkit/ProactiveHandlerSystem.getTheHandler()Luicc/toolkit/ProactiveHandler;
 					astore_1;
 					aload_1;
 					bspush 21;
 					sconst_0;
 					bspush -127;
-					invokeinterface 4 46 23;		// uicc/toolkit/ProactiveHandler
+					invokeinterface 4 39 23;		// uicc/toolkit/ProactiveHandler
 					sconst_0;
-					getstatic_a 24;		// reference com/imox/carrierprivileges/carrierprivileges.URL
+					getstatic_a 17;		// reference com/imox/carrierprivileges/carrierprivileges.URL
 					sconst_0;
 					baload;
-					invokestatic 21;		// javacard/framework/Util.makeShort(BB)S
+					invokestatic 14;		// javacard/framework/Util.makeShort(BB)S
 					sstore_2;
 					aload_1;
 					bspush 49;
-					getstatic_a 24;		// reference com/imox/carrierprivileges/carrierprivileges.URL
+					getstatic_a 17;		// reference com/imox/carrierprivileges/carrierprivileges.URL
 					sconst_1;
 					sload_2;
-					invokeinterface 5 71 15;		// uicc/toolkit/EditHandler
+					invokeinterface 5 58 15;		// uicc/toolkit/EditHandler
 					aload_1;
-					invokeinterface 1 46 24;		// uicc/toolkit/ProactiveHandler
+					invokeinterface 1 39 24;		// uicc/toolkit/ProactiveHandler
 					pop;
 					sconst_1;
 					sreturn;
-				L1:	astore_1;
-					aload_0;
-					bspush 10;
-					aload_1;
-					invokevirtual 75;		// javacard/framework/CardRuntimeException.getReason()S
-					s2b;
-					invokespecial 70;		// com/imox/carrierprivileges/carrierprivileges.fWriteLogShort(SS)Z
-					pop;
+				L1:	pop;
 					sconst_0;
 					sreturn;
 			.exceptionTable {
 				// start_block end_block handler_block catch_type_index
-				L0 L1 L1 44;
+				L0 L1 L1 37;
 			}
 		}
 
@@ -2162,8 +1827,8 @@
 			.locals 0;
 
 				L0:	aload_0;
-					getstatic_a 19;		// reference com/imox/carrierprivileges/carrierprivileges.TIMER_VALUE_INIT
-					invokespecial 76;		// com/imox/carrierprivileges/carrierprivileges.loadTimer([B)Z
+					getstatic_a 12;		// reference com/imox/carrierprivileges/carrierprivileges.TIMER_VALUE_INIT
+					invokespecial 61;		// com/imox/carrierprivileges/carrierprivileges.loadTimer([B)Z
 					sreturn;
 		}
 
@@ -2174,70 +1839,58 @@
 				L0:	aload_0;
 					aload_1;
 					sconst_0;
-					invokevirtual 61;		// com/imox/carrierprivileges/carrierprivileges.fTimerNull([BS)Z
+					invokevirtual 54;		// com/imox/carrierprivileges/carrierprivileges.fTimerNull([BS)Z
 					ifeq L2;
 				L1:	sconst_0;
 					sreturn;
-				L2:	getstatic_a 39;		// reference com/imox/carrierprivileges/carrierprivileges.mReg
+				L2:	getstatic_a 32;		// reference com/imox/carrierprivileges/carrierprivileges.mReg
 					bspush 11;
-					invokeinterface 2 40 3;		// uicc/toolkit/ToolkitRegistry
+					invokeinterface 2 33 3;		// uicc/toolkit/ToolkitRegistry
 					ifne L4;
-				L3:	getstatic_a 39;		// reference com/imox/carrierprivileges/carrierprivileges.mReg
-					invokeinterface 1 40 8;		// uicc/toolkit/ToolkitRegistry
-					putstatic_b 41;		// byte com/imox/carrierprivileges/carrierprivileges.TIMER_ID
+				L3:	getstatic_a 32;		// reference com/imox/carrierprivileges/carrierprivileges.mReg
+					invokeinterface 1 33 8;		// uicc/toolkit/ToolkitRegistry
+					putstatic_b 34;		// byte com/imox/carrierprivileges/carrierprivileges.TIMER_ID
 				L4:	sconst_0;
-					putstatic_b 42;		// byte com/imox/carrierprivileges/carrierprivileges.bAPK_APDU_VAL
-					invokestatic 45;		// uicc/toolkit/ProactiveHandlerSystem.getTheHandler()Luicc/toolkit/ProactiveHandler;
+					putstatic_b 35;		// byte com/imox/carrierprivileges/carrierprivileges.bAPK_APDU_VAL
+					invokestatic 38;		// uicc/toolkit/ProactiveHandlerSystem.getTheHandler()Luicc/toolkit/ProactiveHandler;
 					astore_2;
 					aload_2;
 					bspush 39;
 					sconst_0;
 					bspush -127;
-					invokeinterface 4 46 23;		// uicc/toolkit/ProactiveHandler
+					invokeinterface 4 39 23;		// uicc/toolkit/ProactiveHandler
 					aload_2;
 					bspush 36;
-					getstatic_b 41;		// byte com/imox/carrierprivileges/carrierprivileges.TIMER_ID
-					invokeinterface 3 71 16;		// uicc/toolkit/EditHandler
+					getstatic_b 34;		// byte com/imox/carrierprivileges/carrierprivileges.TIMER_ID
+					invokeinterface 3 58 16;		// uicc/toolkit/EditHandler
 					aload_2;
 					bspush 37;
 					aload_1;
 					sconst_0;
 					aload_1;
 					arraylength;
-					invokeinterface 5 71 15;		// uicc/toolkit/EditHandler
+					invokeinterface 5 58 15;		// uicc/toolkit/EditHandler
 					aload_2;
-					invokeinterface 1 46 24;		// uicc/toolkit/ProactiveHandler
+					invokeinterface 1 39 24;		// uicc/toolkit/ProactiveHandler
 					pop;
 					sconst_1;
-					putstatic_b 28;		// boolean com/imox/carrierprivileges/carrierprivileges.bTIMERTerminalProfile
+					putstatic_b 21;		// boolean com/imox/carrierprivileges/carrierprivileges.bTIMERTerminalProfile
 					sconst_1;
 					sreturn;
 				L5:	astore_2;
 					sconst_1;
-					putstatic_b 77;		// boolean com/imox/carrierprivileges/carrierprivileges.bFirstStatusCommand
+					putstatic_b 62;		// boolean com/imox/carrierprivileges/carrierprivileges.bFirstStatusCommand
 					sconst_1;
-					putstatic_b 28;		// boolean com/imox/carrierprivileges/carrierprivileges.bTIMERTerminalProfile
+					putstatic_b 21;		// boolean com/imox/carrierprivileges/carrierprivileges.bTIMERTerminalProfile
 					aload_2;
-					invokevirtual 75;		// javacard/framework/CardRuntimeException.getReason()S
+					invokevirtual 63;		// javacard/framework/CardRuntimeException.getReason()S
 					s2b;
 					sstore_3;
-					aload_0;
-					bspush 19;
-					sload_3;
-					invokespecial 70;		// com/imox/carrierprivileges/carrierprivileges.fWriteLogShort(SS)Z
-					pop;
-					aload_0;
-					bspush 20;
-					getfield_a_this 4;		// reference com/imox/carrierprivileges/carrierprivileges.transByteArray
-					bspush 15;
-					baload;
-					invokespecial 70;		// com/imox/carrierprivileges/carrierprivileges.fWriteLogShort(SS)Z
-					pop;
 					sconst_0;
 					sreturn;
 			.exceptionTable {
 				// start_block end_block handler_block catch_type_index
-				L2 L5 L5 44;
+				L2 L5 L5 37;
 			}
 		}
 
@@ -2248,11 +1901,11 @@
 			.descriptor	Ljavacard/framework/APDU;	0.10;
 
 				L0:	aload_0;
-					invokevirtual 78;		// javacard/framework/Applet.selectingApplet()Z
+					invokevirtual 64;		// javacard/framework/Applet.selectingApplet()Z
 					ifeq L2;
 				L1:	return;
 				L2:	aload_1;
-					invokevirtual 79;		// javacard/framework/APDU.getBuffer()[B
+					invokevirtual 65;		// javacard/framework/APDU.getBuffer()[B
 					astore_2;
 					sconst_0;
 					sstore_3;
@@ -2260,29 +1913,29 @@
 					sconst_1;
 					baload;
 					slookupswitch L10 5 -54 L3 -8 L8 -6 L7 -2 L9 2 L4;
-				L3:	getstatic_a 80;		// reference com/imox/carrierprivileges/carrierprivileges.HEADER
+				L3:	getstatic_a 66;		// reference com/imox/carrierprivileges/carrierprivileges.HEADER
 					sconst_0;
 					aload_2;
 					sload_3;
-					getstatic_a 80;		// reference com/imox/carrierprivileges/carrierprivileges.HEADER
+					getstatic_a 66;		// reference com/imox/carrierprivileges/carrierprivileges.HEADER
 					arraylength;
-					invokestatic 18;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					invokestatic 11;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
 					sstore_3;
-					getstatic_a 81;		// reference com/imox/carrierprivileges/carrierprivileges.APP_HASH
+					getstatic_a 67;		// reference com/imox/carrierprivileges/carrierprivileges.APP_HASH
 					sconst_0;
 					aload_2;
 					sload_3;
-					getstatic_a 81;		// reference com/imox/carrierprivileges/carrierprivileges.APP_HASH
+					getstatic_a 67;		// reference com/imox/carrierprivileges/carrierprivileges.APP_HASH
 					arraylength;
-					invokestatic 18;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					invokestatic 11;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
 					sstore_3;
 					aload_1;
 					sconst_0;
 					sload_3;
-					invokevirtual 82;		// javacard/framework/APDU.setOutgoingAndSend(SS)V
+					invokevirtual 68;		// javacard/framework/APDU.setOutgoingAndSend(SS)V
 					goto_w L11;
 				L4:	bspush -15;
-					putstatic_b 42;		// byte com/imox/carrierprivileges/carrierprivileges.bAPK_APDU_VAL
+					putstatic_b 35;		// byte com/imox/carrierprivileges/carrierprivileges.bAPK_APDU_VAL
 					aload_2;
 					sconst_2;
 					baload;
@@ -2291,23 +1944,23 @@
 				L5:	aload_2;
 					sconst_3;
 					baload;
-					putstatic_b 42;		// byte com/imox/carrierprivileges/carrierprivileges.bAPK_APDU_VAL
-				L6:	getstatic_a 83;		// reference com/imox/carrierprivileges/carrierprivileges.RESPUESTA
+					putstatic_b 35;		// byte com/imox/carrierprivileges/carrierprivileges.bAPK_APDU_VAL
+				L6:	getstatic_a 69;		// reference com/imox/carrierprivileges/carrierprivileges.RESPUESTA
 					sconst_0;
 					aload_2;
 					sload_3;
-					getstatic_a 83;		// reference com/imox/carrierprivileges/carrierprivileges.RESPUESTA
+					getstatic_a 69;		// reference com/imox/carrierprivileges/carrierprivileges.RESPUESTA
 					arraylength;
-					invokestatic 18;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					invokestatic 11;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
 					sstore_3;
 					aload_0;
 					getfield_a_this 4;		// reference com/imox/carrierprivileges/carrierprivileges.transByteArray
 					bspush 16;
-					invokespecial 84;		// com/imox/carrierprivileges/carrierprivileges.fRAMArrayClean([BS)V
+					invokespecial 70;		// com/imox/carrierprivileges/carrierprivileges.fRAMArrayClean([BS)V
 					aload_1;
 					sconst_0;
 					sload_3;
-					invokevirtual 82;		// javacard/framework/APDU.setOutgoingAndSend(SS)V
+					invokevirtual 68;		// javacard/framework/APDU.setOutgoingAndSend(SS)V
 					goto L11;
 				L7:	aload_2;
 					sload_3;
@@ -2316,7 +1969,7 @@
 					aload_1;
 					sconst_0;
 					sconst_1;
-					invokevirtual 82;		// javacard/framework/APDU.setOutgoingAndSend(SS)V
+					invokevirtual 68;		// javacard/framework/APDU.setOutgoingAndSend(SS)V
 					aload_0;
 					sconst_0;
 					putfield_b 1;		// byte com/imox/carrierprivileges/carrierprivileges.bFAValue
@@ -2327,20 +1980,20 @@
 					sload_3;
 					getfield_a_this 3;		// reference com/imox/carrierprivileges/carrierprivileges.IMEIOld
 					arraylength;
-					invokestatic 18;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					invokestatic 11;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
 					sstore_3;
-					getstatic_a 58;		// reference com/imox/carrierprivileges/carrierprivileges.COTA
+					getstatic_a 51;		// reference com/imox/carrierprivileges/carrierprivileges.COTA
 					sconst_0;
 					aload_2;
 					sload_3;
-					getstatic_a 58;		// reference com/imox/carrierprivileges/carrierprivileges.COTA
+					getstatic_a 51;		// reference com/imox/carrierprivileges/carrierprivileges.COTA
 					arraylength;
-					invokestatic 18;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					invokestatic 11;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
 					sstore_3;
 					aload_1;
 					sconst_0;
 					sload_3;
-					invokevirtual 82;		// javacard/framework/APDU.setOutgoingAndSend(SS)V
+					invokevirtual 68;		// javacard/framework/APDU.setOutgoingAndSend(SS)V
 					goto L11;
 				L9:	getfield_a_this 5;		// reference com/imox/carrierprivileges/carrierprivileges.loci
 					sconst_0;
@@ -2348,23 +2001,23 @@
 					sload_3;
 					getfield_a_this 5;		// reference com/imox/carrierprivileges/carrierprivileges.loci
 					arraylength;
-					invokestatic 18;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					invokestatic 11;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
 					sstore_3;
-					getstatic_a 58;		// reference com/imox/carrierprivileges/carrierprivileges.COTA
+					getstatic_a 51;		// reference com/imox/carrierprivileges/carrierprivileges.COTA
 					sconst_0;
 					aload_2;
 					sload_3;
-					getstatic_a 58;		// reference com/imox/carrierprivileges/carrierprivileges.COTA
+					getstatic_a 51;		// reference com/imox/carrierprivileges/carrierprivileges.COTA
 					arraylength;
-					invokestatic 18;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					invokestatic 11;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
 					sstore_3;
 					aload_1;
 					sconst_0;
 					sload_3;
-					invokevirtual 82;		// javacard/framework/APDU.setOutgoingAndSend(SS)V
+					invokevirtual 68;		// javacard/framework/APDU.setOutgoingAndSend(SS)V
 					goto L11;
 				L10:	sspush 28160;
-					invokestatic 85;		// javacard/framework/ISOException.throwIt(S)V
+					invokestatic 71;		// javacard/framework/ISOException.throwIt(S)V
 				L11:	return;
 		}
 
@@ -2380,47 +2033,34 @@
 					sstore 4;
 					sconst_0;
 					sstore 5;
-					invokestatic 86;		// uicc/usim/toolkit/USATEnvelopeHandlerSystem.getTheHandler()Luicc/usim/toolkit/USATEnvelopeHandler;
+					invokestatic 72;		// uicc/usim/toolkit/USATEnvelopeHandlerSystem.getTheHandler()Luicc/usim/toolkit/USATEnvelopeHandler;
 					astore_2;
 					aload_2;
-					invokeinterface 1 87 23;		// uicc/usim/toolkit/USATEnvelopeHandler
+					invokeinterface 1 73 23;		// uicc/usim/toolkit/USATEnvelopeHandler
 					sstore 6;
 					aload_2;
 					sconst_0;
-					getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+					getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sconst_0;
 					sload 6;
-					invokeinterface 5 48 6;		// uicc/toolkit/ViewHandler
+					invokeinterface 5 41 6;		// uicc/toolkit/ViewHandler
 					pop;
 					aload_0;
-					getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+					getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sconst_0;
 					sload 6;
-					invokespecial 88;		// com/imox/carrierprivileges/carrierprivileges.fWriteLogAfterSMSPP_TPDA([BSS)Z
-					pop;
-					aload_0;
-					getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+					getstatic_a 9;		// reference com/imox/carrierprivileges/carrierprivileges.baTPDA_Address
 					sconst_0;
-					sload 6;
-					getstatic_a 16;		// reference com/imox/carrierprivileges/carrierprivileges.baTPDA_Address
-					sconst_0;
-					invokespecial 89;		// com/imox/carrierprivileges/carrierprivileges.fValidateTPDASourceToDestination([BSS[BS)Z
+					invokespecial 74;		// com/imox/carrierprivileges/carrierprivileges.fValidateTPDASourceToDestination([BSS[BS)Z
 					ifne L3;
-				L1:	getstatic_b 36;		// boolean com/imox/carrierprivileges/carrierprivileges.bSMSPP_TPDA_Validate
+				L1:	getstatic_b 29;		// boolean com/imox/carrierprivileges/carrierprivileges.bSMSPP_TPDA_Validate
 					ifeq L3;
-				L2:	aload_0;
-					sconst_4;
-					getstatic_a 16;		// reference com/imox/carrierprivileges/carrierprivileges.baTPDA_Address
-					sconst_0;
-					getstatic_s 17;		// short com/imox/carrierprivileges/carrierprivileges.sTPDALength
-					invokespecial 67;		// com/imox/carrierprivileges/carrierprivileges.fWriteLog(S[BSS)Z
-					pop;
-					return;
+				L2:	return;
 				L3:	aload_2;
-					invokeinterface 1 87 18;		// uicc/usim/toolkit/USATEnvelopeHandler
+					invokeinterface 1 73 18;		// uicc/usim/toolkit/USATEnvelopeHandler
 					sstore_3;
 					aload_2;
-					invokeinterface 1 48 3;		// uicc/toolkit/ViewHandler
+					invokeinterface 1 41 3;		// uicc/toolkit/ViewHandler
 					sload_3;
 					ssub;
 					sconst_1;
@@ -2431,7 +2071,7 @@
 					sload_3;
 					bspush 6;
 					sadd;
-					invokeinterface 2 48 4;		// uicc/toolkit/ViewHandler
+					invokeinterface 2 41 4;		// uicc/toolkit/ViewHandler
 					sadd;
 					sconst_1;
 					sadd;
@@ -2446,27 +2086,21 @@
 					ssub;
 					putfield_s 2;		// short com/imox/carrierprivileges/carrierprivileges.lengthMsg
 					getfield_s_this 2;		// short com/imox/carrierprivileges/carrierprivileges.lengthMsg
-					getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+					getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					arraylength;
 					if_scmple L5;
 				L4:	aload_0;
-					getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+					getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					arraylength;
 					putfield_s 2;		// short com/imox/carrierprivileges/carrierprivileges.lengthMsg
 				L5:	aload_2;
 					sload_3;
 					sload 5;
 					sadd;
-					getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+					getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sconst_0;
 					getfield_s_this 2;		// short com/imox/carrierprivileges/carrierprivileges.lengthMsg
-					invokeinterface 5 48 6;		// uicc/toolkit/ViewHandler
-					pop;
-					aload_0;
-					getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
-					sconst_0;
-					getfield_s_this 2;		// short com/imox/carrierprivileges/carrierprivileges.lengthMsg
-					invokespecial 90;		// com/imox/carrierprivileges/carrierprivileges.fWriteLogAfterSMSPP_Data([BSS)Z
+					invokeinterface 5 41 6;		// uicc/toolkit/ViewHandler
 					pop;
 					getfield_a_this 4;		// reference com/imox/carrierprivileges/carrierprivileges.transByteArray
 					sconst_3;
@@ -2474,7 +2108,7 @@
 					bastore;
 					sconst_0;
 					sstore 7;
-					getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+					getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sload 7;
 					baload;
 					sstore 8;
@@ -2483,12 +2117,12 @@
 				L6:	aload_0;
 					sconst_1;
 					sconst_1;
-					getstatic_a 91;		// reference com/imox/carrierprivileges/carrierprivileges.mainMsg
+					getstatic_a 75;		// reference com/imox/carrierprivileges/carrierprivileges.mainMsg
 					bspush -16;
 					sconst_0;
-					invokespecial 92;		// com/imox/carrierprivileges/carrierprivileges.showMessage(ZZ[BBB)V
+					invokespecial 76;		// com/imox/carrierprivileges/carrierprivileges.showMessage(ZZ[BBB)V
 					goto_w L46;
-				L7:	getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+				L7:	getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sload 7;
 					sconst_1;
 					sadd;
@@ -2496,41 +2130,41 @@
 					bspush -16;
 					if_scmpne L9;
 				L8:	aload_0;
-					getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+					getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sload 7;
 					sconst_2;
 					sadd;
-					invokespecial 93;		// com/imox/carrierprivileges/carrierprivileges.fOTADisplayTextCheckDCS([BS)S
+					invokespecial 77;		// com/imox/carrierprivileges/carrierprivileges.fOTADisplayTextCheckDCS([BS)S
 					sstore 7;
 					aload_0;
-					getstatic_a 91;		// reference com/imox/carrierprivileges/carrierprivileges.mainMsg
-					getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+					getstatic_a 75;		// reference com/imox/carrierprivileges/carrierprivileges.mainMsg
+					getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sload 7;
-					invokespecial 94;		// com/imox/carrierprivileges/carrierprivileges.fOTASMPPBufferToArrayMsgOrURL([B[BS)V
+					invokespecial 78;		// com/imox/carrierprivileges/carrierprivileges.fOTASMPPBufferToArrayMsgOrURL([B[BS)V
 					aload_0;
 					sconst_1;
 					sconst_1;
-					getstatic_a 91;		// reference com/imox/carrierprivileges/carrierprivileges.mainMsg
+					getstatic_a 75;		// reference com/imox/carrierprivileges/carrierprivileges.mainMsg
 					bspush -15;
 					bspush -16;
-					invokespecial 92;		// com/imox/carrierprivileges/carrierprivileges.showMessage(ZZ[BBB)V
+					invokespecial 76;		// com/imox/carrierprivileges/carrierprivileges.showMessage(ZZ[BBB)V
 					goto_w L46;
 				L9:	aload_0;
-					getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+					getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sload 7;
 					sconst_1;
 					sadd;
-					invokespecial 93;		// com/imox/carrierprivileges/carrierprivileges.fOTADisplayTextCheckDCS([BS)S
+					invokespecial 77;		// com/imox/carrierprivileges/carrierprivileges.fOTADisplayTextCheckDCS([BS)S
 					sstore 7;
 					aload_0;
-					getstatic_a 91;		// reference com/imox/carrierprivileges/carrierprivileges.mainMsg
-					getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+					getstatic_a 75;		// reference com/imox/carrierprivileges/carrierprivileges.mainMsg
+					getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sload 7;
-					invokespecial 94;		// com/imox/carrierprivileges/carrierprivileges.fOTASMPPBufferToArrayMsgOrURL([B[BS)V
+					invokespecial 78;		// com/imox/carrierprivileges/carrierprivileges.fOTASMPPBufferToArrayMsgOrURL([B[BS)V
 					goto_w L46;
-				L10:	getstatic_b 31;		// boolean com/imox/carrierprivileges/carrierprivileges.bSMSPP_F2_Supported
+				L10:	getstatic_b 24;		// boolean com/imox/carrierprivileges/carrierprivileges.bSMSPP_F2_Supported
 					ifeq_w L46;
-				L11:	getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+				L11:	getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sload 7;
 					sconst_1;
 					sadd;
@@ -2538,63 +2172,63 @@
 					bspush -16;
 					if_scmpne L13;
 				L12:	aload_0;
-					getstatic_a 24;		// reference com/imox/carrierprivileges/carrierprivileges.URL
-					getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+					getstatic_a 17;		// reference com/imox/carrierprivileges/carrierprivileges.URL
+					getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sload 7;
 					sconst_1;
 					sadd;
-					invokespecial 94;		// com/imox/carrierprivileges/carrierprivileges.fOTASMPPBufferToArrayMsgOrURL([B[BS)V
+					invokespecial 78;		// com/imox/carrierprivileges/carrierprivileges.fOTASMPPBufferToArrayMsgOrURL([B[BS)V
 					aload_0;
 					sconst_1;
 					sconst_1;
-					getstatic_a 91;		// reference com/imox/carrierprivileges/carrierprivileges.mainMsg
+					getstatic_a 75;		// reference com/imox/carrierprivileges/carrierprivileges.mainMsg
 					bspush -14;
 					bspush -16;
-					invokespecial 92;		// com/imox/carrierprivileges/carrierprivileges.showMessage(ZZ[BBB)V
+					invokespecial 76;		// com/imox/carrierprivileges/carrierprivileges.showMessage(ZZ[BBB)V
 					goto_w L46;
 				L13:	aload_0;
-					getstatic_a 24;		// reference com/imox/carrierprivileges/carrierprivileges.URL
-					getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+					getstatic_a 17;		// reference com/imox/carrierprivileges/carrierprivileges.URL
+					getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sload 7;
-					invokespecial 94;		// com/imox/carrierprivileges/carrierprivileges.fOTASMPPBufferToArrayMsgOrURL([B[BS)V
+					invokespecial 78;		// com/imox/carrierprivileges/carrierprivileges.fOTASMPPBufferToArrayMsgOrURL([B[BS)V
 					goto_w L46;
-				L14:	getstatic_b 31;		// boolean com/imox/carrierprivileges/carrierprivileges.bSMSPP_F2_Supported
-					ifeq_w L46;
-				L15:	getfield_s_this 2;		// short com/imox/carrierprivileges/carrierprivileges.lengthMsg
+				L14:	getfield_s_this 2;		// short com/imox/carrierprivileges/carrierprivileges.lengthMsg
 					sconst_1;
 					if_scmple L17;
+				L15:	getstatic_b 24;		// boolean com/imox/carrierprivileges/carrierprivileges.bSMSPP_F2_Supported
+					ifeq L17;
 				L16:	aload_0;
-					getstatic_a 24;		// reference com/imox/carrierprivileges/carrierprivileges.URL
-					getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+					getstatic_a 17;		// reference com/imox/carrierprivileges/carrierprivileges.URL
+					getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sload 7;
-					invokespecial 94;		// com/imox/carrierprivileges/carrierprivileges.fOTASMPPBufferToArrayMsgOrURL([B[BS)V
+					invokespecial 78;		// com/imox/carrierprivileges/carrierprivileges.fOTASMPPBufferToArrayMsgOrURL([B[BS)V
 				L17:	aload_0;
 					sconst_0;
 					sconst_1;
-					getstatic_a 91;		// reference com/imox/carrierprivileges/carrierprivileges.mainMsg
+					getstatic_a 75;		// reference com/imox/carrierprivileges/carrierprivileges.mainMsg
 					bspush -12;
 					sconst_0;
-					invokespecial 92;		// com/imox/carrierprivileges/carrierprivileges.showMessage(ZZ[BBB)V
+					invokespecial 76;		// com/imox/carrierprivileges/carrierprivileges.showMessage(ZZ[BBB)V
 					goto_w L46;
 				L18:	aload_0;
-					getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+					getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sload 7;
 					sconst_1;
 					sadd;
-					invokespecial 93;		// com/imox/carrierprivileges/carrierprivileges.fOTADisplayTextCheckDCS([BS)S
+					invokespecial 77;		// com/imox/carrierprivileges/carrierprivileges.fOTADisplayTextCheckDCS([BS)S
 					sstore 7;
 					aload_0;
-					getstatic_a 91;		// reference com/imox/carrierprivileges/carrierprivileges.mainMsg
-					getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+					getstatic_a 75;		// reference com/imox/carrierprivileges/carrierprivileges.mainMsg
+					getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sload 7;
-					invokespecial 94;		// com/imox/carrierprivileges/carrierprivileges.fOTASMPPBufferToArrayMsgOrURL([B[BS)V
+					invokespecial 78;		// com/imox/carrierprivileges/carrierprivileges.fOTASMPPBufferToArrayMsgOrURL([B[BS)V
 					aload_0;
 					sconst_1;
 					sconst_0;
-					getstatic_a 91;		// reference com/imox/carrierprivileges/carrierprivileges.mainMsg
+					getstatic_a 75;		// reference com/imox/carrierprivileges/carrierprivileges.mainMsg
 					bspush -11;
 					sconst_0;
-					invokespecial 92;		// com/imox/carrierprivileges/carrierprivileges.showMessage(ZZ[BBB)V
+					invokespecial 76;		// com/imox/carrierprivileges/carrierprivileges.showMessage(ZZ[BBB)V
 					goto_w L46;
 				L19:	sconst_0;
 					sstore 9;
@@ -2602,15 +2236,15 @@
 					getfield_a_this 3;		// reference com/imox/carrierprivileges/carrierprivileges.IMEIOld
 					sconst_0;
 					bspush 8;
-					invokevirtual 95;		// com/imox/carrierprivileges/carrierprivileges.fGetLocalInformationIMEI([BSS)Z
+					invokevirtual 79;		// com/imox/carrierprivileges/carrierprivileges.fGetLocalInformationIMEI([BSS)Z
 					pop;
 					getfield_a_this 3;		// reference com/imox/carrierprivileges/carrierprivileges.IMEIOld
 					sconst_0;
-					getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+					getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sload 9;
 					getfield_a_this 3;		// reference com/imox/carrierprivileges/carrierprivileges.IMEIOld
 					arraylength;
-					invokestatic 54;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					invokestatic 47;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 					pop;
 					sload 9;
 					getfield_a_this 3;		// reference com/imox/carrierprivileges/carrierprivileges.IMEIOld
@@ -2626,28 +2260,28 @@
 					sstore_1;
 				L21:	aload_0;
 					sload_1;
-					getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+					getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sconst_0;
 					sload 9;
-					invokespecial 60;		// com/imox/carrierprivileges/carrierprivileges.fSendSMSWithCOTAVer(Z[BSS)Z
+					invokespecial 53;		// com/imox/carrierprivileges/carrierprivileges.fSendSMSWithCOTAVer(Z[BSS)Z
 					pop;
 					goto_w L46;
 				L22:	sconst_0;
-					putstatic_b 96;		// boolean com/imox/carrierprivileges/carrierprivileges.bSMSIMEIRetries
+					putstatic_b 80;		// boolean com/imox/carrierprivileges/carrierprivileges.bSMSIMEIRetries
 					sconst_0;
-					putstatic_s 97;		// short com/imox/carrierprivileges/carrierprivileges.nSMSIMEIRetries
+					putstatic_s 81;		// short com/imox/carrierprivileges/carrierprivileges.nSMSIMEIRetries
 					getfield_a_this 4;		// reference com/imox/carrierprivileges/carrierprivileges.transByteArray
 					sconst_1;
 					sconst_0;
 					bastore;
 					sinc 7 1;
-					getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+					getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sload 7;
 					baload;
 					bspush 49;
 					if_scmpne L24;
 				L23:	aload_0;
-					invokespecial 98;		// com/imox/carrierprivileges/carrierprivileges.loadTimer()Z
+					invokespecial 82;		// com/imox/carrierprivileges/carrierprivileges.loadTimer()Z
 					pop;
 					goto_w L46;
 				L24:	sload 7;
@@ -2656,18 +2290,18 @@
 					getfield_s_this 2;		// short com/imox/carrierprivileges/carrierprivileges.lengthMsg
 					if_scmpgt_w L46;
 				L25:	aload_0;
-					getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+					getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sload 7;
-					getstatic_a 19;		// reference com/imox/carrierprivileges/carrierprivileges.TIMER_VALUE_INIT
-					invokevirtual 20;		// com/imox/carrierprivileges/carrierprivileges.fTimePrepare([BS[B)Z
+					getstatic_a 12;		// reference com/imox/carrierprivileges/carrierprivileges.TIMER_VALUE_INIT
+					invokevirtual 13;		// com/imox/carrierprivileges/carrierprivileges.fTimePrepare([BS[B)Z
 					ifeq_w L46;
 				L26:	aload_0;
-					invokespecial 98;		// com/imox/carrierprivileges/carrierprivileges.loadTimer()Z
+					invokespecial 82;		// com/imox/carrierprivileges/carrierprivileges.loadTimer()Z
 					pop;
 					goto_w L46;
 				L27:	sinc 7 1;
 					aload_0;
-					getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+					getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sload 7;
 					baload;
 					putfield_b 1;		// byte com/imox/carrierprivileges/carrierprivileges.bFAValue
@@ -2676,49 +2310,49 @@
 					getfield_s_this 2;		// short com/imox/carrierprivileges/carrierprivileges.lengthMsg
 					sconst_3;
 					if_scmplt L30;
-				L29:	getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+				L29:	getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sload 7;
 					baload;
-					getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+					getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sload 7;
 					sconst_1;
 					sadd;
 					baload;
-					invokestatic 21;		// javacard/framework/Util.makeShort(BB)S
-					putstatic_s 32;		// short com/imox/carrierprivileges/carrierprivileges.nAPK_APDU_MAX_Counter
+					invokestatic 14;		// javacard/framework/Util.makeShort(BB)S
+					putstatic_s 25;		// short com/imox/carrierprivileges/carrierprivileges.nAPK_APDU_MAX_Counter
 					goto L32;
 				L30:	getfield_s_this 2;		// short com/imox/carrierprivileges/carrierprivileges.lengthMsg
 					sconst_2;
 					if_scmpne L32;
-				L31:	getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+				L31:	getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sload 7;
 					baload;
-					putstatic_b 42;		// byte com/imox/carrierprivileges/carrierprivileges.bAPK_APDU_VAL
+					putstatic_b 35;		// byte com/imox/carrierprivileges/carrierprivileges.bAPK_APDU_VAL
 				L32:	aload_0;
 					sconst_1;
-					invokespecial 99;		// com/imox/carrierprivileges/carrierprivileges.fSendSMSAPKApduStatus(Z)Z
+					invokespecial 83;		// com/imox/carrierprivileges/carrierprivileges.fSendSMSAPKApduStatus(Z)Z
 					pop;
 					goto_w L46;
 				L33:	sinc 7 1;
 					getfield_s_this 2;		// short com/imox/carrierprivileges/carrierprivileges.lengthMsg
-					getstatic_a 81;		// reference com/imox/carrierprivileges/carrierprivileges.APP_HASH
+					getstatic_a 67;		// reference com/imox/carrierprivileges/carrierprivileges.APP_HASH
 					arraylength;
 					if_scmplt L35;
-				L34:	getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+				L34:	getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sload 7;
-					getstatic_a 81;		// reference com/imox/carrierprivileges/carrierprivileges.APP_HASH
+					getstatic_a 67;		// reference com/imox/carrierprivileges/carrierprivileges.APP_HASH
 					sconst_0;
-					getstatic_a 81;		// reference com/imox/carrierprivileges/carrierprivileges.APP_HASH
+					getstatic_a 67;		// reference com/imox/carrierprivileges/carrierprivileges.APP_HASH
 					arraylength;
-					invokestatic 54;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					invokestatic 47;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 					pop;
 				L35:	aload_0;
 					sconst_0;
-					getstatic_a 81;		// reference com/imox/carrierprivileges/carrierprivileges.APP_HASH
+					getstatic_a 67;		// reference com/imox/carrierprivileges/carrierprivileges.APP_HASH
 					sconst_0;
-					getstatic_a 81;		// reference com/imox/carrierprivileges/carrierprivileges.APP_HASH
+					getstatic_a 67;		// reference com/imox/carrierprivileges/carrierprivileges.APP_HASH
 					arraylength;
-					invokespecial 60;		// com/imox/carrierprivileges/carrierprivileges.fSendSMSWithCOTAVer(Z[BSS)Z
+					invokespecial 53;		// com/imox/carrierprivileges/carrierprivileges.fSendSMSWithCOTAVer(Z[BSS)Z
 					pop;
 					goto_w L46;
 				L36:	sinc 7 1;
@@ -2728,38 +2362,38 @@
 				L37:	sload 8;
 					bspush -2;
 					if_scmpne L39;
-				L38:	getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+				L38:	getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sload 7;
 					baload;
-					getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+					getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sload 7;
 					sconst_1;
 					sadd;
 					baload;
-					invokestatic 21;		// javacard/framework/Util.makeShort(BB)S
-					putstatic_s 34;		// short com/imox/carrierprivileges/carrierprivileges.MAX_COUNTER_GETLOCI
+					invokestatic 14;		// javacard/framework/Util.makeShort(BB)S
+					putstatic_s 27;		// short com/imox/carrierprivileges/carrierprivileges.MAX_COUNTER_GETLOCI
 				L39:	sload 8;
 					bspush -32;
 					if_scmpne L41;
-				L40:	getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+				L40:	getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sload 7;
 					baload;
-					getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+					getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sload 7;
 					sconst_1;
 					sadd;
 					baload;
-					invokestatic 21;		// javacard/framework/Util.makeShort(BB)S
-					putstatic_s 35;		// short com/imox/carrierprivileges/carrierprivileges.MAX_COUNTER_GETLOCI_APK
+					invokestatic 14;		// javacard/framework/Util.makeShort(BB)S
+					putstatic_s 28;		// short com/imox/carrierprivileges/carrierprivileges.MAX_COUNTER_GETLOCI_APK
 				L41:	aload_0;
 					getfield_a_this 5;		// reference com/imox/carrierprivileges/carrierprivileges.loci
 					sconst_0;
-					invokevirtual 100;		// com/imox/carrierprivileges/carrierprivileges.fGetLocalInformationLOCI([BS)Z
+					invokevirtual 84;		// com/imox/carrierprivileges/carrierprivileges.fGetLocalInformationLOCI([BS)Z
 					pop;
 					aload_0;
 					sconst_1;
 					sconst_1;
-					invokespecial 101;		// com/imox/carrierprivileges/carrierprivileges.fSendSMSLoci(ZZ)Z
+					invokespecial 85;		// com/imox/carrierprivileges/carrierprivileges.fSendSMSLoci(ZZ)Z
 					pop;
 					goto L46;
 				L42:	sinc 7 1;
@@ -2767,51 +2401,51 @@
 					sconst_1;
 					if_scmple L44;
 				L43:	sconst_1;
-					putstatic_b 36;		// boolean com/imox/carrierprivileges/carrierprivileges.bSMSPP_TPDA_Validate
-					getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+					putstatic_b 29;		// boolean com/imox/carrierprivileges/carrierprivileges.bSMSPP_TPDA_Validate
+					getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sload 7;
 					baload;
-					putstatic_s 17;		// short com/imox/carrierprivileges/carrierprivileges.sTPDALength
-					getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+					putstatic_s 10;		// short com/imox/carrierprivileges/carrierprivileges.sTPDALength
+					getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sload 7;
 					sconst_1;
 					sadd;
-					getstatic_a 16;		// reference com/imox/carrierprivileges/carrierprivileges.baTPDA_Address
+					getstatic_a 9;		// reference com/imox/carrierprivileges/carrierprivileges.baTPDA_Address
 					sconst_0;
-					getstatic_s 17;		// short com/imox/carrierprivileges/carrierprivileges.sTPDALength
-					invokestatic 18;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					getstatic_s 10;		// short com/imox/carrierprivileges/carrierprivileges.sTPDALength
+					invokestatic 11;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
 					pop;
-					getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+					getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sconst_0;
 					bspush 49;
 					bastore;
 					goto L45;
 				L44:	sconst_0;
-					putstatic_b 36;		// boolean com/imox/carrierprivileges/carrierprivileges.bSMSPP_TPDA_Validate
-					getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+					putstatic_b 29;		// boolean com/imox/carrierprivileges/carrierprivileges.bSMSPP_TPDA_Validate
+					getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sconst_0;
 					bspush 48;
 					bastore;
-				L45:	getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+				L45:	getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sconst_1;
-					getstatic_s 17;		// short com/imox/carrierprivileges/carrierprivileges.sTPDALength
+					getstatic_s 10;		// short com/imox/carrierprivileges/carrierprivileges.sTPDALength
 					s2b;
 					bastore;
-					getstatic_a 16;		// reference com/imox/carrierprivileges/carrierprivileges.baTPDA_Address
+					getstatic_a 9;		// reference com/imox/carrierprivileges/carrierprivileges.baTPDA_Address
 					sconst_0;
-					getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+					getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sconst_2;
-					getstatic_s 17;		// short com/imox/carrierprivileges/carrierprivileges.sTPDALength
-					invokestatic 18;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					getstatic_s 10;		// short com/imox/carrierprivileges/carrierprivileges.sTPDALength
+					invokestatic 11;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
 					pop;
 					aload_0;
 					sconst_1;
-					getstatic_a 55;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
+					getstatic_a 48;		// reference com/imox/carrierprivileges/carrierprivileges.generalBuffer
 					sconst_0;
-					getstatic_s 17;		// short com/imox/carrierprivileges/carrierprivileges.sTPDALength
+					getstatic_s 10;		// short com/imox/carrierprivileges/carrierprivileges.sTPDALength
 					sconst_2;
 					sadd;
-					invokespecial 60;		// com/imox/carrierprivileges/carrierprivileges.fSendSMSWithCOTAVer(Z[BSS)Z
+					invokespecial 53;		// com/imox/carrierprivileges/carrierprivileges.fSendSMSWithCOTAVer(Z[BSS)Z
 					pop;
 					goto L46;
 				L46:	return;
@@ -2830,25 +2464,25 @@
 					sload_1;
 					stableswitch L45 1 19 L3 L5 L5 L5 L5 L45 L45 L45 L45 L45 L1 L45 L45 L45 L45 L45 L45 L45 L6;
 				L1:	sconst_0;
-					putstatic_b 28;		// boolean com/imox/carrierprivileges/carrierprivileges.bTIMERTerminalProfile
+					putstatic_b 21;		// boolean com/imox/carrierprivileges/carrierprivileges.bTIMERTerminalProfile
 					aload_0;
-					invokespecial 102;		// com/imox/carrierprivileges/carrierprivileges.fAPK_APDU_NotReceived()Z
+					invokespecial 86;		// com/imox/carrierprivileges/carrierprivileges.fAPK_APDU_NotReceived()Z
 					ifeq_w L45;
-				L2:	getstatic_a 39;		// reference com/imox/carrierprivileges/carrierprivileges.mReg
-					getstatic_b 41;		// byte com/imox/carrierprivileges/carrierprivileges.TIMER_ID
-					invokeinterface 2 40 9;		// uicc/toolkit/ToolkitRegistry
+				L2:	getstatic_a 32;		// reference com/imox/carrierprivileges/carrierprivileges.mReg
+					getstatic_b 34;		// byte com/imox/carrierprivileges/carrierprivileges.TIMER_ID
+					invokeinterface 2 33 9;		// uicc/toolkit/ToolkitRegistry
 					bspush -15;
-					putstatic_b 42;		// byte com/imox/carrierprivileges/carrierprivileges.bAPK_APDU_VAL
+					putstatic_b 35;		// byte com/imox/carrierprivileges/carrierprivileges.bAPK_APDU_VAL
 					aload_0;
 					sconst_1;
 					sconst_1;
-					getstatic_a 91;		// reference com/imox/carrierprivileges/carrierprivileges.mainMsg
+					getstatic_a 75;		// reference com/imox/carrierprivileges/carrierprivileges.mainMsg
 					sconst_0;
 					sconst_0;
-					invokespecial 92;		// com/imox/carrierprivileges/carrierprivileges.showMessage(ZZ[BBB)V
+					invokespecial 76;		// com/imox/carrierprivileges/carrierprivileges.showMessage(ZZ[BBB)V
 					goto_w L45;
 				L3:	sconst_1;
-					putstatic_b 77;		// boolean com/imox/carrierprivileges/carrierprivileges.bFirstStatusCommand
+					putstatic_b 62;		// boolean com/imox/carrierprivileges/carrierprivileges.bFirstStatusCommand
 					getfield_a_this 4;		// reference com/imox/carrierprivileges/carrierprivileges.transByteArray
 					sconst_0;
 					sconst_0;
@@ -2857,18 +2491,18 @@
 					bspush 15;
 					sconst_0;
 					bastore;
-					getstatic_s 33;		// short com/imox/carrierprivileges/carrierprivileges.nAPK_APDU_MAX_Counter_Backup
+					getstatic_s 26;		// short com/imox/carrierprivileges/carrierprivileges.nAPK_APDU_MAX_Counter_Backup
 					ifle_w L45;
 				L4:	aload_0;
-					getstatic_s 103;		// short com/imox/carrierprivileges/carrierprivileges.nAPK_APDU_Counter_Backup
+					getstatic_s 87;		// short com/imox/carrierprivileges/carrierprivileges.nAPK_APDU_Counter_Backup
 					getfield_a_this 4;		// reference com/imox/carrierprivileges/carrierprivileges.transByteArray
 					bspush 16;
-					invokevirtual 57;		// com/imox/carrierprivileges/carrierprivileges.fromShortToBytesIntoByteArray(S[BS)V
+					invokevirtual 50;		// com/imox/carrierprivileges/carrierprivileges.fromShortToBytesIntoByteArray(S[BS)V
 					goto_w L45;
 				L5:	aload_0;
-					invokespecial 104;		// com/imox/carrierprivileges/carrierprivileges.processIncomingMessage()V
+					invokespecial 88;		// com/imox/carrierprivileges/carrierprivileges.processIncomingMessage()V
 					goto_w L45;
-				L6:	getstatic_b 77;		// boolean com/imox/carrierprivileges/carrierprivileges.bFirstStatusCommand
+				L6:	getstatic_b 62;		// boolean com/imox/carrierprivileges/carrierprivileges.bFirstStatusCommand
 					ifeq_w L15;
 				L7:	getfield_a_this 4;		// reference com/imox/carrierprivileges/carrierprivileges.transByteArray
 					bspush 15;
@@ -2884,14 +2518,14 @@
 					sconst_3;
 					if_scmple L15;
 				L8:	sconst_0;
-					putstatic_b 77;		// boolean com/imox/carrierprivileges/carrierprivileges.bFirstStatusCommand
+					putstatic_b 62;		// boolean com/imox/carrierprivileges/carrierprivileges.bFirstStatusCommand
 					aload_0;
 					getfield_a_this 4;		// reference com/imox/carrierprivileges/carrierprivileges.transByteArray
 					sconst_4;
 					bspush 8;
-					invokevirtual 95;		// com/imox/carrierprivileges/carrierprivileges.fGetLocalInformationIMEI([BSS)Z
+					invokevirtual 79;		// com/imox/carrierprivileges/carrierprivileges.fGetLocalInformationIMEI([BSS)Z
 					pop;
-					getstatic_b 28;		// boolean com/imox/carrierprivileges/carrierprivileges.bTIMERTerminalProfile
+					getstatic_b 21;		// boolean com/imox/carrierprivileges/carrierprivileges.bTIMERTerminalProfile
 					ifeq L12;
 				L9:	getfield_a_this 4;		// reference com/imox/carrierprivileges/carrierprivileges.transByteArray
 					sconst_4;
@@ -2899,7 +2533,7 @@
 					sconst_0;
 					getfield_a_this 3;		// reference com/imox/carrierprivileges/carrierprivileges.IMEIOld
 					arraylength;
-					invokestatic 63;		// javacard/framework/Util.arrayCompare([BS[BSS)B
+					invokestatic 56;		// javacard/framework/Util.arrayCompare([BS[BSS)B
 					ifeq L11;
 				L10:	getfield_a_this 4;		// reference com/imox/carrierprivileges/carrierprivileges.transByteArray
 					sconst_4;
@@ -2907,12 +2541,12 @@
 					sconst_0;
 					getfield_a_this 3;		// reference com/imox/carrierprivileges/carrierprivileges.IMEIOld
 					arraylength;
-					invokestatic 54;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					invokestatic 47;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 					pop;
 				L11:	sconst_0;
-					putstatic_b 29;		// boolean com/imox/carrierprivileges/carrierprivileges.bSendSMSIMEI
+					putstatic_b 22;		// boolean com/imox/carrierprivileges/carrierprivileges.bSendSMSIMEI
 					aload_0;
-					invokespecial 98;		// com/imox/carrierprivileges/carrierprivileges.loadTimer()Z
+					invokespecial 82;		// com/imox/carrierprivileges/carrierprivileges.loadTimer()Z
 					pop;
 					goto L15;
 				L12:	getfield_a_this 4;		// reference com/imox/carrierprivileges/carrierprivileges.transByteArray
@@ -2921,7 +2555,7 @@
 					sconst_0;
 					getfield_a_this 3;		// reference com/imox/carrierprivileges/carrierprivileges.IMEIOld
 					arraylength;
-					invokestatic 63;		// javacard/framework/Util.arrayCompare([BS[BSS)B
+					invokestatic 56;		// javacard/framework/Util.arrayCompare([BS[BSS)B
 					ifeq L15;
 				L13:	getfield_a_this 4;		// reference com/imox/carrierprivileges/carrierprivileges.transByteArray
 					sconst_4;
@@ -2929,16 +2563,16 @@
 					sconst_0;
 					getfield_a_this 3;		// reference com/imox/carrierprivileges/carrierprivileges.IMEIOld
 					arraylength;
-					invokestatic 54;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					invokestatic 47;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 					pop;
 					sconst_1;
-					putstatic_b 29;		// boolean com/imox/carrierprivileges/carrierprivileges.bSendSMSIMEI
-					getstatic_b 37;		// boolean com/imox/carrierprivileges/carrierprivileges.bTimerActivateIMEIChange
+					putstatic_b 22;		// boolean com/imox/carrierprivileges/carrierprivileges.bSendSMSIMEI
+					getstatic_b 30;		// boolean com/imox/carrierprivileges/carrierprivileges.bTimerActivateIMEIChange
 					ifeq L15;
 				L14:	aload_0;
-					invokespecial 98;		// com/imox/carrierprivileges/carrierprivileges.loadTimer()Z
+					invokespecial 82;		// com/imox/carrierprivileges/carrierprivileges.loadTimer()Z
 					pop;
-				L15:	getstatic_b 29;		// boolean com/imox/carrierprivileges/carrierprivileges.bSendSMSIMEI
+				L15:	getstatic_b 22;		// boolean com/imox/carrierprivileges/carrierprivileges.bSendSMSIMEI
 					ifeq L20;
 				L16:	getfield_a_this 4;		// reference com/imox/carrierprivileges/carrierprivileges.transByteArray
 					sconst_0;
@@ -2954,45 +2588,45 @@
 					sconst_3;
 					if_scmple L20;
 				L17:	sconst_0;
-					putstatic_b 29;		// boolean com/imox/carrierprivileges/carrierprivileges.bSendSMSIMEI
+					putstatic_b 22;		// boolean com/imox/carrierprivileges/carrierprivileges.bSendSMSIMEI
 					aload_0;
 					getfield_a_this 3;		// reference com/imox/carrierprivileges/carrierprivileges.IMEIOld
 					sconst_0;
 					getfield_a_this 3;		// reference com/imox/carrierprivileges/carrierprivileges.IMEIOld
 					arraylength;
-					invokespecial 56;		// com/imox/carrierprivileges/carrierprivileges.fnsendSms([BSS)Z
+					invokespecial 49;		// com/imox/carrierprivileges/carrierprivileges.fnsendSms([BSS)Z
 					ifne L19;
 				L18:	sconst_1;
-					putstatic_b 96;		// boolean com/imox/carrierprivileges/carrierprivileges.bSMSIMEIRetries
+					putstatic_b 80;		// boolean com/imox/carrierprivileges/carrierprivileges.bSMSIMEIRetries
 					sconst_0;
-					putstatic_s 97;		// short com/imox/carrierprivileges/carrierprivileges.nSMSIMEIRetries
+					putstatic_s 81;		// short com/imox/carrierprivileges/carrierprivileges.nSMSIMEIRetries
 					aload_0;
 					getfield_a_this 4;		// reference com/imox/carrierprivileges/carrierprivileges.transByteArray
 					sconst_1;
-					invokespecial 84;		// com/imox/carrierprivileges/carrierprivileges.fRAMArrayClean([BS)V
+					invokespecial 70;		// com/imox/carrierprivileges/carrierprivileges.fRAMArrayClean([BS)V
 				L19:	sconst_0;
-					putstatic_b 42;		// byte com/imox/carrierprivileges/carrierprivileges.bAPK_APDU_VAL
-				L20:	getstatic_b 96;		// boolean com/imox/carrierprivileges/carrierprivileges.bSMSIMEIRetries
+					putstatic_b 35;		// byte com/imox/carrierprivileges/carrierprivileges.bAPK_APDU_VAL
+				L20:	getstatic_b 80;		// boolean com/imox/carrierprivileges/carrierprivileges.bSMSIMEIRetries
 					ifeq L27;
-				L21:	getstatic_s 22;		// short com/imox/carrierprivileges/carrierprivileges.nSMSIMEIRetriesSTCounter_MAX
+				L21:	getstatic_s 15;		// short com/imox/carrierprivileges/carrierprivileges.nSMSIMEIRetriesSTCounter_MAX
 					ifle L27;
 				L22:	aload_0;
 					getfield_a_this 4;		// reference com/imox/carrierprivileges/carrierprivileges.transByteArray
 					sconst_1;
-					invokespecial 105;		// com/imox/carrierprivileges/carrierprivileges.fRAMArraySumUpShort([BS)S
+					invokespecial 89;		// com/imox/carrierprivileges/carrierprivileges.fRAMArraySumUpShort([BS)S
 					sstore 5;
 					sload 5;
-					getstatic_s 22;		// short com/imox/carrierprivileges/carrierprivileges.nSMSIMEIRetriesSTCounter_MAX
+					getstatic_s 15;		// short com/imox/carrierprivileges/carrierprivileges.nSMSIMEIRetriesSTCounter_MAX
 					if_scmple L27;
 				L23:	aload_0;
 					getfield_a_this 4;		// reference com/imox/carrierprivileges/carrierprivileges.transByteArray
 					sconst_1;
-					invokespecial 84;		// com/imox/carrierprivileges/carrierprivileges.fRAMArrayClean([BS)V
-					getstatic_s 97;		// short com/imox/carrierprivileges/carrierprivileges.nSMSIMEIRetries
+					invokespecial 70;		// com/imox/carrierprivileges/carrierprivileges.fRAMArrayClean([BS)V
+					getstatic_s 81;		// short com/imox/carrierprivileges/carrierprivileges.nSMSIMEIRetries
 					sconst_1;
 					sadd;
-					putstatic_s 97;		// short com/imox/carrierprivileges/carrierprivileges.nSMSIMEIRetries
-					getstatic_s 97;		// short com/imox/carrierprivileges/carrierprivileges.nSMSIMEIRetries
+					putstatic_s 81;		// short com/imox/carrierprivileges/carrierprivileges.nSMSIMEIRetries
+					getstatic_s 81;		// short com/imox/carrierprivileges/carrierprivileges.nSMSIMEIRetries
 					sconst_3;
 					if_scmpge L26;
 				L24:	aload_0;
@@ -3000,35 +2634,35 @@
 					sconst_0;
 					getfield_a_this 3;		// reference com/imox/carrierprivileges/carrierprivileges.IMEIOld
 					arraylength;
-					invokespecial 56;		// com/imox/carrierprivileges/carrierprivileges.fnsendSms([BSS)Z
+					invokespecial 49;		// com/imox/carrierprivileges/carrierprivileges.fnsendSms([BSS)Z
 					ifeq L27;
 				L25:	sconst_0;
-					putstatic_b 96;		// boolean com/imox/carrierprivileges/carrierprivileges.bSMSIMEIRetries
+					putstatic_b 80;		// boolean com/imox/carrierprivileges/carrierprivileges.bSMSIMEIRetries
 					goto L27;
 				L26:	sconst_0;
-					putstatic_b 96;		// boolean com/imox/carrierprivileges/carrierprivileges.bSMSIMEIRetries
-				L27:	getstatic_s 32;		// short com/imox/carrierprivileges/carrierprivileges.nAPK_APDU_MAX_Counter
+					putstatic_b 80;		// boolean com/imox/carrierprivileges/carrierprivileges.bSMSIMEIRetries
+				L27:	getstatic_s 25;		// short com/imox/carrierprivileges/carrierprivileges.nAPK_APDU_MAX_Counter
 					ifle L33;
-				L28:	getstatic_b 77;		// boolean com/imox/carrierprivileges/carrierprivileges.bFirstStatusCommand
+				L28:	getstatic_b 62;		// boolean com/imox/carrierprivileges/carrierprivileges.bFirstStatusCommand
 					ifne L33;
 				L29:	aload_0;
 					getfield_a_this 4;		// reference com/imox/carrierprivileges/carrierprivileges.transByteArray
 					bspush 16;
-					invokespecial 105;		// com/imox/carrierprivileges/carrierprivileges.fRAMArraySumUpShort([BS)S
+					invokespecial 89;		// com/imox/carrierprivileges/carrierprivileges.fRAMArraySumUpShort([BS)S
 					sstore 5;
 					sload 5;
-					getstatic_s 32;		// short com/imox/carrierprivileges/carrierprivileges.nAPK_APDU_MAX_Counter
+					getstatic_s 25;		// short com/imox/carrierprivileges/carrierprivileges.nAPK_APDU_MAX_Counter
 					if_scmple L31;
 				L30:	aload_0;
 					sconst_1;
-					invokespecial 99;		// com/imox/carrierprivileges/carrierprivileges.fSendSMSAPKApduStatus(Z)Z
+					invokespecial 83;		// com/imox/carrierprivileges/carrierprivileges.fSendSMSAPKApduStatus(Z)Z
 					pop;
 					aload_0;
 					getfield_a_this 4;		// reference com/imox/carrierprivileges/carrierprivileges.transByteArray
 					bspush 16;
-					invokespecial 84;		// com/imox/carrierprivileges/carrierprivileges.fRAMArrayClean([BS)V
+					invokespecial 70;		// com/imox/carrierprivileges/carrierprivileges.fRAMArrayClean([BS)V
 				L31:	sload 5;
-					getstatic_s 33;		// short com/imox/carrierprivileges/carrierprivileges.nAPK_APDU_MAX_Counter_Backup
+					getstatic_s 26;		// short com/imox/carrierprivileges/carrierprivileges.nAPK_APDU_MAX_Counter_Backup
 					if_scmple L33;
 				L32:	getfield_a_this 4;		// reference com/imox/carrierprivileges/carrierprivileges.transByteArray
 					bspush 16;
@@ -3036,50 +2670,50 @@
 					getfield_a_this 4;		// reference com/imox/carrierprivileges/carrierprivileges.transByteArray
 					bspush 17;
 					baload;
-					invokestatic 21;		// javacard/framework/Util.makeShort(BB)S
-					putstatic_s 103;		// short com/imox/carrierprivileges/carrierprivileges.nAPK_APDU_Counter_Backup
-				L33:	getstatic_b 77;		// boolean com/imox/carrierprivileges/carrierprivileges.bFirstStatusCommand
+					invokestatic 14;		// javacard/framework/Util.makeShort(BB)S
+					putstatic_s 87;		// short com/imox/carrierprivileges/carrierprivileges.nAPK_APDU_Counter_Backup
+				L33:	getstatic_b 62;		// boolean com/imox/carrierprivileges/carrierprivileges.bFirstStatusCommand
 					ifne L45;
-				L34:	getstatic_s 34;		// short com/imox/carrierprivileges/carrierprivileges.MAX_COUNTER_GETLOCI
+				L34:	getstatic_s 27;		// short com/imox/carrierprivileges/carrierprivileges.MAX_COUNTER_GETLOCI
 					ifgt L36;
-				L35:	getstatic_s 35;		// short com/imox/carrierprivileges/carrierprivileges.MAX_COUNTER_GETLOCI_APK
+				L35:	getstatic_s 28;		// short com/imox/carrierprivileges/carrierprivileges.MAX_COUNTER_GETLOCI_APK
 					ifle L45;
 				L36:	sconst_0;
 					sstore_3;
 					sconst_0;
 					sstore 4;
-					getstatic_s 34;		// short com/imox/carrierprivileges/carrierprivileges.MAX_COUNTER_GETLOCI
+					getstatic_s 27;		// short com/imox/carrierprivileges/carrierprivileges.MAX_COUNTER_GETLOCI
 					ifle L39;
 				L37:	aload_0;
 					getfield_a_this 4;		// reference com/imox/carrierprivileges/carrierprivileges.transByteArray
 					bspush 18;
-					invokespecial 105;		// com/imox/carrierprivileges/carrierprivileges.fRAMArraySumUpShort([BS)S
+					invokespecial 89;		// com/imox/carrierprivileges/carrierprivileges.fRAMArraySumUpShort([BS)S
 					sstore_2;
 					sload_2;
-					getstatic_s 34;		// short com/imox/carrierprivileges/carrierprivileges.MAX_COUNTER_GETLOCI
+					getstatic_s 27;		// short com/imox/carrierprivileges/carrierprivileges.MAX_COUNTER_GETLOCI
 					if_scmple L39;
 				L38:	aload_0;
 					getfield_a_this 4;		// reference com/imox/carrierprivileges/carrierprivileges.transByteArray
 					bspush 18;
-					invokespecial 84;		// com/imox/carrierprivileges/carrierprivileges.fRAMArrayClean([BS)V
+					invokespecial 70;		// com/imox/carrierprivileges/carrierprivileges.fRAMArrayClean([BS)V
 					sconst_1;
 					sstore_3;
 					sconst_1;
 					sstore 4;
-				L39:	getstatic_s 35;		// short com/imox/carrierprivileges/carrierprivileges.MAX_COUNTER_GETLOCI_APK
+				L39:	getstatic_s 28;		// short com/imox/carrierprivileges/carrierprivileges.MAX_COUNTER_GETLOCI_APK
 					ifle L42;
 				L40:	aload_0;
 					getfield_a_this 4;		// reference com/imox/carrierprivileges/carrierprivileges.transByteArray
 					bspush 20;
-					invokespecial 105;		// com/imox/carrierprivileges/carrierprivileges.fRAMArraySumUpShort([BS)S
+					invokespecial 89;		// com/imox/carrierprivileges/carrierprivileges.fRAMArraySumUpShort([BS)S
 					sstore_2;
 					sload_2;
-					getstatic_s 35;		// short com/imox/carrierprivileges/carrierprivileges.MAX_COUNTER_GETLOCI_APK
+					getstatic_s 28;		// short com/imox/carrierprivileges/carrierprivileges.MAX_COUNTER_GETLOCI_APK
 					if_scmple L42;
 				L41:	aload_0;
 					getfield_a_this 4;		// reference com/imox/carrierprivileges/carrierprivileges.transByteArray
 					bspush 20;
-					invokespecial 84;		// com/imox/carrierprivileges/carrierprivileges.fRAMArrayClean([BS)V
+					invokespecial 70;		// com/imox/carrierprivileges/carrierprivileges.fRAMArrayClean([BS)V
 					sconst_1;
 					sstore_3;
 				L42:	sload_3;
@@ -3087,14 +2721,14 @@
 				L43:	aload_0;
 					getfield_a_this 5;		// reference com/imox/carrierprivileges/carrierprivileges.loci
 					sconst_0;
-					invokevirtual 100;		// com/imox/carrierprivileges/carrierprivileges.fGetLocalInformationLOCI([BS)Z
+					invokevirtual 84;		// com/imox/carrierprivileges/carrierprivileges.fGetLocalInformationLOCI([BS)Z
 					pop;
 					sload 4;
 					ifeq L45;
 				L44:	aload_0;
 					sconst_1;
 					sconst_1;
-					invokespecial 101;		// com/imox/carrierprivileges/carrierprivileges.fSendSMSLoci(ZZ)Z
+					invokespecial 85;		// com/imox/carrierprivileges/carrierprivileges.fSendSMSLoci(ZZ)Z
 					pop;
 					goto L45;
 				L45:	return;
@@ -3104,21 +2738,21 @@
 			.stack 2;
 			.locals 0;
 
-				L0:	getstatic_a 39;		// reference com/imox/carrierprivileges/carrierprivileges.mReg
+				L0:	getstatic_a 32;		// reference com/imox/carrierprivileges/carrierprivileges.mReg
 					bspush 11;
-					invokeinterface 2 40 3;		// uicc/toolkit/ToolkitRegistry
+					invokeinterface 2 33 3;		// uicc/toolkit/ToolkitRegistry
 					ifne L3;
-				L1:	getstatic_a 39;		// reference com/imox/carrierprivileges/carrierprivileges.mReg
-					invokeinterface 1 40 8;		// uicc/toolkit/ToolkitRegistry
-					putstatic_b 41;		// byte com/imox/carrierprivileges/carrierprivileges.TIMER_ID
+				L1:	getstatic_a 32;		// reference com/imox/carrierprivileges/carrierprivileges.mReg
+					invokeinterface 1 33 8;		// uicc/toolkit/ToolkitRegistry
+					putstatic_b 34;		// byte com/imox/carrierprivileges/carrierprivileges.TIMER_ID
 					aload_0;
-					invokespecial 102;		// com/imox/carrierprivileges/carrierprivileges.fAPK_APDU_NotReceived()Z
+					invokespecial 86;		// com/imox/carrierprivileges/carrierprivileges.fAPK_APDU_NotReceived()Z
 					ifeq L3;
 				L2:	aload_0;
-					invokespecial 98;		// com/imox/carrierprivileges/carrierprivileges.loadTimer()Z
+					invokespecial 82;		// com/imox/carrierprivileges/carrierprivileges.loadTimer()Z
 					pop;
 				L3:	aload_0;
-					invokespecial 106;		// com/imox/carrierprivileges/carrierprivileges.select()Z
+					invokespecial 90;		// com/imox/carrierprivileges/carrierprivileges.select()Z
 					sreturn;
 		}
 
@@ -3134,38 +2768,38 @@
 					ifne L3;
 				L2:	aload_0;
 					aload_3;
-					invokespecial 107;		// com/imox/carrierprivileges/carrierprivileges.fShowDisplayTextPopUp([B)B
+					invokespecial 91;		// com/imox/carrierprivileges/carrierprivileges.fShowDisplayTextPopUp([B)B
 					sstore 6;
 					aload_0;
 					sload 6;
 					sload 4;
 					sload 5;
 					sconst_0;
-					invokespecial 108;		// com/imox/carrierprivileges/carrierprivileges.fProcessRESAndSendSMS(BBBZ)V
+					invokespecial 92;		// com/imox/carrierprivileges/carrierprivileges.fProcessRESAndSendSMS(BBBZ)V
 					return;
 				L3:	aload_0;
-					invokespecial 50;		// com/imox/carrierprivileges/carrierprivileges.fLaunchBrowserCheck()Z
+					invokespecial 43;		// com/imox/carrierprivileges/carrierprivileges.fLaunchBrowserCheck()Z
 					ifeq L14;
 				L4:	sload_1;
 					ifeq L6;
 				L5:	aload_0;
 					aload_3;
-					invokespecial 107;		// com/imox/carrierprivileges/carrierprivileges.fShowDisplayTextPopUp([B)B
+					invokespecial 91;		// com/imox/carrierprivileges/carrierprivileges.fShowDisplayTextPopUp([B)B
 					sstore 6;
 				L6:	sload 6;
 					ifne L8;
 				L7:	aload_0;
-					invokespecial 109;		// com/imox/carrierprivileges/carrierprivileges.launchBrowser()Z
+					invokespecial 93;		// com/imox/carrierprivileges/carrierprivileges.launchBrowser()Z
 					pop;
 				L8:	aload_0;
 					sload 6;
 					sload 4;
 					sload 5;
 					sconst_0;
-					invokespecial 108;		// com/imox/carrierprivileges/carrierprivileges.fProcessRESAndSendSMS(BBBZ)V
+					invokespecial 92;		// com/imox/carrierprivileges/carrierprivileges.fProcessRESAndSendSMS(BBBZ)V
 					sload 6;
 					ifeq L15;
-				L9:	getstatic_b 30;		// boolean com/imox/carrierprivileges/carrierprivileges.bNoResponseUserRetries
+				L9:	getstatic_b 23;		// boolean com/imox/carrierprivileges/carrierprivileges.bNoResponseUserRetries
 					ifeq L15;
 				L10:	sload 6;
 					bspush 18;
@@ -3187,7 +2821,7 @@
 					sconst_3;
 					if_scmpge L15;
 				L13:	aload_0;
-					invokespecial 98;		// com/imox/carrierprivileges/carrierprivileges.loadTimer()Z
+					invokespecial 82;		// com/imox/carrierprivileges/carrierprivileges.loadTimer()Z
 					pop;
 					goto L15;
 				L14:	aload_0;
@@ -3195,7 +2829,7 @@
 					sload 4;
 					sload 5;
 					sconst_1;
-					invokespecial 108;		// com/imox/carrierprivileges/carrierprivileges.fProcessRESAndSendSMS(BBBZ)V
+					invokespecial 92;		// com/imox/carrierprivileges/carrierprivileges.fProcessRESAndSendSMS(BBBZ)V
 				L15:	return;
 		}
 

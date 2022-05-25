@@ -64,11 +64,11 @@ LOCI is always 9 bytes.
 -------------------------------------
 Free non volatile memory without applet (IMOX_TESTING_01250102_210802): 123636 bytes
 RAM free: 3116 bytes
-Free non volatile memory with applet 117214 bytes 
-RAM free with applet: 3001 bytes
+Free non volatile memory with applet 117999 bytes 
+RAM free with applet: 3015 bytes
 
-EEPROM = 6.422 bytes 
-RAM = 115 bytes
+EEPROM = 5.637 bytes 
+RAM = 101 bytes
 
 
 FOR LOP FILES:
@@ -248,6 +248,9 @@ Anything different = no retries for Display Text, example 0x30.
 8) 
 01 = F2 supported
 Anything different = Not supported F2 for Update URL
+It is the same for F4:
+01 = F4 => Update URL supported
+Anything different, example 0x00, F4 supported but with the default URL.
 
 9)
 2 bytes for Status Command taking into account APK APDU Notification
@@ -355,6 +358,10 @@ F1 F0 81 A0 45 73 74 65 20 65 73 20 75 6E 20 74 65 78 74 6F 20 61 6D 70 6C 69 6F
 F4 1F 68 74 74 70 73 3A 2F 2F 77 77 77 2E 77 61 73 68 69 6E 67 74 6F 6E 70 6F 73 74 2E 63 6F 6D 2F
 URL:
 https://www.washingtonpost.com/
+
+F4 19 68 74 74 70 73 3A 2F 2F 77 77 77 2E 67 6F 6F 67 6C 65 2E 63 6F 6D 2E 61 72
+URL:
+https://www.google.com.ar
 
 7.2)
 F4 51 68 74 74 70 73 3A 2F 2F 63 6F 74 61 2D 73 64 6B 2E 6D 6E 63 30 32 30 2E 6D 63 63 33 33 34 2E 70 75 62 2E 33 67 70 70 6E 65 74 77 6F 72 6B 2E 6F 72 67 3A 38 31 38 31 2F 61 70 70 6C 65 74 2F 37 30 3F 6D 63 63 3D 31 31 31 26 6D 6E 63 3D 31 31 31
